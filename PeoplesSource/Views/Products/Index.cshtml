@@ -119,7 +119,7 @@
                                         @*Cost
                                              <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
                                             <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
-                                    </th>
+                                    </th>                                  
 
                                     <th style="width:8%;text-align:center">
                                         <a href="#" ng-click="orderByField='increment'; reverseSort = !reverseSort">Add</a>
@@ -153,7 +153,18 @@
                                             <a href="#" ng-click="orderByField='oht'; reverseSort = !reverseSort"> OHT</a>
                                           </th>*@
 
-
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='daily30'; reverseSort = !reverseSort">Daily Units Sold Rate for Past 30 Days</a>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='total30'; reverseSort = !reverseSort">Total Number of Units Sold in Past 30 days</a>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='dailyRestock'; reverseSort = !reverseSort">Daily Units Sold Rate from Last Restock to Last Sale Date</a>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='totalRestoct'; reverseSort = !reverseSort">Total Number of Units Sold between Last Stock and Last sale date</a>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -203,6 +214,18 @@
                                             {{item.oht | number:2}}
                                         </td>*@
 
+                                    <td class="text-center">
+                                        {{item.daily30}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.total30}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.dailyRestock}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.totalRestock}}
+                                    </td>
 
                                 </tr>
                             </tbody>
