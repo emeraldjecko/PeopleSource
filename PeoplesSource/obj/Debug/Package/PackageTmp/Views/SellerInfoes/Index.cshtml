@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PeoplesSource.Data.Models.SellerInfo>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <div class="container" style="margin-top:20px;">
+        <a href="@Url.Action("Create")" target="_self" class="btn btn-success pull-right">
+            <span></span> Create
+        </a>
+    </div>
+    <div class="container" style="margin-top:20px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Sellers</div>
+            <div class="panel-body">
+                <div class="row col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th class="col-md-2 text-center">
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th class="text-center col-md-2">
+                                @Html.DisplayNameFor(model => model.Increment)
+                            </th>
+                            <th class="text-center col-md-2">
+                                @Html.DisplayNameFor(model => model.IsPercentage)
+                            </th>
+                            <th class="text-center col-md-2">
+                                @Html.DisplayNameFor(model => model.KZ)
+                            </th>
+                            <th class="text-center col-md-2">
+                                @Html.DisplayNameFor(model => model.OHT)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Name)
+
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Increment)
+                                </td>
+                                <td class="text-center">
+                                    <label class="control-label" id="percentage">@item.IsPercentage</label>
+                                </td>
+                                <td class="text-center">
+                                    <label class="control-label">@item.KZ</label>
+                                </td>
+                                <td class="text-center">
+                                    <label class="control-label">@item.OHT</label>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="@Url.Action("Edit",new { id = item.Id })" target="_self"
+                                       class="btn btn-primary"><span>Edit</span></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

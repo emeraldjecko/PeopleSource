@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "Neto Products Publisher";
+}
+<style type="text/css">
+   .container.ng-scope {
+  width: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+    .container-fluid {
+    padding-right :0;
+    padding-left:0;
+    }
+    .panel-body {
+  padding: 15px 0;
+}
+    .container {
+  
+  padding-left: 0;
+  padding-right: 0;
+}
+ .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  
+  padding: 3px;
+  
+}
+    .disabledlink {
+    cursor: none;
+    }
+    
+
+</style>
+
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Neto Products Publisher</h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+            <div class="container" ng-controller="ProductController as vm" ng-init="vm.getNetoProducts()">
+                @*class="container"*@
+                <form class="form-horizontal">
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Date</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control datepicker" id="txtDate" placeholder="Enter Date" ng-model="vm.Date" required>
+                            </div>
+                            <button ng-disabled="!vm.Date" ng-click="vm.getNetoProducts()" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
+
+                        </div>
+                    </div>
+
+
+
+                    <div ng-show="vm.isLoding">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!vm.isLoding">
+                        <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    @*<th style="width:3%;text-align:center">
+                                        <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateNetoSelection()">
+                                    </th>*@
+                                    <th style="width:7%;text-align:center">
+                                        Real SKU
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('realSKU')"><i ng-class="vm.isRSortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('realSKU')"><i ng-class="vm.isRSortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:12%;text-align:center">
+                                        Title
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('title')"><i ng-class="vm.isTitlesortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('title')"><i ng-class="vm.isTitlesortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:4%;text-align:center">
+                                        Position
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('position')"><i ng-class="vm.ispositionsortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('position')"><i ng-class="vm.ispositionsortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:11%;text-align:center">
+                                        Total Listings
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('totalListings')"><i ng-class="vm.istotalListingssortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByNDesc('totalListings')"><i ng-class="vm.istotalListingssortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        Neto SKU
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('netoSKU')"><i ng-class="vm.isNetoSKUsortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByNDesc('netoSKU')"><i ng-class="vm.isNetoSKUsortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:9%;">
+                                        Seller Id
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('sellerId')"><i ng-class="vm.isSortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByNDesc('sellerId')"><i ng-class="vm.isSortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:9%;text-align:center">
+                                        Item Number
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('itemNumber')"><i ng-class="vm.isItemNumbersortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('itemNumber')"><i ng-class="vm.isItemNumbersortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+
+                                    <th style="width:5%;text-align:center">
+                                        Cost
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('cost')"><i ng-class="vm.isCsortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('cost')"><i ng-class="vm.isCsortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:7%;text-align:center">
+                                        Price 1
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('priceDefault')"><i ng-class="vm.isPDsortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('priceDefault')"><i ng-class="vm.isPDsortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:6%;text-align:center">
+                                        Profit 1
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('firstProfitPrice')"><i ng-class="vm.isNPPsortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('firstProfitPrice')"><i ng-class="vm.isNPPsortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+
+                                    <th style="width:8%;text-align:center">
+                                        Price 2
+                                        @*<span style="display:inline-block;" ng-click="vm.sortByNAsc('price2')"><i ng-class="vm.isprice2sortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                    <span style="display:inline-block;" ng-click="vm.sortByNDesc('price2')"><i ng-class="vm.isprice2sortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                    </th>
+                                    <th style="width:6%;text-align:center">
+                                        Profit 2
+                                        <span style="display:inline-block;" ng-click="vm.sortByNAsc('profit2')"><i ng-class="vm.isprofit2sortByNAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByNDesc('profit2')"><i ng-class="vm.isprofit2sortByNDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:3%;text-align:center">
+                                        push
+
+                                    </th>
+                                    <th style="width:4%;text-align:center">
+                                        Revise
+                                    </th>
+                                    <th style="width:4%;text-align:center">
+                                        In Depth
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-striped" ng-repeat="item in vm.netoproducts">
+                                    @*<td class="text-center">
+                                        <input type="checkbox" ng-model="item.selected" />
+                                    </td>*@
+                                    <td class="text-center">
+                                        {{item.realSKU}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.title}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.position}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.totalListings}}
+                                    </td>
+                                  
+                                    <td class="text-center">
+                                        {{item.netoSKU}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sellerId}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.itemNumber}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.cost}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.priceDefault}}
+                                    </td>
+
+                                    <td>{{ item.firstProfitPrice| number:2}}</td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control" id="Price2" ng-model="item.price2" ng-change="vm.updateNetoPrice2( {{item.itemNumber}}, {{item.cost}},item.price2)">
+                                        @*ng-change="vm.updateNetoPrice2( {{item.itemNumber}} , {{item.cost}})"*@
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.profit2 | number:2}}
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#"  ng-class="!item.price2 ? 'disabledlink' : ''" ng-click="vm.updateNetoProducts(item)">Push</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="https://toast.mylistandsend.com/_cpanel/products/view?id={{item.productID}}" target="_blank">Revise</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Products/NetoProductInDepth" target="_blank">in-depth</a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+
+
+                         
+                        </table>
+
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Content/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductController.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductService.js"></script>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+</script>

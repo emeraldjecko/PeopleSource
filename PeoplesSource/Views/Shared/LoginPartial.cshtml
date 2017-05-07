@@ -1,0 +1,26 @@
+﻿@if (User.Identity.Name != "")
+{
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right" style="vertical-align:top!important;margin-top :0 ; ">
+            <li>
+                @if (User.Identity.Name != "")
+                {
+                    @*<span><strong>Welcome</strong>@User.Identity.Name</span>*@
+                    <a href="#">Hello @User.Identity.Name</a>
+                }
+            </li>
+            <li><a href="@Url.Action("Login", "Account")">Logout</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Register", "CustomerRegistration", "Account", null, new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink" })</li>
+    </ul>
+}
+

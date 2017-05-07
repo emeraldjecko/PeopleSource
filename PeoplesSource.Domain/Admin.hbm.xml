@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="PeoplesSource.Domain.Admin, PeoplesSource.Domain" table="Admin" lazy="true">
+    <id name="AdminId" column="AdminId">
+      <generator class="identity"/>
+    </id>
+    <property name="UserId"/>
+    <property name="UserName" />
+    <property name="FirstName" />
+    <property name="LastName" />
+    <property name="Email" />    
+    <property name="CreatedDate" />
+    <property name="UpdatedDate" />
+    <property name="IsActive"/>    
+    <many-to-one name="CreatedBy" column="CreatedBy" cascade="none" />
+    <many-to-one name="UpdatedBy" column="UpdatedBy" cascade="none" />    
+  </class>
+</hibernate-mapping>

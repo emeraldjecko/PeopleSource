@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Messages Schedule List";
+    Layout = null;
+}
+
+
+<div id="jqGrid_container" class="jqGrid">
+    <table id="jQGridGroup"></table>
+    <div id="jQGridGroupPager"></div>
+</div>
+
+<div id="listComment"></div>
+<style>
+    input.ui-pg-input {
+        width: auto;
+    }
+   
+    .ui-jqgrid-view {
+        font-size: 11.5px !important;
+    }
+
+    div#gbox_jQGridGroup {
+        border: 1px solid #aaaaaa !important;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+     }
+
+    .clsquantityunit {
+        padding-left: 5px !important;
+    }
+
+    .paddingright {
+        padding-left: 10px !important;
+    }
+ 
+</style>
+
+<script type="text/javascript">
+
+
+    $("#divLoading").show();
+    //var mainGridPrefix = "s_";
+
+        $(window).bind('resize', function () {
+            var width = $('#jqGrid_container').width();
+            $('#jQGridGroup').setGridWidth(width);
+        });
+
+
+        $("#jQGridGroup").jqGrid({
+            url: '@Url.Action("GetMessageSchedule","MessageSchedule")',
+            datatype: "json",
+            //colNames: ['Sender', 'Receiver', 'MessageType', 'Subject', 'Read', 'Attachment', 'Notes', 'Received', 'Actions'],
+            colNames: ['MessageScheduleID', 'Sellerid', 'Seller', 'Subject', 'Body', 'SendAt', 'Actions'],
+            hideColumns: ["MessageScheduleID", "Sellerid"],
+            colModel: [
+                
+               {
+                   name: 'MessageScheduleID',
+                   index: 'MessageScheduleID',
+                   hidden: true,
+               }, {
+                   name: 'Sellerid',
+                   index: 'Sellerid',
+                   hidden: true,
+               }, {
+                    name: 'Seller',
+                    index: 'Seller',
+                    width: 15,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.Seller != null) {
+                            var x = "<div class='paddingright'>" + rowObject.Seller;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },{
+                    name: 'Subject',
+                    index: 'Subject',
+                    width: 15,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.Subject != null) {
+                            var x = "<div class='paddingright Subject'>" + rowObject.Subject;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },{
+                    name: 'Body',
+                    index: 'Body',
+                    width: 15,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.Body != null) {
+                            var x = "<div  class='paddingright Body'>" + rowObject.Body;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },{
+                    classes:'paddingright SendAt',
+                    name: 'SendAt',
+                    index: 'SendAt',
+                    width: 10,
+                    stype: 'date',
+                    formatter: 'date',
+                    sorttype: 'date',
+                    datefmt: 'm/d/Y',
+                    formatoptions: { srcformat: 'm/d/Y h:m', newformat: 'd/m/Y  h:i A' },
+                    sortable: true,
+                    editable: false,    
+                    search: true,
+                    searchoptions: { sopt: ['eq', 'ne'] }
+                },
+            //{
+            //        name: 'SendAt',
+            //        index: 'SendAt',
+            //        width: 9,
+            //        stype: 'text',
+            //        formatter: function (cellvalue, options, rowObject) {
+            //            if (rowObject.Body != null) {
+            //                var x = "<div style='text-align:center' class='SendAt'>" + rowObject.SendAt;
+            //                x = x + "</div>";
+            //                return x;
+            //            }
+            //        },
+            //        sortable: true,
+            //        editable: false,
+            //        searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            //    },
+                {
+                    name: 'Actions',
+                    index: 'Actions',
+                    width: 5,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        var x = "<div style='text-align:center;'>" +
+                                          "<a style='cursor: pointer;color:#1ab394;' onclick='EditEbayMessageSchedule(" + rowObject.MessageScheduleID + "," + rowObject.id + ");'><i class='fa fa-pencil-square-o fa-lg fa-fw' title='Edit Details'></i></a><a style='cursor: pointer;color:#1ab394;'  onclick='DeleteEbayMessageSchedule(" + rowObject.MessageScheduleID + "," + rowObject.id + ");'><i class='fa fa-trash fa-lg fa-fw' title='Delete Details'></i></a>" +
+                                       "</div>";
+                            
+                                return x;
+                    },
+                    sortable: false,
+                    search: false,
+                    editable: false,
+
+                }
+            ],
+            rowNum: 10,
+            rowList: [10, 50, 100, 150,200, 1000000],
+            mtype: 'GET',   
+            pager: '#jQGridGroupPager',
+            loadonce: true,
+            scroll: false,
+            viewrecords: true,
+            async:true,
+            height: 500,
+            autowidth: true,
+            shrinkToFit: true,
+            ignorecase: true,
+            loadComplete: function () {
+                $("#jQGridGroupPager").find("select option[value=1000000]").text('All');
+                if ($('#jQGridGroup').getGridParam('records') === 0) {
+                    oldGrid = $('#jQGridGroup tbody').html();
+                    $('#jQGridGroup tbody').html("<div id='NoRecord' style='padding:6px;background:#D8D8D8'>No records found</div>");
+                 
+                }
+
+                else
+                    oldGrid = "";
+                InitUI();
+            }
+
+        });        
+
+
+        $(function () {
+            $('#side-menu').find('li').removeClass('active');
+            $('#side-menu').find('#MessageSchedule').addClass('active');
+        });
+</script>

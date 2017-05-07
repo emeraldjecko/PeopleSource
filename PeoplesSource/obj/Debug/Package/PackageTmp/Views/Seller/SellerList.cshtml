@@ -1,0 +1,354 @@
+﻿@model List<PeoplesSource.Models.ReturnItemModel>
+    @{
+        Layout = null;
+    }
+
+               <div id="jqGrid_container" class="jqGrid">
+                   <table id="jQGridGroup"></table>
+                   <div id="jQGridGroupPager"></div>
+                   </div>
+                   <style>
+                           .modal-dialog {
+                               max-height: 800px;
+                               width: 1000px;
+                           }
+                       .fa-fw {
+                      width:0.786em;
+                         }
+
+                       .ui-jqgrid-bdiv {
+                       width:100% !important;
+                        }
+                           /*#sopt_menu{
+                           z-index:999999 !important;
+                       }*/
+                   </style>
+
+                  
+                   <script type="text/javascript">
+
+                       $(function () {
+                           $(window).bind('resize', function () {
+                               var width = $('#jqGrid_container').width();
+                               $('#jQGridGroup').setGridWidth(width);
+                           });
+
+                           $("#jQGridGroup").jqGrid({
+
+                               url: '@Url.Action("SellerList", "Seller")' + "?sellerId=" + @ViewBag.SellID,
+                               datatype: "json",
+                               colNames: ['Seller Id', 'User Id', 'Item Id', 'Return Id', 'Return Type', 'Status', 'Creation Date', 'Actions'],
+                               colModel: [
+                                   {
+                                       name: 'selId',
+                                       index: 'selId',
+                                       width: 1,
+                                       hidden: true,
+                                       stype: 'text',
+                                       align: "right",
+                                       classes: 'paddingright',
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'OtherPartyUserId',
+                                       index: 'OtherPartyUserId',
+                                       width: 1,
+                                       hidden: true,
+                                       stype: 'text',
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'ItemId',
+                                       index: 'ItemId',
+                                       width: 1,
+                                       hidden: true,
+                                       stype: 'text',
+                                       align: "right",
+                                       classes: 'paddingright',
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'ReturnId',
+                                       index: 'ReturnId',
+                                       width: 60,
+                                       stype: 'text',
+                                       formatter: function (cellvalue, options, rowObject) {
+
+                                           if (rowObject.ReturnId != null) {
+                                               var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.ReturnId;
+                                               x = x + "</div>";
+                                               return x;
+                                           }
+                                       },
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'ReturnType',
+                                       index: 'ReturnType',
+                                       width: 60,
+                                       formatter: function (cellvalue, options, rowObject) {
+
+                                           if (rowObject.ReturnType != null) {
+                                               var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.ReturnType;
+                                               x = x + "</div>";
+                                               return x;
+                                           }
+                                       },
+                                       stype: 'text',
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'Status',
+                                       index: 'Status',
+                                       width: 40,
+                                       formatter: function (cellvalue, options, rowObject) {
+
+                                           if (rowObject.Status != null) {
+                                               var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Status;
+                                               x = x + "</div>";
+                                               return x;
+                                           }
+                                       },
+                                       stype: 'text',
+                                       sortable: true,
+                                       editable: false,
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'CreationDate',
+                                       index: 'CreationDate',
+                                       width: 60,
+                                       formatter: function (cellvalue, options, rowObject) {
+
+                                           if (rowObject.CreationDate != null) {
+                                               var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.CreationDate;
+                                               x = x + "</div>";
+                                               return x;
+                                           }
+                                       },
+                                       stype: 'text',
+                                       sortable: true,
+                                       editable: false,
+                                       formatter: 'date',
+                                       formatoptions: { newformat: 'd/m/Y' },
+                                       searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                                   },
+                                   {
+                                       name: 'ReturnId',
+                                       index: 'ReturnId',
+                                       width: 60,
+                                       stype: 'text',
+                                       formatter: function(cellvalue, options, rowObject) {
+                                           if (rowObject.ReturnId != null) {
+                                               //var x = "<div style='padding-left:5px; padding-top:12px; padding-bottom:12px'><a onclick='GetreturnData(" + rowObject.ReturnId + "," + rowObject.selId + ");'><i class='fa fa-list-alt' title='Return List'></i></a>&nbsp;&nbsp;&nbsp;<a onclick='IssueRefund(" + rowObject.ReturnId + "," + rowObject.selId + ");'><i class='fa fa-eye' title='Issue Refund'></i></a>&nbsp;&nbsp;&nbsp;<a onclick='ProvideSellerInfo(" + rowObject.ReturnId + "," + rowObject.selId + ");'><i class='fa fa-eye' title='Provide Seller Information'></i></a>&nbsp;&nbsp;&nbsp;<a onclick='ProvideTrackingInfo(" + rowObject.ReturnId + "," + rowObject.selId + ");'><i class='fa fa-eye' title='Provide tracking Information'></i></a>&nbsp;&nbsp;&nbsp;<a onclick='SetItemAsReceived(" + rowObject.ReturnId + "," + rowObject.selId + ");'><i class='fa fa-eye' title='Set Item As Received'></i></a>&nbsp;&nbsp;&nbsp;<a onclick='SendMessage(\'' + rowObject.OtherPartyUserId + '\',"+rowObject.selId+","+rowObject.ItemId+");'><i class='fa fa-mail-forward' title='Send mail'></i></a>";
+                                               //x = x + "</div>";
+                                               var x = '<div style=" padding-top:12px; padding-bottom:12px;text-align:center;"><a style="cursor: pointer;color:#1ab394;" onclick="GetreturnData('+ rowObject.ReturnId + ',' + rowObject.selId + ');"><i class="fa fa-list-alt fa-lg fa-fw" title="Return Details"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: pointer;color:#1ab394;" onclick="IssueRefund(' + rowObject.ReturnId + ',' + rowObject.selId + ');"><i class="fa fa-file-text-o fa-lg fa-fw" title="Issue Refund"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: pointer;color:#1ab394;" onclick="ProvideSellerInfo(' + rowObject.ReturnId + ',' + rowObject.selId + ');"><i class="fa fa-info-circle fa-lg fa-fw" title="Provide Seller Information"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: pointer;color:#1ab394;" onclick="ProvideTrackingInfo(' + rowObject.ReturnId + ',' + rowObject.selId + ');"><i class="fa fa-info fa-lg fa-fw" title="Provide tracking Information"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: pointer;color:#1ab394;" onclick="SetItemAsReceived(' + rowObject.ReturnId + ',' + rowObject.selId + ');"><i class="fa fa-database fa-lg fa-fw" title="Set Item As Received"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: pointer;color:#1ab394;" onclick="SendMessage(\'' + rowObject.OtherPartyUserId + '\','+rowObject.selId+','+rowObject.ItemId+');"><i class="fa fa-mail-forward fa-lg fa-fw" title="Send Message"></i></a>';
+                                               x = x + '</div>';
+                                               return x;
+                                           }
+                                       },
+                                       sortable: false,
+                                       search: false,
+                                       editable: false,
+
+                                   }
+                               ],
+                               rowNum: 10,
+                               mtype: 'GET',
+                               pager: '#jQGridGroupPager',
+                               ignoreCase: true,
+                               loadonce: true,
+                               loadtext : 'Loading....',
+                               scroll: false,
+                               viewrecords: true,
+                               multiselect: false,
+                               autowidth: true,
+                               shrinkToFit: true,
+                               height: "100%",
+                               shrinkToFit: true,
+                               emptyDataText: "No Records Found",
+                               loadComplete: function() {
+                                   if ($('#jQGridGroup').getGridParam('records') === 0) {
+                                       oldGrid = $('#jQGridGroup tbody').html();
+                                       $('#jQGridGroup tbody').html("<div style='padding:6px;background:#D8D8D8'>No records found</div>");
+                                   } else {
+                                       oldGrid = "";
+                                   }
+                                   InitUI();
+
+                                   $("#jQGridGroup").parents('div.ui-jqgrid-bdiv').css("max-height","500px");
+                                   
+                               },
+                           })
+                           
+
+                           //$("#load_jQGridGroup").hide();
+                           $("#jQGridGroup").jqGrid('filterToolbar', { searchOperators: true });
+                           $("#jQGridGroup").jqGrid('navGrid', '#jQGridGroupPager', { add: false, del: false, edit: false, position: 'left' }, {}, // default settings for edit
+                           {},
+                           {},
+                           {
+                               closeOnEscape: true,
+                               multipleSearch: true,
+                               closeAfterSearch: true
+                           },
+                           {});
+                           
+                       });
+                       
+                       function GetreturnData(id, selId) {
+                           BootstrapDialog.show({
+                               title: 'Return Details',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               message: $('<div></div>').load('@Url.Action("GetReturnDetails", "Ebay")' + "?retId=" + id + "&selId=" + selId)
+                           });
+                       }
+
+                       function IssueRefund(id,selId) {
+                           BootstrapDialog.show({
+                               title: 'Issue Refund',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               //message: "Not Implemented Yet"
+                               message: $('<div></div>').load('@Url.Action("IssueRefund", "Ebay")' + "?retId=" + id + "&selId=" + selId),
+                               buttons: [{
+                                   label: 'Refund',
+                                   cssClass: 'btn-primary',
+                                   action: function (e) {
+                                       var formData = new FormData($('#submitIssueRefund')[0]);
+                                       if($("#Comments").val() == "") {
+                                           $("[data-valmsg-for='Comments']").html("Comments is required");
+                                           $("#Comments").focus();
+                                           return;
+                                       }
+                                       else {
+                                           $("[data-valmsg-for='Comments']").html("");
+                                       }
+                                       
+                                       $.ajax({
+                                           url: '@Url.Action("IssueRefund", "Ebay")',
+                                           type: 'POST',
+                                           data: formData,
+                                           async: false,
+                                           success: function (data) {
+                                               console.log(data);
+                                               if (data.success == true) {
+                                                   FireJGrowl("Refund successfulls<br>Refund Status:" + (data.RefundStatus == undefined ? "N/A" : data.RefundStatus));
+                                                   e.close();
+                                               }                                               
+                                           },
+                                           cache: false,
+                                           contentType: false,
+                                           processData: false
+                                       });
+                                   },
+
+                               }, {
+                                   label: 'Close',
+                                   action: function (dialogItself) {
+                                       dialogItself.close();
+                                   }
+                               }]
+                           });
+
+                       }
+
+                       function ProvideSellerInfo(id,selId) {
+                           BootstrapDialog.show({
+                               title: 'Provide Seller Information',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               message: "Not Implemented Yet"
+                               @*message: $('<div></div>').load('@Url.Action("ProvideSellerInfo", "Ebay")' + "?retId=" + id + "&selId=" + selId)*@
+                           });
+
+                       }
+                       function ProvideTrackingInfo(id,selId) {
+                           BootstrapDialog.show({
+                               title: 'Provide Tracking Information',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               message: "Not Implemented Yet"
+                               @*message: $('<div></div>').load('@Url.Action("ProvideTrackingInfo", "Ebay")' + "?retId=" + id + "&selId=" + selId)*@
+                           });
+                       }
+                       function SetItemAsReceived(id,selId) {
+                           BootstrapDialog.show({
+                               title: 'Set Item As Received',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               message: "Not Implemented Yet"
+                               @*message: $('<div></div>').load('@Url.Action("SetItemAsReceived", "Ebay")' + "?retId=" + id + "&selId=" + selId)*@
+                           });
+                       }
+
+                       function SendMessage(recId, selId, itemId) {
+                           BootstrapDialog.show({
+                               title: 'Message Details',
+                               closeByBackdrop: false,
+                               closeByKeyboard: false,
+                               draggable: true,
+                               message: $('<div></div>').load('@Url.Action("SendMessage", "Ebay")' + "?itemId=" + itemId + "&recId=" + recId + "&sellerId=" + selId),
+                               buttons: [
+                                   {
+                                       label: 'Next',
+                                       cssClass: 'btn-primary',
+                                       action: function(e) {
+                                           var formData = new FormData($('#SendMail')[0]);
+                                           $.ajax({
+                                               url: '@Url.Action("Send", "Ebay")',
+                                               type: 'POST',
+                                               data: formData,
+                                               async: false,
+                                               success: function (data) {
+                                                   if (data.success == true) {
+                                                       FireJGrowl(data.Message, "success");
+                                                       BootstrapDialog.closeAll();
+                                                       // e.close();
+                                                   } else {
+                                                       if (data.Message == "ModelError") {
+                                                           $("#templateValidaSummary").html(data.errors).css("color", "red");
+                                                       } else {
+                                                           FireJGrowl(data.errors, "error");
+                                                           BootstrapDialog.closeAll();
+                                                       }
+                                                   }
+                                               },
+                                               cache: false,
+                                               contentType: false,
+                                               processData: false
+                                           });
+                                       }
+                                   }
+                               ]
+                           });
+                       }
+
+                       $(window).bind('resize', function () {
+                           resizeGrid();
+                       });
+
+                       function resizeGrid()
+                       {
+                           var $grid = $("#jQGridGroup"),
+                                   newWidth = $grid.closest(".ui-jqgrid").parent().width();
+                           $grid.jqGrid("setGridWidth", newWidth, true);
+                       }
+                      
+                   </script>

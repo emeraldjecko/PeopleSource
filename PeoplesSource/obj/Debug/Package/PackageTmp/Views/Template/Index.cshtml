@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Template List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Template List</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div id="SellerListContainer">
+    @Html.Partial("List")
+</div>
+<script type="text/javascript">
+    function SellerSearch(pageIndex) {
+        PostToContainer('#TemplateListContainer', '@Url.Action("List", "Template")');
+    }
+
+</script>
+

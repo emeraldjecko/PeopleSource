@@ -1,0 +1,72 @@
+﻿.SpanTag > .TagName {
+        word-wrap:break-word;
+        width:74%;
+}
+
+.SpanTag i {
+cursor:pointer;
+}
+
+.AvailableTags {
+    padding: 5px 0;
+}
+
+.Customlabel {
+    font-size:13.2px !important;
+    font-weight:300 !important;
+    margin-left:15px !important;
+}
+
+input.ui-pg-input {
+    width: auto;
+}
+
+.ui-jqgrid-view {
+    font-size: 11.5px !important;
+}
+
+div#gbox_jQGridGroup {
+    border: 1px solid #aaaaaa !important;
+}
+
+.ui-jqgrid tr.jqgrow td {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+}
+
+.clsquantityunit {
+    padding-left: 5px !important;
+}
+
+.paddingright {
+    padding-left: 10px !important;
+}
+
+.AvailableTags:hover {
+    background: rgba(26, 179, 148, 0.05);
+}
+
+.TagName {
+    cursor: pointer;
+}
+
+.i_icons {
+    cursor: pointer;
+}
+
+.EditedInputBox {
+    border-color: -moz-use-text-color -moz-use-text-color #1ab394;
+    border-style: none none solid;
+    border-width: medium medium 1.5px;
+    width: 60%;
+}
+.bootstrap-dialog-close-button:hover {
+    cursor: pointer;
+}
+    #ui-datepicker-div {
+        z-index : 99999 !important;
+    }
+.closebtn,.CustomeFilterSearch {
+    cursor:pointer;
+}

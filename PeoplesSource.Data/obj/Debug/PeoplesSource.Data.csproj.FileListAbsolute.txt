@@ -1,0 +1,50 @@
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb

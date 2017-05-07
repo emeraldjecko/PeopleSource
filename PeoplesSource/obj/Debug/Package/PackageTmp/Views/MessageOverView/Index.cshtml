@@ -1,0 +1,464 @@
+﻿@{
+    ViewBag.Title = "Messages OverView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/Theme/Page/css/MessageOverview.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/Theme/Page/js/MessageOverview.js")" type="text/javascript"></script>
+
+@*Main Form*@
+<div class="row" style="margin-top: 10px;" id="divseller">
+    <div class="col-lg-2" style="padding-right: 0px; width: 20%;">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="file-manager">
+
+                    <button id="TagAddBtn" onclick="OpenTagInput();return false;" class="btn btn-primary btn-block" type="button">
+                        Add Tag
+                    </button>
+                    <div class="input-group hidden" id="HiddenTagInput">
+                        <input id="TagName" class="form-control" placeholder="Tag Name" onkeypress="return SaveTagEvent(event)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" onclick="SaveTags();return false;">
+                                ADD
+                            </button>
+                        </span>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <h5>Tag List</h5>
+
+                    <ul class="folder-list" style="padding: 0" id="TagList">
+                        <li id="NoTag" class="hidden">
+                            <label>No Tags Available..</label></li>
+                        <li id="Loading" class="hidden">
+                            <label>Loading Please Wait..</label></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="file-manager">
+                    <h5 style="text-align: center;">Message Type</h5>
+                    <div class="hr-line-dashed"></div>
+
+                    <ul class="folder-list" style="padding: 0">
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: thistle; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">None</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: red; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">ResponseToASQQuestion</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: blue; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">CustomCode</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: lawngreen; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">AskSellerQuestion</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: yellow; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">ContactTransactionPartner</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: pink; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">ContactEbayMember</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: black; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">Return Unknown</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: cyan; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">Return Replacement</span></div>
+                        </li>
+                        <li style="border: none;">
+                            <div class="pull-left" style="margin-right: 20px;"><i style="color: gold; font-size: 16px; margin-right: 5px;" class="fa fa-circle-thin"></i><span style="font-size: 13px; font-weight: lighter;">Return Moneyback</span></div>
+                        </li>
+                    </ul>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-10" style="margin-bottom: 25px; width: 80%;">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Messages List</h5>
+                <div class="ibox-tools">
+                    <button class="btn btn-xs btn-primary" type="button" onclick="ManageFilter();return false;">
+                        Manage Filter
+                         
+                    </button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="DeleteSelected();return false;">
+                        Delete Selected
+                         
+                    </button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="SetUnReadOrRead('Read');return false;">
+                        Mark As Read
+                         
+                    </button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="SetUnReadOrRead('UnRead');return false;">
+                        Mark As Unread
+                         
+                    </button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="TagList();return false;">
+                        Assign Tags
+                   
+                    </button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="ShowAllData();return false;">
+                        Show All
+                         
+                    </button>
+
+                </div>
+            </div>
+            <div class="ibox-content" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="input-group pull-right" style="width: 50%;">
+                        <input type="text" class="form-control" id="txtSearch">
+                        <div class="input-group-btn">
+                            <span onclick="Clicked();return false;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></span>
+                            <div class="dropdown-menu pull-right" style="width: 589px; margin-right: 68px; margin-top: -3px;">
+                                <div id="CustomizeMenu" class="form-horizontal MakeDisable">
+                                    <div class="form-group MakeDisable" style="margin-top: 10px; height: 0px;">
+                                        <div class="col-md-12 form-group" style="margin-left: 0px;">
+                                            <label for="Catagory" class="Customlabel pull-left" style="margin-top: 5px;">Search</label>
+                                            <select id="CatagoryList" class="form-control Customlabel  MakeDisable" name="Catagory" style="width: 27%; height: 34px;">
+                                            </select>
+                                            <div class="pull-right closebtn" onclick="Clicked();return false;" style="margin-bottom: 10px; margin-right: 8px; margin-top: 5px;">X</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-2">
+                                            <label for="FromDate" class="Customlabel">From</label>
+                                        </div>
+                                        <div id="FromDatepicker" class="col-md-12" style="margin-left: 15px !important; width: 95%;">
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="Tags Required" id="FromDatepkr" name="FromDate" value="" style="height: 24px;">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-2">
+                                            <label for="ToDate" class="Customlabel">To</label>
+                                        </div>
+                                        <div id="ToDatepicker" class="col-md-12" style="margin-left: 15px !important; width: 95%;">
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="Tags Required" id="ToDatepkr" name="ToDate" value="" style="height: 24px;">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-2">
+                                            <label for="Subject" class="Customlabel">Subject</label>
+                                        </div>
+                                        <div class="col-md-12" style="margin-left: 15px !important; width: 95%;">
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="Subject Required" id="Subject" name="Subject" value="" style="height: 24px;">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-2">
+                                            <label for="HasWord" class="Customlabel">Has the Word</label>
+                                        </div>
+                                        <div class="col-md-12" style="margin-left: 15px !important; width: 95%;">
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="HasWord Required" id="HasWord" name="HasWord" value="" style="height: 24px;">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="">
+                                                    <div class="icheckbox_square-green" id="chkboxattechment" style="position: relative;">
+                                                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" onclick="chkclicked('chkboxattechment'); return false;" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>
+                                                    <i></i><span class="Customlabel">Has Attachment</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="">
+                                                    <div class="icheckbox_square-green" id="chkboxnot" style="position: relative;">
+                                                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" onclick="chkclicked('chkboxnot'); return false;" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>
+                                                    <i></i><span class="Customlabel">Has Note</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable" style="margin-top: 10px; height: 0px;">
+                                        <div class="col-md-12 form-group" style="margin-left: 0px;">
+                                            <label for="Catagory" class="Customlabel pull-left" style="margin-top: 5px;">Date within </label>
+                                            <select id="DateList" class="form-control Customlabel  MakeDisable" name="DateList" style="width: 18%; height: 34px;">
+                                                <option value="0" class="MakeDisable">1 Day </option>
+                                                <option value="1" class="MakeDisable">3 Day </option>
+                                                <option value="2" class="MakeDisable">1 Week </option>
+                                                <option value="3" class="MakeDisable">2 Week </option>
+                                                <option value="4" class="MakeDisable">1 Month </option>
+                                                <option value="5" class="MakeDisable">2 Month </option>
+                                                <option value="6" class="MakeDisable">6 Month </option>
+                                                <option value="7" class="MakeDisable">1 Year </option>
+                                            </select>
+                                            <div style="width: 22px; margin-top: 5px; padding: 3px; margin-left: 10px; margin-right: 10px;" class="pull-left">of </div>
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="Date Required" id="UptoDate" name="UptoDate" value="" style="height: 24px; width: 30%; margin-top: 5px;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <span class="btn btn-primary MakeDisable" onclick="SearchFilter('FilterSearch');return false;" tabindex="-1" style="width: 72px; height: 31px;"><i class="fa fa-search" title="Search"></i></span>
+                                                @*    <span class="btn btn-white" onclick="Clicked();return false;">Cancel</span>*@
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <smal class="CustomeFilterSearch MakeDisable pull-right" style="color: #1AB394;" onclick="CheckCustomeFilter();return false;">Create filter with this search <i class="fa fa-angle-double-right"></i></smal>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="CustomizeFilterMenu" class="form-horizontal MakeDisable hidden">
+                                    <div class="form-group MakeDisable" style="margin-top: 10px; height: 0px;">
+                                        <div class="col-md-12">
+                                            <div class="col-md-4 pull-left">
+                                                <smal class="CustomeFilterSearch MakeDisable pull-left" style="color: #1AB394;" onclick="BackToCustomeFilter();return false;"><i class="fa fa-angle-double-left"></i> Back to Search Option</smal>
+                                            </div>
+                                            <div class="col-md-2 pull-right">
+                                                <div class="pull-right closebtn" onclick="Clicked();return false;" style="margin-bottom: 10px; margin-right: 8px; margin-top: 5px;">X</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="form-group MakeDisable" style="margin-top: 10px; height: 0px;">
+                                        <div class="col-md-12 form-group" style="margin-left: 0px;">
+                                            <label for="CatagoryFilterList" class="Customlabel pull-left" style="margin-top: 5px;">Assign Tag</label>
+                                            <select id="CatagoryFilterList" class="form-control Customlabel  MakeDisable" name="CatagoryFilter" style="width: 27%; height: 34px;">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="">
+                                                    <div class="icheckbox_square-green" id="MarkasRead" style="position: relative;">
+                                                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" onclick="chkclickedCustome('MarkasRead'); return false;" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>
+                                                    <i></i><span class="Customlabel">Mark as Read</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="">
+                                                    <div class="icheckbox_square-green" id="MarkasUnRead" style="position: relative;">
+                                                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" onclick="chkclickedCustome('MarkasUnRead'); return false;" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>
+                                                    <i></i><span class="Customlabel">Mark as UnRead</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="">
+                                                    <div class="icheckbox_square-green" id="ChkDelete" style="position: relative;">
+                                                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" onclick="chkclickedCustome('ChkDelete'); return false;" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>
+                                                    <i></i><span class="Customlabel">Delete it</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group MakeDisable">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 pull-left">
+                                                <button onclick="FilteNotePopup();return false;" class="CustomeFilterSearch MakeDisable pull-left">
+                                                    Add Note
+                                                </button>
+                                            </div>
+                                            <div id="FilterBox" class="col-md-10 hidden">
+                                                <textarea style="width: 100%;" cols="20" data-val="true" htmlattributes="{ class = form-control }" id="FilterNote" name="FilterNote" rows="2" placeholder="Add Note Here.."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="col-md-3">
+                                                <span class="btn btn-primary MakeDisable" onclick="CustomeFilterSearch(); return false;" tabindex="-1" style="width: 110px; height: 31px;">Create Filter </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" tabindex="-1" onclick="SearchFilter('Global');return false;">Search</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div id="SellerListContainer" style="margin-top: 10px;">
+                        <div id="jqGrid_container" class="jqGrid">
+                            <table id="jQGridGroup"></table>
+                            <div id="jQGridGroupPager"></div>
+                        </div>
+
+                        <div id="listComment"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Popup Form*@
+<div style="display: none;" class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog" style="width: 278px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 4px 5px;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+                <h4 class="modal-title">Tags</h4>
+                <small class="font-bold">You can select multiple tags to assign.</small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="AssignTagList" style="text-align: center;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="Savebtn" onclick="SaveAssignTag();return false;">Save</button>
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Popup Note*@
+<div aria-hidden="true" role="dialog" tabindex="-1" id="Notes_Popup" class="modal inmodal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bootstrap-dialog-draggable" style="background-color: #1ab394; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom: 1px solid #e5e5e5; min-height: 16.43px; padding: 15px;">
+                <div class="bootstrap-dialog-header">
+                    <div style="display: block; float: right; opacity: 0.9;" class="bootstrap-dialog-close-button" onclick="ClosePopup();return false;"><i class="fa fa-times" style="color: #FFF"></i></div>
+                    <div class="bootstrap-dialog-title" style="font-size: 16px; color: #ffffff; display: inline-block;">Add Note</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="bootstrap-dialog-body">
+                    <div class="bootstrap-dialog-message">
+                        <div id="modelWindow">
+                            <form novalidate="novalidate" id="AddNewNote" method="post">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <textarea cols="40" style="min-height: 135px;" data-val="true" class="form-control" id="NoteContent" name="NoteContent" rows="2" placeholder="Write Note"></textarea>
+                                                </div>
+                                                <span class="field-validation-valid" data-valmsg-for="TemplateContent" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="bootstrap-dialog-footer">
+                    <div class="bootstrap-dialog-footer-buttons">
+                        <button id="Save_Notes" class="btn btn-primary">Save</button>
+                        <button class="btn btn-default" onclick="ClosePopup();return false;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Manage Filter Popoup *@
+<div aria-hidden="true" role="dialog" tabindex="-1" id="Filter_Popup" class="modal inmodal fade" style="display: none;">
+    <div class="modal-dialog modal-lg" style="width: 1160px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1AB394; color: white; padding: 10px 10px;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Filter List</h4>
+            </div>
+            <div class="modal-body">
+                <div id="SellerListContainer">
+                    <div id="FilterjqGrid_container" class="jqGrid">
+                        <table id="FilterjQGridGroup"></table>
+                        <div id="FilterjQGridGroupPager"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-white" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Filter Action Popup *@
+<div aria-hidden="true" role="dialog" tabindex="-1" id="Filter_Action" class="modal inmodal fade" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1AB394; color: white; padding: 10px 10px;">
+                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Actions</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Assign Tag</label>
+                        <input class="form-control" readonly="readonly" id="Action_AssignTag">
+                    </div>
+                    <div>
+
+                        <div class="form-group">
+                            <label>Assign Note</label>
+                            <textarea rows="2" style="width: 100%; padding: 10px;" disabled="disabled" readonly="readonly" id="Action_AssignNote" htmlattributes="{ class = form-control }" data-val="true" cols="20"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="">
+                                <div class="icheckbox_square-green" id="Action_chkRead" style="position: relative;">
+                                    <input readonly="readonly" type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                </div>
+                                Read
+                            </label>
+                            <label class="" style="margin-left: 5px;">
+                                <div class="icheckbox_square-green" id="Action_chkUnRead" style="position: relative;">
+                                    <input readonly="readonly" type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                </div>
+                                UnRead
+                            </label>
+                            <label class="" style="margin-left: 5px;">
+                                <div class="icheckbox_square-green" id="Action_chkDelete" style="position: relative;">
+                                    <input readonly="readonly" type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                </div>
+                                Delete
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-white" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

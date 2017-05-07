@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="PeoplesSource.Domain.Seller, PeoplesSource.Domain" table="Seller" lazy="true">
+    <id name="Sellerid" column="Sellerid">
+      <generator class="identity"/>
+    </id>
+    <property name="SellarName"/>
+    <property name="DevID" />
+    <property name="AppID" />
+    <property name="CertID" />
+    <property name="UserToken" />
+    <property name="CompanyID" />
+    <property name="ProxyIP"/>
+    <property name="ProxyPort"  />
+    <property name="SiteID"  />
+    <property name="CreatedDate"  />
+    <property name="UpdatedDate"  />
+    <property name="IsActive"/>
+    <property name="ProxyPassword"/>
+    <property name="ProxyUserName"/>
+    <property name="IsCredentialsRequired"/>
+    <property name="IsProxyRequired"/>
+    <property name="RuName"/>
+    <property name="Email"/>
+    <many-to-one name="CreatedBy" column="CreatedBy" cascade="none" />
+    <many-to-one name="UpdatedBy" column="UpdatedBy" cascade="none" />
+    <!--<set name="Templates" table="Templates" cascade="all-delete-orphan">
+      <key column="SellerId"/>
+      <one-to-many class="PeoplesSource.Domain.Seller, PeoplesSource.Domain" />
+    </set>-->
+  </class>
+</hibernate-mapping>

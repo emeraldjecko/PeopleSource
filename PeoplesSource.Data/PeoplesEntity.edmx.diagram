@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ffee0242b4e4976bb71cb2347e6c6eb" Name="Diagram1">
+        <EntityTypeShape EntityType="PeopleSourceModel.admin" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Membership" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Paths" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="8.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Profile" Width="1.5" PointX="5.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Roles" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_SchemaVersions" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_Users" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_UsersInRoles" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.aspnet_WebEvent_Events" Width="1.5" PointX="7.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Country" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Seller" Width="1.5" PointX="2.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Template" Width="1.5" PointX="0.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_Applications" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_MembershipUsers" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_Profiles" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_Roles" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_Users" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_UsersInRoles" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_WebPartState_Paths" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_WebPartState_Shared" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_aspnet_WebPartState_User" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="PeopleSourceModel.FK_admin_aspnet_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Me__Appli__1C873BEC" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Me__Appli__1D7B6025" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pa__Appli__2057CCD0" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pa__Appli__214BF109" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Ro__Appli__29E1370A" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Ro__Appli__2AD55B43" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__2BC97F7C" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__395884C4" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__3A4CA8FD" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__Appli__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Me__UserI__1E6F845E" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Me__UserI__1F63A897" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__PathI__22401542" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__PathI__2334397B" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__PathI__24285DB4" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__PathI__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__UserI__2610A626" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pe__UserI__2704CA5F" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pr__UserI__27F8EE98" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Pr__UserI__28ED12D1" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__RoleI__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__RoleI__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__UserI__2F9A1060" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK__aspnet_Us__UserI__308E3499" ManuallyRouted="false" />
+        <AssociationConnector Association="PeopleSourceModel.FK_Templates_Seller" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Contact" Width="1.5" PointX="10.375" PointY="13.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.ItemTag" Width="1.5" PointX="4.875" PointY="28" />
+        <AssociationConnector Association="PeopleSourceModel.FK_ItemTags_Seller" />
+        <EntityTypeShape EntityType="PeopleSourceModel.MessageSchedule" Width="1.5" PointX="4.125" PointY="7.875" />
+        <AssociationConnector Association="PeopleSourceModel.FK_MessageSchedule_Seller" />
+        <EntityTypeShape EntityType="PeopleSourceModel.ManageScheduleMessage" Width="1.5" PointX="10.875" PointY="18.125" />
+        <AssociationConnector Association="PeopleSourceModel.FK_ManageScheduleMessages_Contacts" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Manage_OrderMessage" Width="1.5" PointX="12.375" PointY="13.75" />
+        <AssociationConnector Association="PeopleSourceModel.FK_Manage_OrderMessage_ItemTags" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Filteration" Width="1.5" PointX="8.875" PointY="27.125" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Tag" Width="1.5" PointX="0.75" PointY="16.625" />
+        <AssociationConnector Association="PeopleSourceModel.FK_Filteration_Tags" />
+        <EntityTypeShape EntityType="PeopleSourceModel.MessageTag" Width="1.5" PointX="11.125" PointY="25.5" />
+        <AssociationConnector Association="PeopleSourceModel.FK_MessageTags_Tags" />
+        <EntityTypeShape EntityType="PeopleSourceModel.EbayMessage" Width="1.5" PointX="14.125" PointY="6.75" />
+        <AssociationConnector Association="PeopleSourceModel.FK_EbayMessages_Seller" />
+        <EntityTypeShape EntityType="PeopleSourceModel.MasterMessage" Width="1.5" PointX="4.875" PointY="2.125" />
+        <AssociationConnector Association="PeopleSourceModel.FK_EbayMessages_MasterMessages" />
+        <AssociationConnector Association="PeopleSourceModel.FK_MasterMessages_Seller" />
+        <AssociationConnector Association="PeopleSourceModel.FK_MessageTags_MasterMessages" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_ReorderProducts" Width="1.5" PointX="14.375" PointY="12.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

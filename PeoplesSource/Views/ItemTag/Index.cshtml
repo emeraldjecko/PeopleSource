@@ -1,0 +1,485 @@
+﻿@{
+    ViewBag.Title = "Set Thank You Messages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .AvailableTags {
+        padding: 5px 0;
+    }
+
+    input.ui-pg-input {
+        width: auto;
+    }
+
+    .ui-jqgrid-view {
+        font-size: 11.5px !important;
+    }
+
+    div#gbox_jQGridGroup {
+        border: 1px solid #aaaaaa !important;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+    }
+
+    .clsquantityunit {
+        padding-left: 5px !important;
+    }
+
+    .paddingright {
+        padding-left: 10px !important;
+    }
+
+    .AvailableTags:hover {
+        background: rgba(26, 179, 148, 0.05);
+    }
+
+    .TagName {
+        cursor: pointer;
+    }
+
+    .i_icons {
+        cursor: pointer;
+    }
+    .modal-dialog {
+    width:900px !important; 
+    }
+
+    p {
+        margin:0 0 0px !important;
+    }
+
+    .EditedInputBox {
+        border-color: -moz-use-text-color -moz-use-text-color #1ab394;
+        border-style: none none solid;
+        border-width: medium medium 1.5px;
+        width: 60%;
+    }
+</style>    
+<link href="~/Content/Theme/css/plugins/TagInput/bootstrap-tagsinput.css" rel="stylesheet" />
+<script src="~/Content/Theme/js/TagInput/bootstrap-tagsinput.min.js"></script>
+<script src="~/Content/Theme/ckeditor/ckeditor.js"></script>
+
+<div class="row" style="margin-top: 10px;" id="divseller">
+    <div class="col-lg-12" style="margin-bottom: 25px; width: 100%;">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>List Of  ThankYou Messages</h5>
+                <div class="ibox-tools">
+                    <button class="btn btn-xs btn-primary" type="button" onclick="AssignTag();return false;">
+                        Assign Tag
+                   
+                    </button>
+                   
+                </div>
+            </div>
+            <div class="ibox-content" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div id="SellerListContainer">
+                        @Html.Partial("GetItemTagDetails")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" role="dialog" tabindex="-1" id="myModal5" class="modal inmodal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bootstrap-dialog-draggable" style="background-color:#1ab394;color:white;Font-size:22px;border-radius:5px 5px 0px 0px;padding:10px 15px;">
+                <div class="bootstrap-dialog-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true"><i style="color: white;">×</i></span><span class="sr-only">Close</span></button>
+                    <div class="bootstrap-dialog-title">Assign ItemTag</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="bootstrap-dialog-body">
+                    <div class="bootstrap-dialog-message">
+                        <div id="modelWindow">
+                            <form method="post" id="AddSellerData" action="/Seller/Template" novalidate="novalidate">
+                                <input type="hidden" value="2046" name="SellerId" id="SellerId" data-val-required="The SellerId field is required." data-val-number="The field SellerId must be a number." data-val="true">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="templateValidaSummary"></div>
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-2 control-label">
+                                                    <label for="SellerName">Seller</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                        <select name="Sellers" class="form-control"  id="SellerList">
+                                                                                                <option value="0">-- Select Seller --</option>
+                                                                                                <option value="2046">swaydev</option>
+                                                                                                <option value="2087">blastermechi</option>
+                                                         </select>
+                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-2 control-label">
+                                                    <label for="TemplateName">Item Tags</label>
+                                                </div>
+                                                <div class="col-md-10" id="TagLists">
+                                                    <input type="text" value="" name="Tags" id="Tags" data-val-required="Tags Required" data-val="true" class="form-control text-box single-line">
+                                                </div>
+                                                <span data-valmsg-replace="true" data-valmsg-for="Tags" class="field-validation-valid"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-2 control-label">
+                                                    <label for="MessageContent">Message</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <textarea rows="2" name="MessageContent" id="MessageContent" htmlattributes="{ class = form-control }" data-val-required="Message Content is required" data-val="true" cols="20" style="width: 100%"></textarea>
+                                                </div>
+                                                <span data-valmsg-replace="true" data-valmsg-for="MessageContent" class="field-validation-valid"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="bootstrap-dialog-footer">
+                    <div class="bootstrap-dialog-footer-buttons">
+                        <button class="btn btn-primary" id="btn_Save">Save</button>
+                        <button data-dismiss="modal" id="btn_Cancel" class="btn btn-white" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#side-menu').find('li').removeClass('active');
+        $('#side-menu').find('#ItemTag').addClass('active');
+        //  ResetAll();
+    //  GetDetails();
+    });
+
+    var ResetAll = function () {
+        if (CKEDITOR.instances['MessageContent']) {
+            CKEDITOR.instances['MessageContent'].destroy();
+        }
+        $('#Tags').tagsinput('removeAll');
+        $('#SellerList option:eq(0)').prop('selected', true);
+    }
+
+    var AssignTag = function ()
+    {
+        ResetAll();
+        CKEDITOR.replace('MessageContent', {
+            toolbar: [{ items: ['Bold', 'Italic', 'Underline'] }]
+        }).setData(' ');
+        $('#myModal5').modal('show');
+        $('#Tags').tagsinput('input');
+        $('#btn_Save').attr('onclick', 'SaveTag();return false;');
+    }
+
+    jQuery.fn.addRows = function (rows) { // Will not work for treegrid
+        var self = this;
+
+        var newData = [];
+        var allRows = this.jqGrid('getGridParam', 'data');
+     
+        $.each(rows, function () {
+            newData.push(this);
+        });
+
+        $.each(allRows, function () {
+            newData.push(this);
+        });
+
+        this.jqGrid('clearGridData')
+            .jqGrid('setGridParam', { data: newData })
+            .trigger('reloadGrid');
+    }
+
+    var SaveTag = function () {
+        IsValid = true;
+        var Tags = [];
+        $.each($('#TagLists').find('.bootstrap-tagsinput').find('.tag'), function (e, element) {
+            Tags.push($(element).find('.TagText').text());
+
+        });
+        if (Tags.length == 0) {
+            IsValid = false;
+        }
+        var Sellerid = $('#SellerList :selected').val();
+        if (Sellerid == 0) {
+            IsValid = false;
+        }
+        var Message = CKEDITOR.instances.MessageContent.getData();
+        if (Message.length < 1) {
+            IsValid = false;
+        }
+        if (IsValid) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SaveTags", "ItemTag")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ TagList: Tags.join(), Sellerid: Sellerid, Message: Message }),
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    if (data.success == true) {
+                        var mydataadd = [];
+                        mydataadd.push({
+                                id: data.Data[0].Itemtagid,
+                                rowId: data.Data[0].Itemtagid,
+                                SellerName: data.Data[0].Seller.SellarName,
+                                ItemTagID: data.Data[0].Itemtagid,
+                                ItemTagsList: data.Data[0].ItemTags,
+                                Sellerid: data.Data[0].Sellerid,
+                                Message: data.Data[0].Message
+                            });
+                        $("#jQGridGroup").addRows(mydataadd);
+                        $('#myModal5').modal('hide');
+                        $("#divLoading").hide();
+                        //FireJGrowl("Proxy is invalid", "error");
+                        toastr["success"]("Tag has been successfully assign to Item", "")
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "400",
+                            "hideDuration": "1000",
+                            "timeOut": "7000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    } else {
+                        $("#divLoading").hide();
+                        //FireJGrowl("Proxy is invalid", "error");
+                        toastr["error"]("Something went wrong", "error")
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "400",
+                            "hideDuration": "1000",
+                            "timeOut": "7000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    }
+                }
+            });
+        } else {
+            $("#divLoading").hide();
+            //FireJGrowl("Proxy is invalid", "error");
+            toastr["error"]("Please fill up the Information first", "error")
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+    }
+
+    var DeleteItemTag = function (ItemTagID) {
+        $("#divLoading").show();
+        $("#divLoading").hide();
+        BootstrapDialog.show({
+
+            message: 'Are you sure to delete this Thank You Message? It will also affects to dependent table',
+            title: 'Delete Confirmation',
+            closeByBackdrop: false,
+            closeByKeyboard: false,
+            draggable: true,
+            buttons: [{
+                label: 'Yes',
+                cssClass: 'btn-primary',
+                action: function (e) {
+                    $.post('@Url.Action("DeleteThankyouMessage", "ItemTag")', { ItemTagID: ItemTagID },
+                        function (data) {
+                            if (data.success == true) {
+                                $('#jQGridGroup').jqGrid('delRowData', ItemTagID);
+                                if ($('#jQGridGroup').getGridParam('records') === 0) {
+                                    oldGrid = $('#jQGridGroup tbody').html();
+                                    $('#jQGridGroup tbody').html("<div style='padding:6px;background:#D8D8D8'>No records found</div>");
+
+                                }
+                                $("#divLoading").hide();
+                                //FireJGrowl("Proxy is valid", "success");
+                                toastr["success"]("Thank You Message has been deleted successfully", "")
+                                toastr.options = {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-top-right",
+                                    "onclick": null,
+                                    "showDuration": "400",
+                                    "hideDuration": "1000",
+                                    "timeOut": "7000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                                e.close();
+                            }
+                        }
+                    );
+                },
+
+            }, {
+                label: 'No',
+                cssClass: 'btn-primary',
+                action: function (dialogItself) {
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+    var EditItemTag = function (ItemTagID, Sellerid) {
+        ResetAll();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("EditThankYouMessage", "ItemTag")',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({ ItemTagID : ItemTagID }),
+            success: function (data) {
+                if (data.success == true) {
+                    CKEDITOR.replace('MessageContent', {
+                        toolbar: [{ items: ['Bold', 'Italic', 'Underline'] }]
+                    }).setData(data.ItemtagData.Message);
+                    $('#SellerList').val(data.ItemtagData.Sellerid).attr("selected", "selected");
+                    var TagList = data.ItemtagData.ItemTags.split(',');
+                    $.each(TagList, function (e, element) {
+                        $('#Tags').tagsinput('add', element);
+                    });
+                    $('#btn_Save').attr('onclick', 'SaveEditedItemTags(' + data.ItemtagData.Itemtagid + ');return false;');
+                    $('#myModal5').modal('show');
+                }
+            },
+        });
+    }
+
+    var SaveEditedItemTags = function (ItemTagID) {
+        IsValid = true;
+        var Tags = [];
+        $.each($('#TagLists').find('.bootstrap-tagsinput').find('.tag'), function (e, element) {
+            Tags.push($(element).find('.TagText').text());
+
+        });
+        var Message = CKEDITOR.instances.MessageContent.getData();
+        if (Message.length < 1) {
+            IsValid = false;
+        }
+        if (Tags.length == 0) {
+            IsValid = false;
+        }
+        var Sellerid = $('#SellerList :selected').val();
+        if (Sellerid == 0) {
+            IsValid = false;
+        }
+        if (IsValid) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SaveEditedTags", "ItemTag")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ TagList: Tags.join(), Sellerid: Sellerid, ItemTagID: ItemTagID, Message: Message }),
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    if (data.success == true) {
+                        $('#jQGridGroup').find('#' + data.Data.Itemtagid + '').find('.SellerName').text(data.Data.Seller.SellarName);
+                        $('#jQGridGroup').find('#' + data.Data.Itemtagid + '').find('.TagList').html(''); 
+                        $('#jQGridGroup').find('#' + data.Data.Itemtagid + '').find('.Message').html(data.Data.Message);
+                        var Items = data.Data.ItemTags.split(',');
+                        $.each(Items, function (e, element) {
+                            $('#jQGridGroup').find('#' + data.Data.Itemtagid + '').find('.TagList').append('<span style="margin-left:10px;" class="tag label label-info"><i class="fa fa-tag"></i><span style="padding:5px;" class="TagText">' + element + '</span></span>');
+                        });
+                        $('#myModal5').modal('hide');
+                        $("#divLoading").hide();
+                        //FireJGrowl("Proxy is invalid", "error");
+                        toastr["success"]("Data has been successfully Updated to Item", "")
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "400",
+                            "hideDuration": "1000",
+                            "timeOut": "7000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    } else {
+                        $("#divLoading").hide();
+                        //FireJGrowl("Proxy is invalid", "error");
+                        toastr["error"]("Something went wrong", "error")
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "400",
+                            "hideDuration": "1000",
+                            "timeOut": "7000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    }
+                }
+            });
+        } else {
+            $("#divLoading").hide();
+            //FireJGrowl("Proxy is invalid", "error");
+            toastr["error"]("Please fill up the Information first", "error")
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+    }
+</script>

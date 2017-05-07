@@ -1,0 +1,251 @@
+﻿@using NHibernate.Proxy
+@model PeoplesSource.Models.SellerDetail
+@{
+    ViewBag.Title = "Add Seller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string hideClass = "";
+    if (Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["HideProxyView"]))
+    { hideClass = "hide"; }
+}
+
+
+@using (Html.BeginForm("SaveSellerdetail", "Seller", FormMethod.Post, new { id = "submitSellerDetail" }))
+{  
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12" style="margin-bottom: 10px;">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Add Seller Details</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="ValidationSummary" style="color: red"></div>
+                        <div id="usernotfound" style="color: red">@ViewBag.ErrorMessage</div>
+                        <div class="form-horizontal">
+                            <div class="form-group clearfix">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-12">
+                                        <a class="btn btn-xs btn-info pull-right" href="/Seller/GetUserToken/">Get User Token</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Seller Details
+                                    
+                                </div>
+                                <div class="panel-body" style="min-height: 185px">
+                                    <div class="form-group col-lg-12">
+                                        <label>Seller Name</label>
+                                        <input type="text" class="form-control" data-val="true" data-val-required="Seller Name is required" id="SellarName" maxlength="50" name="SellarName" value="">
+                                        <span class="field-validation-valid" data-valmsg-for="SellarName" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Email</label>
+                                        <input type="text" value="" name="Email" maxlength="200" id="Email" data-val-required="Email Address is required" data-val="true" class="form-control">
+                                        <span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid"></span>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>RuName</label>
+                                        <input type="text" value="" name="RuName" maxlength="200" id="RuName" data-val-required="RuName is required" data-val="true" class="form-control">
+                                        <span data-valmsg-replace="true" data-valmsg-for="RuName" class="field-validation-valid"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">Proxy Details</div>
+                                <div class="panel-body ">
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-6">
+
+                                            <label>Proxy IP</label>
+                                            <input type="text" class="form-control" data-val="true" data-val-regex="Enter ProxyIp In correct format(000.000.00.00)" data-val-regex-pattern="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$" data-val-requiredif="ProxyIP is required" data-val-requiredif-dependentproperty="IsProxyRequired" data-val-requiredif-targetvalue="true" id="ProxyIP" maxlength="20" name="ProxyIP" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="ProxyIP" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>Proxy Port</label>
+                                            <input type="text" class="form-control" data-val="true" data-val-regex="Enter proxyport upto 4 degit" data-val-regex-pattern="6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9]|\d{2,4}|[1-9]" data-val-requiredif="ProxyPort is required" data-val-requiredif-dependentproperty="IsProxyRequired" data-val-requiredif-targetvalue="true" id="ProxyPort" maxlength="20" name="ProxyPort" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="ProxyPort" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-12">
+
+                                            <input type="checkbox" value="true" name="IsProxyRequired" id="IsProxyRequired" data-val-required="The IsProxyRequired field is required." data-val="true"><label style="margin-left: 10px;">Is Proxy Required?</label><input type="hidden" name="IsProxyRequired" value="false">
+                                        </div>
+                                        <div class="form-group col-lg-12 ">
+
+                                            <input type="checkbox" value="true" name="IsCredentialsRequired" id="IsCredentialsRequired" data-val-required="The IsCredentialsRequired field is required." data-val="true"><input type="hidden" value="false" name="IsCredentialsRequired">
+                                            <label style="margin-left: 10px">Is Credentials Required?</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6 hide" id="divrequired1">
+                                            <div class="form-group">
+                                                <label>Proxy Username</label>
+                                                @Html.TextBoxFor(m => m.ProxyUserName, new { @class = "form-control", maxlength = 50 })
+                                    
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 hide" id="divrequired2">
+                                            <div class="form-group">
+                                                <label>Proxy Password</label>
+                                                @Html.PasswordFor(m => m.ProxyPassword, new { value = Model.ProxyPassword, @class = "form-control", maxlength = 50 })
+                                    
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">Key Details</div>
+                                <div class="panel-body">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-4">
+                                            <div class="form-group ">
+                                                <label>Dev Id</label>
+                                                <input type="text" value="5d3e82b6-201d-4e18-b55f-c4cb4f41ff30" name="DevID" maxlength="50" id="DevID" data-val-required="DevID is required" data-val="true" class="form-control">
+                                                <span data-valmsg-replace="true" data-valmsg-for="DevID" class="field-validation-valid"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>App Id</label>
+                                                <input type="text" value="ifour3dd9-30fb-4d0e-8878-a5a4adab936" name="AppID" maxlength="50" id="AppID" data-val-required="AppID is required" data-val="true" class="form-control">
+                                                <span data-valmsg-replace="true" data-valmsg-for="AppID" class="field-validation-valid"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Certi Id</label>
+                                                <input type="text" value="501da797-836e-4fb1-9d08-6fb2adc487cf" name="CertID" maxlength="50" id="CertID" data-val-required="CertID is required" data-val="true" class="form-control">
+                                                <span data-valmsg-replace="true" data-valmsg-for="CertID" class="field-validation-valid"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-12">
+                                            <label>User Token</label>
+                                            <textarea class="form-control" cols="20" data-val="true" data-val-required="UserToken is required" id="UserToken" name="UserToken" rows="2"></textarea>
+                                            <span class="field-validation-valid" data-valmsg-for="UserToken" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" checked="checked" data-val="true" data-val-required="IsActive is required" id="IsActive" name="IsActive" value="true"><input type="hidden" name="IsActive" value="false">
+                        <span class="field-validation-valid" data-valmsg-for="IsActive" data-valmsg-replace="true"></span>
+                        <label style="margin-left: 10px">Is Active</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" data-val="true" data-val-required="The IsCopytemplate field is required." id="IsCopytemplate" name="IsCopytemplate" value="true"><input type="hidden" name="IsCopytemplate" value="false">
+                        <span class="field-validation-valid" data-valmsg-for="IsCopytemplate" data-valmsg-replace="true"></span>
+                        <label style="margin-left: 10px">Copy template from Seller?</label>
+                    </div>
+                    <div id="divSeller" class="col-md-4 hide">
+                        <div class="form-group">
+                            <label>Select Seller</label><br>
+                            <select name="SellId" id="SellId" data-val-requiredif-targetvalue="true" data-val-requiredif-dependentproperty="IsCopytemplate" data-val-requiredif="Please select Seller" data-val-number="The field SellId must be a number." data-val="true" class="form-control">
+                                <option value="">--Seller--</option>
+                                <option value="2116">1</option>
+                                <option value="2114">123456</option>
+                                <option value="2092">abc</option>
+                                <option value="2093">abc</option>
+                                <option value="2126">asdf</option>
+                                <option value="1017">avani</option>
+                                <option value="2113">cew</option>
+                                <option value="2099">dfs</option>
+                                <option value="2124">external_api_buyer3</option>
+                                <option value="2063">fenny roy</option>
+                                <option value="2086">gfhgfh</option>
+                                <option value="2095">gre</option>
+                                <option value="2089">henry ford</option>
+                                <option value="5">herry porter</option>
+                                <option value="1006">herry123</option>
+                                <option value="2091">hhgj</option>
+                                <option value="2085">j</option>
+                                <option value="2041">John Smith</option>
+                                <option value="1003">markel Hussy</option>
+                                <option value="2090">meck Grew</option>
+                                <option value="2096">mj</option>
+                                <option value="2109">sadds</option>
+                                <option value="2046">Seller Test</option>
+                                <option value="2076">sunny</option>
+                                <option value="1010">test</option>
+                                <option value="1012">test1234</option>
+                                <option value="2097">trest</option>
+                                <option value="2087">tretreyry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-info buttonColor">
+                        <a href="/Seller">
+                            <input type="button" value="Cancel" class="btn btn-info buttonColor"></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+<style>
+    .hide {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('input[name=IsCopytemplate]').click(function () {
+            if ($('input[name=IsCopytemplate]:checked').val() == "true") {
+                $("#divSeller").removeClass("hide");
+            }
+            else {
+                $("#divSeller").addClass("hide");
+            }
+        });
+    });
+
+    $(function () {
+        $('input[name=IsCredentialsRequired]').click(function () {
+            if ($('input[name=IsCredentialsRequired]:checked').val() == "true") {
+                $("#divrequired1").removeClass("hide");
+                $("#divrequired2").removeClass("hide");
+            }
+            else {
+                $("#divrequired1").addClass("hide");
+                $("#divrequired2").addClass("hide");
+            }
+        });
+    });
+
+    $('#submitSellerDetail').submit(function (e) {
+        var form = $(this);
+        if (form.validate().form()) {
+            $.post('@Url.Action("SaveSellerdetail", "Seller")',
+                form.serialize(),
+                function (data) {
+
+                    HandleSaveResponseWithRedirect(data, form);
+
+
+                });
+        }
+        e.preventDefault();
+    });
+</script>

@@ -1,0 +1,91 @@
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll.config
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\FluentNHibernate.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.xml
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\FluentNHibernate.pdb
+C:\LaminarProjects\PeoplesSource\PeoplesSource\bin\FluentNHibernate.xml
+C:\LaminarProjects\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csproj.App.config
+C:\LaminarProjects\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csprojResolveAssemblyReference.cache
+C:\LaminarProjects\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.dll
+C:\LaminarProjects\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll.config
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.xml
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.pdb
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.xml
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csproj.App.config
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csprojResolveAssemblyReference.cache
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.dll
+C:\Users\ip-d\Desktop\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll.config
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.xml
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.pdb
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.xml
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csproj.App.config
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csprojResolveAssemblyReference.cache
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.dll
+F:\PeopleSource\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll.config
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\System.Data.SqlServerCe.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.xml
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.pdb
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.xml
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csproj.App.config
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csprojResolveAssemblyReference.cache
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.dll
+E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll.config
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\PeoplesSource.Domain.xml
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.pdb
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\bin\FluentNHibernate.xml
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csproj.App.config
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.csprojResolveAssemblyReference.cache
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.dll
+D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\obj\Debug\PeoplesSource.pdb

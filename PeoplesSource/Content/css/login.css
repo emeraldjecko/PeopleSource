@@ -1,0 +1,201 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/* ---------- GENERAL ---------- */
+
+body {
+    background: #eaeaea !important;
+    /*color: #999;
+	font: 100%/1.5em sans-serif;
+	margin: 0;*/
+}
+
+h3 {
+    margin: 0 !important;
+}
+
+/*a {
+	color: #999;
+	text-decoration: none;
+}
+
+a:hover { color: #1dabb8; }*/
+
+fieldset {
+    border: none;
+    margin: 0;
+}
+
+input {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+    input:focus {
+        outline: none;
+    }
+
+    input[type="submit"] {
+        cursor: pointer;
+    }
+
+.clearfix {
+    *zoom: 1;
+}
+
+    .clearfix:before, .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+/* ---------- LOGIN-FORM ---------- */
+
+#login-form {
+    margin: 50px auto;
+    width: 300px;
+}
+
+    #login-form h3 {
+        /*background-color: #282830;*/
+        background-color: #ff5400;
+        border-radius: 5px 5px 0 0;
+        font-weight: bold;
+        color: #fff;
+        font-size: 14px;
+        padding: 15px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #login-form fieldset {
+        background: #fff !important;
+        border-radius: 0 0 5px 5px !important;
+        padding: 20px !important;
+        position: relative !important;
+    }
+
+        #login-form fieldset:before {
+            background-color: #fff;
+            content: "";
+            height: 8px !important;
+            left: 50% !important;
+            margin: -4px 0 0 -4px !important;
+            position: absolute;
+            top: 0 !important;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            width: 8px !important;
+        }
+
+    #login-form input {
+        font-size: 14px;
+    }
+
+.email {
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    width: 238px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.password {
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    width: 238px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#login-form input[type="username"],
+#login-form input[type="password"] {
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    width: 260px;
+    height: auto;
+}
+
+#login-form input[type="username"] {
+    border-radius: 3px 3px 3px 3px;
+}
+
+#login-form input[type="password"] {
+    border-radius: 3px 3px 3px 3px;
+}
+/*.submit {
+	background: #F05A28;
+	border-radius: 3px;
+	color: #fff;
+	float: right;
+	font-weight: bold;
+	margin-top: 20px;
+	padding: 12px 20px;
+}
+.submit :hover {
+	 background: #198d98; 
+}*/
+
+#login-form input[type="submit"],
+#login-form input[type="button"] {
+    background: #ff5400;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 7px 20px;
+}
+
+
+/*#login-form input[type="submit"]:hover { background: #808080; }*/
+.footer {
+    margin-top: 16px;
+}
+
+#login-form footer {
+    font-size: 12px;
+    margin-top: 16px;
+}
+
+.info {
+    background: #e5e5e5;
+    border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 10px 0 0;
+    text-align: center;
+    width: 20px;
+}
+
+.mvcValidation {
+    font-size: 15px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    line-height: 25px;
+    color: red;
+}
+
+.field-validation-error {
+    color: Red;
+    margin-bottom: 3px;
+}
+
+.validation-summary-errors {
+    color: Red !important;
+    margin-bottom: 3px !important;
+}
+
+.error {
+    color: Red !important;
+    margin-bottom: 3px !important;
+    margin-left: 3px !important
+}
+

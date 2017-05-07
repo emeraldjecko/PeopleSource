@@ -1,0 +1,227 @@
+﻿@model PeoplesSource.Models.SellerDetail
+@{
+    ViewBag.Title = "Edit Seller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string hideClass = "";
+    if (Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["HideProxyView"]))
+    { hideClass = "hide"; }
+}
+<style>
+    /*body {
+        padding-top: 50px;
+    }*/
+
+    legend a {
+        color: inherit;
+    }
+
+    legend.legendStyle {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    fieldset.fsStyle {
+        font-family: Verdana, Arial, sans-serif;
+        font-size: small;
+        font-weight: normal;
+        border: 1px solid lightgray;
+        padding: 15px 15px 15px 15px;
+    }
+
+    legend.legendStyle {
+        font-size: 90%;
+        color: #000000;
+        background-color: transparent;
+        font-weight: bold;
+    }
+
+    legend {
+        width: auto;
+        border-bottom: 0px;
+    }
+</style>
+
+
+@using (Html.BeginForm("Update", "Seller", FormMethod.Post, new { id = "SubmitSellerDetail" }))
+{
+@Html.HiddenFor(x => x.Sellerid)
+ @Html.HiddenFor(x => x.CreatedDate)
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+    <div class="col-lg-12" style=" margin-bottom: 10px;">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Edit Seller Details</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Seller Details
+                                      
+                                </div>
+                                <div class="panel-body" style="min-height: 192px">
+                                    <div class="form-group col-lg-12">
+                                        <label>Seller Name</label>
+                                        @Html.TextBoxFor(m => m.SellarName, new { @class = "form-control", maxlength = 50 })
+                                        @Html.ValidationMessageFor(m => m.SellarName)
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Email</label>
+                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", maxlength = 50 })
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>RuName</label>
+                                         @Html.TextBoxFor(m => m.RuName, new { @class = "form-control", maxlength = 50 })
+                                        @Html.ValidationMessageFor(m => m.RuName)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">Proxy Details</div>
+                                <div class="panel-body ">
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-6">
+
+                                            <label>Proxy IP</label>
+                                            @Html.TextBoxFor(m => m.ProxyIP, new { @class = "form-control", maxlength = 50 })
+                                            @Html.ValidationMessageFor(m => m.ProxyIP)
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>Proxy Port</label>
+                                           @Html.TextBoxFor(m => m.ProxyPort, new { @class = "form-control", maxlength = 50 })
+                                             @Html.ValidationMessageFor(m => m.ProxyPort)
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-12">
+                                            
+                                             @Html.CheckBoxFor(m => m.IsProxyRequired, new { style = "margin-left:-1px" })
+                                             @*@Html.ValidationMessageFor(m => m.IsCredentialsRequired)*@
+                                             <label>Is Proxy Required?</label>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group col-lg-12 ">
+                                           
+                                            @Html.CheckBoxFor(m => m.IsCredentialsRequired, new { style = "margin-left:-1px" })
+                                            @*@Html.ValidationMessageFor(m => m.IsCredentialsRequired)*@
+                                             <label>Is Credentials Required?</label>
+                                        </div>
+                                    </div>
+                                <div class="col-lg-12">
+                                                <div class="col-lg-6 hide" id="divrequired1">
+                                                    <div class="form-group">
+                                                        <label>Proxy Username</label>
+                                                        @Html.TextBoxFor(m => m.ProxyUserName, new { @class = "form-control", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.ProxyUserName)
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 hide" id="divrequired2">
+                                                    <div class="form-group">
+                                                        <label>Proxy Password</label>
+                                                        @Html.PasswordFor(m => m.ProxyPassword, new { value = Model.ProxyPassword, @class = "form-control", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.ProxyPassword)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">Key Details</div>
+                                <div class="panel-body">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-4">
+                                            <div class="form-group ">
+                                                <label>Dev Id</label>
+                                                @Html.TextBoxFor(m => m.DevID, new { @class = "form-control", maxlength = 50 })
+                                                @Html.ValidationMessageFor(m => m.DevID)
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>App Id</label>
+                                                 @Html.TextBoxFor(m => m.AppID, new { @class = "form-control", maxlength = 50 })
+                                                @Html.ValidationMessageFor(m => m.AppID)
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Certi Id</label>
+                                               @Html.TextBoxFor(m => m.CertID, new { @class = "form-control", maxlength = 50 })
+                                               @Html.ValidationMessageFor(m => m.CertID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-lg-12">
+                                            <label>User Token</label>
+                                            @Html.TextAreaFor(m => m.UserToken, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.UserToken)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <div class="form-group">
+                    <label style="margin-left: 10px">Is Active</label>
+                        @Html.CheckBoxFor(m => m.IsActive, new { style = "margin-left:-1px" })
+                        @Html.ValidationMessageFor(m => m.IsActive)
+                       
+                    </div>
+                    <div class="form-group">
+                             <input class="btn btn-info buttonColor" type="submit" value="Update">
+                                    <a href="@Url.Action("Index", "Seller")"><input class="btn btn-info buttonColor" type="button" value="Cancel"></a>
+                        </div>
+                   
+                </div>
+            </div>
+    </div>
+        </div>
+    </div>
+
+}
+<script type="text/javascript">
+
+    $('#SubmitSellerDetail').submit(function (e) {
+        var form = $(this);
+        if (form.validate().form()) {
+            $.post('@Url.Action("Update", "Seller")',
+                form.serialize(),
+                function (data) {
+                    HandleSaveResponseWithRedirect(data, form);
+                });
+        }
+        e.preventDefault();
+    });
+
+    $(function () {
+        if ($('input[name=IsCredentialsRequired]:checked').val() == "true") {
+            $("#divrequired1").removeClass("hide");
+            $("#divrequired2").removeClass("hide");
+        }
+
+        $('input[name=IsCredentialsRequired]').click(function () {
+            if ($('input[name=IsCredentialsRequired]:checked').val() == "true") {
+                $("#divrequired1").removeClass("hide");
+                $("#divrequired2").removeClass("hide");
+            }
+            else {
+                $("#divrequired1").addClass("hide");
+                $("#divrequired2").addClass("hide");
+            }
+        });
+    });
+
+</script>
+
+

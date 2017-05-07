@@ -1,0 +1,226 @@
+﻿@{
+    ViewBag.Title = "Return Tracking";
+}
+
+
+
+<style type="text/css">
+    .container.ng-scope {
+        width: auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .data {
+        width: 200px !important;
+        max-width: 200px !important;
+        word-wrap: break-word !important;
+    }
+
+    .tracksummary {
+        background-color: #1c84c6;
+        color: White;
+        font-weight: 400;
+    }
+
+    .dateCss {
+        display: flex;
+        padding: 5px 0;
+    }
+
+    tr.trackdetails:nth-child(even) {
+        background: #f5f5f5;
+    }
+
+    tr.trackdetails:nth-child(odd) {
+        background: #FFF;
+    }
+
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 4px;
+    }
+
+    .text-center.ng-binding {
+        max-width: 662px;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        text-overflow: ellipsis;
+        width: 662px;
+        text-align:left;
+    }
+</style>
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Return Tracking</h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+            <div class="container" ng-controller="OrdersController as od" ng-init="od.getOrders()">
+                @*class="container"*@
+                <form class="form-horizontal">
+
+                    <div ng-show="od.isLoding">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!od.isLoding">
+                        <button class="btn btn-success  col-md-2" ng-click="od.Retracking()">Click to Retrack</button>
+                        <a href="#" ng-click="od.Show()" class="pull-right"> <i class="{{od.hide?'fa fa-chevron-down': 'fa fa-chevron-up'}}"></i><u><b>{{od.hide?'Show All': 'Hide All'}}</b></u></a>
+                        Ordered By: {{orderByField}}, Reverse Sort: {{reverseSort}}
+                        <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                @*<tr>
+                                        <th style="width:3%;text-align:center">
+                                            <input type="checkbox" ng-model="od.selectAll" ng-change="od.updateOrderDetails()">
+                                        </th>
+                                        <th style="width:26%;text-align:center">
+                                            <a href="#">Seller id</a>
+                                        </th>
+                                        <th style="width:10%;text-align:center">
+                                            <a href="#">Order Id</a>
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#">Date</a>
+                                        </th>
+                                        <th style="width:8%;text-align:center">
+                                            <a href="#">Status</a>
+                                        </th>
+                                        <th style="width:30%;text-align:center">
+                                            <a href="#"> Payer Details</a>
+                                        </th>
+
+
+                                        <th style="width:8%;text-align:center">
+                                            <a href="#">Tracking No</a>
+                                        </th>
+                                        <th style="width:10%;text-align:center">
+                                            <a href="#"> Item_Sku</a>
+
+                                        </th>
+
+                                    </tr>*@
+                                <tr>
+                                    <th style="width:3%;text-align:left">
+                                        <input type="checkbox" ng-model="od.selectAll" ng-change="od.updateOrderDetails()" class="ng-pristine ng-untouched ng-valid">
+                                    </th>
+                                    <th style="width:7%;text-align:left">
+                                        <a href="#">Operations</a>
+                                    </th>
+                                    <th style="width:5%;text-align:left">
+                                        <a href="#" ng-click="orderByField='date'; reverseSort = !reverseSort">Date</a>
+                                    </th>
+
+                                    <th style="width:10%;text-align:left">
+                                        <a href="#" ng-click="orderByField='tracking'; reverseSort = !reverseSort">Tracking No</a>
+                                    </th>
+                                    <th style="width:8%;text-align:left">
+                                        <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort"> Email Id</a>
+                                    </th>
+                                    <th style="width:8%;text-align:left">
+                                        <a href="#" ng-click="orderByField='account'; reverseSort = !reverseSort">Seller id</a>
+                                    </th>
+                                    <th style="width:7%;text-align:left">
+                                        <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort"> Buyer Name</a>
+                                    </th>
+                                    <th style="width:9%;text-align:left">
+                                        <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort"> Buyer Address</a>
+                                    </th>
+                                    <th style="width:12%;text-align:left">
+                                        <a href="#" ng-click="orderByField='item_sku'; reverseSort = !reverseSort"> Item_Sku</a>
+
+                                    </th>
+                                    <th style="width:18%;text-align:left">
+                                        <a href="#" ng-click="orderByField='item_description'; reverseSort = !reverseSort">Item Description</a>
+                                    </th>
+                                    <th style="width:12%;text-align:left">
+                                        <a href="#" ng-click="orderByField='txn_id'; reverseSort = !reverseSort">Order Id</a>
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="item in od.orders  | orderBy:orderByField:reverseSort">
+                                <tr class="row-striped">
+                                    <td class="text-center">
+                                        <input type="checkbox" ng-model="item.selected" />
+                                    </td>
+                                    <td class="text-center">
+
+                                        <a href="javascript:void(0);" ng-click="od.ClosedTracking(item)"> Completed <i class="fa fa-thumbs-up"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.date | date:"MM/dd/yyyy"  }}
+
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.tracking}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.payer_email}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.account}}
+                                    </td>
+                                    <td class="text-center">{{item.name}}</td>
+                                    <td class="text-center">{{ item.address_street}}{{item.address_street2}}{{item.address_city}}, {{item.address_state}}, {{item.address_zip}}</td>
+                                    <td class="text-center">{{item.item_sku}}</td>
+                                    <td class="text-center">
+                                        {{item.item_description}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.txn_id}}  @*{{item.trackResponse.trackDetail[0].orderStatus}}*@
+                                        @*{{item.trackResponse.trackDetail.length > 0? [ item.trackResponse.trackDetail[0].orderStatus ]:''}}*@
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+
+                                    <td><a href="javascript:void(0);" ng-click="ShowDetails = !ShowDetails"> <i class="{{ShowDetails?'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i> {{ShowDetails?'Hide': 'Show'}}</a></td>
+                                    <td colspan="9" style="text-align:left" class="data tracksummary">{{item.trackResponse.trackSummary.length?item.trackResponse.trackSummary:'Not Track Yet'}} </td>
+                                </tr>
+                                <tr ng-repeat="details in item.trackResponse.trackDetail" ng-show="!od.hide || ShowDetails" class="trackdetails">
+                                    <td style="background:#fff;border:none"></td>
+                                    <td style="background:#fff;border:none"></td>
+                                    <td colspan="2" class="text-center">{{details.orderStatus}}</td>
+                                    <td colspan="2" class="text-center">{{details.orderDate}}</td>
+                                    <td colspan="2" class="text-center">{{details.orderLocation}}</td>
+                                </tr>
+                                <tr ng-show="!item.trackResponse.trackDetail.length && (!od.hide || ShowDetails)">
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="9">  <p >No Tracking details for this Number</p></td>
+                                    </tr>
+
+</tbody>
+                        </table>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/OrderController.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/OrderService.js"></script>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/css/LoadSpinner.css" rel="stylesheet" />

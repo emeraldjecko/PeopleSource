@@ -1,0 +1,58 @@
+﻿@model PeoplesSource.Data.Models.SellerInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SellerInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Increment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Increment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KZ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KZ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OHT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OHT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

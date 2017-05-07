@@ -1,0 +1,91 @@
+﻿@model PeoplesSource.Ebay.Models.IssueRefundModel
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Issue Refund</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model != null)
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        @using (Html.BeginForm("IssueRefund", "Ebay", FormMethod.Post, new { id = "submitIssueRefund" }))
+                        {
+                            <div class="form-horizontal">
+                                @Html.HiddenFor(m => m.SellerId)
+                                @Html.HiddenFor(m => m.ReturnId)
+                                <div class="row">
+                                    <table class="table table-striped table-bordered table-hover footable" data-filter="#filter">
+                                        <thead>
+                                            <tr>
+                                                <th>Fee Type</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.RefundDetail.ItemizedRefund.Any())
+                                            {
+                                                for (int i = 0; i < Model.RefundDetail.ItemizedRefund.Count(); i++)
+                                                {
+                                                    <tr>
+                                                        <td>                                                            
+                                                            @Model.RefundDetail.ItemizedRefund[i].RefundFeeType
+                                                            @Html.HiddenFor(m => m.RefundDetail.ItemizedRefund[i].RefundFeeType)
+                                                        </td>
+                                                        <td>
+                                                            @Model.RefundDetail.ItemizedRefund[i].Amount
+                                                            @Html.HiddenFor(m => m.RefundDetail.ItemizedRefund[i].Amount)
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <label>No Record Found.</label>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>
+                                                    Total
+                                                </th>
+                                                <th>
+                                                    @Model.RefundDetail.TotalAmount
+                                                    @Html.HiddenFor(m => m.RefundDetail.TotalAmount)                                                    
+                                                </th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Comments, htmlAttributes: new { @class = "col-sm-2" })
+                                        <div class="col-sm-10">
+                                            @Html.TextAreaFor(m => m.Comments, htmlAttributes: new { @class = "form-control input-sm" })
+                                            @Html.ValidationMessageFor(m => m.Comments, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>Data Not Available</div>
+        }
+    </div>
+</div>

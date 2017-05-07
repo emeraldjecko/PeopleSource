@@ -1,0 +1,774 @@
+﻿@{
+    ViewBag.Title = "Contact List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #page_navigation a {
+        padding: 3px;
+        border: 1px solid gray;
+        margin: 2px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .active_page {
+        background: #1AB394;
+        color: white !important;
+    }
+
+    .contact-box:hover {
+        animation-name: pulse;
+        animation-duration: 1s;
+        z-index: 100;
+        animation-fill-mode: both;
+    }
+
+    .thumbnail {
+        background-color: #F8FAFB;
+        border: none;
+    }
+
+    #btnDelete {
+        cursor: pointer;
+    }
+
+    .page_link_filter {
+        border: 1px solid #808080;
+        color: #000000;
+        margin: 2px;
+        padding: 3px;
+        text-decoration: none;
+    }
+</style>
+
+@*<input type='hidden' id='current_page' />
+<input type='hidden' id='show_per_page' />*@
+
+<div class="row" style="margin-top: 10px;" id="divContact">
+    <div class="col-lg-12" style="margin-bottom: 25px; width: 100%;">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div id="Links" class="pull-left" style="margin-left:13px;">
+                            <a class="page_link_filter active_page" id="ALL" onclick="Filter('ALL');return false;">Show All</a>
+                            <a class="page_link_filter" id="A" onclick="Filter('A');return false;">A</a>
+                            <a class="page_link_filter" id="B" onclick="Filter('B');return false;">B</a>
+                            <a class="page_link_filter" id="C" onclick="Filter('C');return false;">C</a>
+                            <a class="page_link_filter" id="D" onclick="Filter('D');return false;">D</a>
+                            <a class="page_link_filter" id="E" onclick="Filter('E');return false;">E</a>
+                            <a class="page_link_filter" id="F" onclick="Filter('F');return false;">F</a>
+                            <a class="page_link_filter" id="G" onclick="Filter('G');return false;">G</a>
+                            <a class="page_link_filter" id="H" onclick="Filter('H');return false;">H</a>
+                            <a class="page_link_filter" id="I" onclick="Filter('I');return false;">I</a>
+                            <a class="page_link_filter" id="J" onclick="Filter('J');return false;">J</a>
+                            <a class="page_link_filter" id="K" onclick="Filter('K');return false;">K</a>
+                            <a class="page_link_filter" id="L" onclick="Filter('L');return false;">L</a>
+                            <a class="page_link_filter" id="M" onclick="Filter('M');return false;">M</a>
+                            <a class="page_link_filter" id="N" onclick="Filter('N');return false;">N</a>
+                            <a class="page_link_filter" id="O" onclick="Filter('O');return false;">O</a>
+                            <a class="page_link_filter" id="P" onclick="Filter('P');return false;">P</a>
+                            <a class="page_link_filter" id="Q" onclick="Filter('Q');return false;">Q</a>
+                            <a class="page_link_filter" id="R" onclick="Filter('R');return false;">R</a>
+                            <a class="page_link_filter" id="S" onclick="Filter('S');return false;">S</a>
+                            <a class="page_link_filter" id="T" onclick="Filter('T');return false;">T</a>
+                            <a class="page_link_filter" id="U" onclick="Filter('U');return false;">U</a>
+                            <a class="page_link_filter" id="V" onclick="Filter('V');return false;">V</a>
+                            <a class="page_link_filter" id="W" onclick="Filter('W');return false;">W</a>
+                            <a class="page_link_filter" id="X" onclick="Filter('X');return false;">X</a>
+                            <a class="page_link_filter" id="Y" onclick="Filter('Y');return false;">Y</a>
+                            <a class="page_link_filter" id="Z" onclick="Filter('Z');return false;">Z</a>
+                        </div>
+                    <button onclick="AddNewContact();return false;" type="button" class="btn btn-xs btn-primary pull-right">
+                        Add New Contact
+                   
+                    </button>
+             </div>
+            <div class="ibox-content" style="margin-bottom: 20px;min-height:400px;">
+                <div class="row">
+                    <div id="SellerListContainer">
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            <div class="col-lg-12" style="margin-bottom: 10px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search here..." id="txtSearch">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" id="btnSearch" onclick="Search();return false;">
+                                            Search
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div id="ContactList">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div aria-hidden="true" role="dialog" tabindex="-1" id="ContactPopup" class="modal inmodal" style="display: none;">
+    <div style="width: 700px;" class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div style="padding: 13px 15px; background-color: #1ab394; color: white; border-radius: 5px 5px 0px 0px;" class="modal-header">
+                <button data-dismiss="modal" class="close" type="button" onclick="ClearAll();return false;"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Add Contact Details</h4>
+            </div>
+            <div class="modal-body col-lg-12">
+                <div class="col-lg-3" style="min-height: 200px; text-align: center;">
+                    <div data-provides="fileinput" class="fileinput fileinput-new">
+                        <div class="fileinput-new thumbnail" id="DefaultImage">
+                            <img class="img-circle m-t-xs img-responsive" style="min-width: 90px; min-height: 110px; max-width: 90px; max-height: 110px;" alt="..." src="/ContactImages/No_Image.png">
+                        </div>
+                        <div id="ImageUrl" style="max-width: 200px; max-height: 150px; line-height: 10px;" class="fileinput-preview fileinput-exists thumbnail"></div>
+                        <div>
+                            <span class="btn btn-default btn-file btn-xs" style="background: #1ab394;"><span class="fileinput-new" id="SelectImage">Select image</span><span class="fileinput-exists">Change</span><input type="hidden" value="" name="..."><input type="file" name=""></span>
+                            <a data-dismiss="fileinput" class="btn btn-default fileinput-exists btn-xs" href="#" style="background: #1ab394;">Remove</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-9">
+                    <div style="margin-top: 5px;" class="col-lg-12">
+                        <label style="margin-top: 10px;">First Name:</label>
+                        <div class="col-lg-9 pull-right">
+                            <input type="text" value="" name="FirstName" id="FirstName" placeholder="First Name" class="form-control text-box single-line">
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px;" class="col-lg-12">
+                        <label style="margin-top: 10px;">Middle Name:</label>
+                        <div class="col-lg-9 pull-right">
+                            <input type="text" value="" name="MiddleName" id="MiddleName" placeholder="Middle Name" class="form-control text-box single-line">
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 5px;">
+                        <label style="margin-top: 10px;">Last Name:</label>
+                        <div class="col-lg-9 pull-right">
+                            <input type="text" value="" name="LastName" id="LastName" placeholder="Last Name" class="form-control text-box single-line">
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 5px;">
+                        <label style="margin-top: 10px;">Email :</label>
+                        <div class="col-lg-9 pull-right">
+                            <input type="text" value="" name="EmailAddress" id="EmailAddress" placeholder="Email Address" class="form-control text-box single-line">
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 5px;">
+                        <label style="margin-top: 10px;">Phone No:</label>
+                        <div class="col-lg-9 pull-right">
+                            <input type="text" value="" name="PhoneNo" id="PhoneNo" placeholder="Contact No" class="form-control text-box single-line">
+                        </div>
+                        <div>
+                        </div>
+                </div>
+                </div>
+                <div class="col-lg-12" style="">
+                    <label style="">Address :</label>
+                    <div class="col-lg-10 pull-right">
+                        <textarea cols="20" placeholder="Adress" htmlattributes="{ class = form-control }" style="width: 96.75%; border: 1px solid #e5e6e7;" id="Address" rows="2"></textarea></div>
+                </div>
+                <div class="col-lg-12" style="margin-top:5px;">
+                    <label style="">Note :</label>
+                    <div class="col-lg-10 pull-right">
+                        <textarea cols="20" placeholder="Note" htmlattributes="{ class = form-control }" style="width: 96.75%; border: 1px solid #e5e6e7;" id="Note" rows="2"></textarea></div>
+                </div>  
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" style="margin-top: 8px;" onclick="ClearAll();return false;">Close</button>
+                <button id="SaveBtn" type="button" class="btn btn-primary" style="margin-top: 8px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+      var Email = null;
+      var Phone = null;
+      var Note = null;
+
+      $("#txtSearch").keypress(function (e) {
+          if (e.which == 13) {
+              e.preventDefault();
+              Search();
+          }
+
+      });
+
+      var Search = function () {
+          $('#divContact').find('#Links').find('.page_link_filter').removeClass('active_page');
+          var str = $('#txtSearch').val().toLowerCase().trim();
+          if (str.length != 0) {
+              var temp = false;
+              $.each($('#ContactList').find('.Contact_Div'), function (e, element) {
+                  if ($(element).find('#Conatct_Name').text().toLowerCase().indexOf(str) >= 0) {
+                      $(element).removeClass('hidden');
+                      temp = true;
+                  } else {
+                      $(element).addClass('hidden');
+                  }
+              });
+              if (temp == false) {
+                  $('#ContactList').find('#ErrorMessage').remove();
+                  $('#ContactList').append('<div id="ErrorMessage"><span style="color:red;font-size:21px;margin-left:15px;">No Result Found..</span><div class="clearfix"></div>');
+              } else {
+                  $('#ContactList').find('#ErrorMessage').remove();
+              }
+          } else {
+              if ($('#ContactList').find('#ErrorMessage')) {
+                  $('#ContactList').find('.Contact_Div').removeClass('hidden');
+                  $('#ContactList').find('#ErrorMessage').remove();
+                  $('#divContact').find('#Links').find('.page_link_filter').removeClass('active_page');
+                  $('#divContact').find('#Links').find('#ALL').addClass('active_page');
+              }
+              $("#divLoading").hide();
+              //FireJGrowl("Proxy is invalid", "error");
+              toastr["error"]("Please Enter the keyword which you wanted to search..", "error")
+              toastr.options = {
+                  "closeButton": true,
+                  "debug": false,
+                  "progressBar": true,
+                  "positionClass": "toast-top-right",
+                  "onclick": null,
+                  "showDuration": "400",
+                  "hideDuration": "1000",
+                  "timeOut": "7000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+              }
+          }
+      }
+      var Filter = function (Charactor) {
+          $('#txtSearch').val('');
+          $('#divContact').find('#Links').find('.page_link_filter').removeClass('active_page');
+          $('#divContact').find('#Links').find('#' + Charactor + '').addClass('active_page');
+          var temp = false;
+          if (Charactor == 'ALL') {
+              $('#ContactList').find('.Contact_Div').removeClass('hidden');
+         //   $('#page_navigation').removeClass('hidden');
+              $('#ContactList').find('#ErrorMessage').remove();
+          } else {
+              $.each($('#ContactList').find('.Contact_Div'), function (e, element) {
+                      if ($(element).find('#Conatct_Name').text().charAt(0).toLowerCase() == Charactor.toLowerCase()) {
+                          $(element).removeClass('hidden');
+                          temp = true;
+                      } else {
+                          $(element).addClass('hidden');
+                      }
+              });
+              if (temp == false) {
+                  $('#ContactList').find('#ErrorMessage').remove();
+                  $('#ContactList').append('<div id="ErrorMessage"><span style="color:red;font-size:21px;margin-left:15px;">No Result Found..</span><div class="clearfix"></div>');
+                  //$('#page_navigation').addClass('hidden');
+              } else {
+                  $('#ContactList').find('#ErrorMessage').remove();
+                //  $('#page_navigation').removeClass('hidden');
+              }
+          }
+      }
+
+      $(function () {
+          //var $btns = $('.btn').click(function () {
+          //    if (this.id == 'all') {
+          //        $('#parent > div').fadeIn(450);
+          //    } else {
+          //        var $el = $('.' + this.id).fadeIn(450);
+          //        $('#parent > div').not($el).hide();
+          //    }
+          //    $btns.removeClass('active');
+          //    $(this).addClass('active');
+          //})
+
+
+          $('#side-menu').find('li').removeClass('active');
+          $('#side-menu').find('#Contact').addClass('active');
+          if ($('body').hasClass('mini-navbar'))
+              $('body').removeClass('mini-navbar');
+          else
+              $('body').addClass('mini-navbar');
+          GetData();
+      });
+
+      var GetData = function () {
+          $.ajax({
+              type: "GET",
+              url: '@Url.Action("GetContactDetails", "Contact")',
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function (data) {
+                  if (data.success == true) {
+                      if (data.data != null) {
+                          $.each(data.data, function (e, element) {
+                              if (element.EmailAddress == null || element.EmailAddress == undefined)
+                                  Email = '<span id="Conatct_Email" class="hidden"></span>';
+                              else
+                                  Email = '<br><span id="Conatct_Email"><i class="fa fa-envelope"  title="Email" style="color:#1AB394"></i> ' + element.EmailAddress.substr(0, 18) + '...</span>';
+                              if (element.Phone == null || element.Phone == undefined)
+                                  Phone = '<abbr title="Phone" class="hidden" id="Conatct_Phone">P:</abbr>';
+                              else
+                                  Phone = '<abbr title="Phone" id="Conatct_Phone">P: ' + element.Phone + '</abbr>';
+                              $('#ContactList').find('#ErrorMessage').addClass('hidden');
+                              //if (element.Note == null || element.Note == undefined)
+                              //    Note = '<div class="col-lg-12 hidden" id="Conatct_Note"><i style="margin-right:10px;font-size:20px;color:#1AB394" title="Note" class="fa fa-pencil-square"></i></div>';
+                              //else
+                              //    Note = '<div class="col-lg-12" id="Conatct_Note"><i style="margin-right:2px;color:#1AB394" title="Note" class="fa fa-pencil-square"></i>' + element.Note.substr(0, 41) + '...</div>';
+                              $('#ContactList').append('<div class="col-lg-4 Contact_Div"  id="ContactID_' + element.ContactId + '"><div class="contact-box" style="height:190px;"><div class="pull-right" id="btnDelete" style="margin-top:-18px;margin-right:-13px;"><i style="color:#1ab394" class="fa fa-trash" onclick="DeleteContact(' + element.ContactId + ');return false;"></i></div><a onclick="EditConatct(' + element.ContactId + ');return false;"><div class="col-sm-4"><div class="text-center" id="Image_DIV" style="min-width:90px;min-height:110px;max-width:90px;max-height:110px;">' +
+                                                              element.Image +//'<div class="m-t-xs font-bold">CEO</div>'+
+                                                              '</div>' +
+                                                        '</div>' +
+                                                        ' <div class="col-sm-8">' +
+                                                              '<h3><strong id="Conatct_Name">' + element.FirstName + ' ' + element.LastName + '</strong></h3>' +
+                                                              //'<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>'+
+                                                              '<address>' +
+                                                                 '<p id="Conatct_Address"><i class="fa fa-map-marker"></i> ' + element.Address + '</p>' +
+                                                                  Phone + Email +
+                                                                 '</address>' +
+                                                          '</div></a><div class="clearfix"></div></div></div>');
+                          });
+
+                          ////For Pagging
+                          //var show_per_page = 9;
+                          ////getting the amount of elements inside content div
+                          //var number_of_items = data.count;
+                          ////calculate the number of pages we are going to have
+                          //var number_of_pages = Math.ceil(number_of_items / show_per_page);
+
+                          ////set the value of our hidden input fields
+                          //$('#current_page').val(0);
+                          //$('#show_per_page').val(show_per_page);
+
+                          ////now when we got all we need for the navigation let's make it '
+
+                          ///* 
+                          //what are we going to have in the navigation?
+                          //    - link to previous page
+                          //    - links to specific pages
+                          //    - link to next page
+                          //*/
+                          //var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';
+                          //var current_link = 0;
+                          //while (number_of_pages > current_link) {
+                          //    navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a>';
+                          //    current_link++;
+                          //}
+                          //navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';
+
+                          //$('#page_navigation').html(navigation_html);
+
+                          ////add active_page class to the first page link
+                          //$('#page_navigation .page_link:first').addClass('active_page');
+
+                          ////hide all the elements inside content div
+                          //$('#ContactList').children().css('display', 'none');
+
+                          ////and show the first n (show_per_page) elements
+                          //$('#ContactList').children().slice(0, show_per_page).css('display', 'block');
+                      }
+                  }
+              }
+          });
+      }
+
+      var AddNewContact = function () {
+          ClearAll();
+          $('#ContactPopup').find('#SaveBtn').attr('onclick', 'SaveDetails();return false;');
+          $('#ContactPopup').find('#SelectImage').text('Select image');
+          $('#ContactPopup').modal('show');
+      }
+
+      var EditConatct = function (ContactId) {
+          ClearAll();
+          $.ajax({
+              type: "POST",
+              url: '@Url.Action("GetEditedContactDetail", "Contact")',
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify({ ContactId: ContactId }),
+              dataType: "json",
+              success: function (data) {
+                  if (data.success = true) {
+                      if (data.Data != null) {
+                          //  $.each(data.Data, function (e, element) {
+                          $('#ContactPopup').find('#FirstName').val(data.Data.FirstName);
+                          $('#ContactPopup').find('#MiddleName').val(data.Data.MiddleName);
+                          $('#ContactPopup').find('#LastName').val(data.Data.LastName);
+                          if (data.Data.EmailAddress != null || data.Data.EmailAddress != undefined)
+                              $('#ContactPopup').find('#EmailAddress').val(data.Data.EmailAddress);
+                          if (data.Data.Phone != null || data.Data.Phone != undefined)
+                              $('#ContactPopup').find('#PhoneNo').val(data.Data.Phone);
+                          $('#ContactPopup').find('#Address').val(data.Data.Address);
+                          if (data.Data.Note != null || data.Data.Note != undefined)
+                              $('#ContactPopup').find('#Note').val(data.Data.Note);
+                          $('#ContactPopup').find('#DefaultImage').html(data.Data.Image);
+                          $('#ContactPopup').find('#SelectImage').text('Change Photo');
+                          $('#ContactPopup').find('#SaveBtn').attr('onclick', 'SaveEditedDetails(' + ContactId + ');return false;');
+                          $('#ContactPopup').modal('show');
+                          //  });
+                      }
+                  }
+              }
+          });
+      }
+
+      var ClearAll = function () {
+          $('#DefaultImage').html('<img class="img-circle m-t-xs img-responsive" style="min-width: 90px; min-height: 110px; max-width: 90px; max-height: 110px;" alt="..." src="/ContactImages/No_Image.png">');
+          $('.fileinput').fileinput('reset');
+          $('#ContactPopup').find('#FirstName').val('');
+          $('#ContactPopup').find('#MiddleName').val('');
+          $('#ContactPopup').find('#LastName').val('');
+          $('#ContactPopup').find('#EmailAddress').val('');
+          $('#ContactPopup').find('#PhoneNo').val('');
+          $('#ContactPopup').find('#Address').val('');
+          $('#ContactPopup').find('#Note').val('');
+      }
+
+      var SaveDetails = function () {
+          var IsValid = true;
+          var ImageUrl = $('#ContactPopup').find('#ImageUrl').html();
+          if (ImageUrl == null || ImageUrl == undefined || ImageUrl.length == 0) {
+              ImageUrl = '<img class="img-circle m-t-xs img-responsive" style="min-width:90px;min-height:110px;max-width:90px;max-height:110px;" alt="..." src="/ContactImages/No_Image.png">';
+          }
+          var FName = $('#ContactPopup').find('#FirstName').val();
+          var MName = $('#ContactPopup').find('#MiddleName').val();
+          var LName = $('#ContactPopup').find('#LastName').val();
+          var reg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+          var EmailAddress = $('#ContactPopup').find('#EmailAddress').val();
+          var PhoneNo = $('#ContactPopup').find('#PhoneNo').val();
+          var Address = $('#ContactPopup').find('#Address').val();
+          var Note = $('#ContactPopup').find('#Note').val();
+
+          if (reg.test(EmailAddress) == false) {
+              IsValid = false;
+          }
+          if (FName.length == 0 || MName.length == 0 || LName.length == 0 || Address.length == 0) {
+              IsValid = false;
+          } else if (EmailAddress.length == 0 && PhoneNo.length == 0) {
+              IsValid = false;
+          }
+          if (IsValid) {
+              $.ajax({
+                  type: "POST",
+                  url: '@Url.Action("AddNewContactDetail", "Contact")',
+                  contentType: "application/json; charset=utf-8",
+                  data: JSON.stringify({ ImageUrl: ImageUrl, FName: FName, MName: MName, LName: LName, EmailAddress: EmailAddress, PhoneNo: PhoneNo, Address: Address, Note: Note }),
+                  dataType: "json",
+                  success: function (data) {
+                      if (data.success == true) {
+                          if (data.Error == 'Error') {
+                              $("#divLoading").hide();
+                              //FireJGrowl("Proxy is invalid", "error");
+                              toastr["error"]("Please Enter Required Information First..", "error")
+                              toastr.options = {
+                                  "closeButton": true,
+                                  "debug": false,
+                                  "progressBar": true,
+                                  "positionClass": "toast-top-right",
+                                  "onclick": null,
+                                  "showDuration": "400",
+                                  "hideDuration": "1000",
+                                  "timeOut": "7000",
+                                  "extendedTimeOut": "1000",
+                                  "showEasing": "swing",
+                                  "hideEasing": "linear",
+                                  "showMethod": "fadeIn",
+                                  "hideMethod": "fadeOut"
+                              }
+                          } else {
+                              var Email = null;
+                              var Phone = null;
+                              var Note = null;
+                              $('#ContactPopup').modal('hide');
+                              if (data.Data.EmailAddress == null || data.Data.EmailAddress == undefined)
+                                  Email = '<span id="Conatct_Email" class="hidden"></span>';
+                              else
+                                  Email = '<br><span id="Conatct_Email"><i class="fa fa-envelope"  title="Email" style="color:#1AB394"></i> ' + data.Data.EmailAddress.substr(0, 18) + '...</span>';
+                              if (data.Data.Phone == null || data.Data.Phone == undefined)
+                                  Phone = '<abbr title="Phone" class="hidden" id="Conatct_Phone">P:</abbr>';
+                              else
+                                  Phone = '<abbr title="Phone" id="Conatct_Phone">P: ' + data.Data.Phone + '</abbr>';
+                              //if (data.Data.Note == null || data.Data.Note == undefined)
+                              //    Note = '<div class="col-lg-12 hidden" id="Conatct_Note"><i style="margin-right:10px;font-size:20px;color:#1AB394" title="Note" class="fa fa-pencil-square"></i></div>';
+                              //else
+                              //    Note = '<div class="col-lg-12" id="Conatct_Note"><i style="margin-right:2px;color:#1AB394" title="Note" class="fa fa-pencil-square"></i>' + data.Data.Note.substr(0, 41) + '...</div>';
+                              if ($('#Links').find('.active_page').text().toLowerCase() == data.Data.FirstName.charAt(0).toLowerCase() || $('#Links').find('.active_page').text().toLowerCase() == 'show all') {
+                                  $('#ContactList').append('<div class="col-lg-4 Contact_Div" id="ContactID_' + data.Data.ContactId + '"><div class="contact-box" style="height:190px;"><div class="pull-right" id="btnDelete" style="margin-top:-18px;margin-right:-13px;"><i style="color:#1ab394" class="fa fa-trash" onclick="DeleteContact(' + data.Data.ContactId + ');return false;"></i></div><a onclick="EditConatct(' + data.Data.ContactId + ');return false;"><div class="col-sm-4"><div class="text-center" id="Image_DIV" style="min-width:90px;min-height:110px;max-width:90px;max-height:110px;">' +
+                                                                                            data.Data.Image +//'<div class="m-t-xs font-bold">CEO</div>'+
+                                                                                            '</div>' +
+                                                                                      '</div>' +
+                                                                                      ' <div class="col-sm-8">' +
+                                                                                            '<h3><strong id="Conatct_Name">' + data.Data.FirstName + ' ' + data.Data.LastName + '</strong></h3>' +
+                                                                                            //'<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>'+
+                                                                                            '<address>' +
+                                                                                               '<p id="Conatct_Address"><i class="fa fa-map-marker"></i> ' + data.Data.Address + '</p>' +
+                                                                                                Phone + Email +
+                                                                                               '</address>' +
+                                                                                        '</div></a><div class="clearfix"></div></div></div>');
+                              } else {
+                                  $('#ContactList').append('<div class="col-lg-4 Contact_Div hidden" id="ContactID_' + data.Data.ContactId + '"><div class="contact-box" style="height:190px;"><div class="pull-right" id="btnDelete" style="margin-top:-18px;margin-right:-13px;"><i style="color:#1ab394" class="fa fa-trash" onclick="DeleteContact(' + data.Data.ContactId + ');return false;"></i></div><a onclick="EditConatct(' + data.Data.ContactId + ');return false;"><div class="col-sm-4"><div class="text-center" id="Image_DIV" style="min-width:90px;min-height:110px;max-width:90px;max-height:110px;">' +
+                                                                                                                             data.Data.Image +//'<div class="m-t-xs font-bold">CEO</div>'+
+                                                                                                                             '</div>' +
+                                                                                                                       '</div>' +
+                                                                                                                       ' <div class="col-sm-8">' +
+                                                                                                                             '<h3><strong id="Conatct_Name">' + data.Data.FirstName + ' ' + data.Data.LastName + '</strong></h3>' +
+                                                                                                                             //'<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>'+
+                                                                                                                             '<address>' +
+                                                                                                                                '<p id="Conatct_Address"><i class="fa fa-map-marker"></i> ' + data.Data.Address + '</p>' +
+                                                                                                                                 Phone + Email +
+                                                                                                                                '</address>' +
+                                                                                                                         '</div></a><div class="clearfix"></div></div></div>');
+                              }
+                              $("#divLoading").hide();
+                              //FireJGrowl("Proxy is valid", "success");
+                              toastr["success"]("Details has been Save successfully", "")
+                              toastr.options = {
+                                  "closeButton": true,
+                                  "debug": false,
+                                  "progressBar": true,
+                                  "positionClass": "toast-top-right",
+                                  "onclick": null,
+                                  "showDuration": "400",
+                                  "hideDuration": "1000",
+                                  "timeOut": "7000",
+                                  "extendedTimeOut": "1000",
+                                  "showEasing": "swing",
+                                  "hideEasing": "linear",
+                                  "showMethod": "fadeIn",
+                                  "hideMethod": "fadeOut"
+                              }
+                          }
+                      }
+                  }
+              });
+          } else {
+              $("#divLoading").hide();
+              //FireJGrowl("Proxy is invalid", "error");
+              toastr["error"]("Please Enter Required Information First..", "error")
+              toastr.options = {
+                  "closeButton": true,
+                  "debug": false,
+                  "progressBar": true,
+                  "positionClass": "toast-top-right",
+                  "onclick": null,
+                  "showDuration": "400",
+                  "hideDuration": "1000",
+                  "timeOut": "7000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+              }
+          }
+      }
+
+      var DeleteContact = function (ContactId) {
+          BootstrapDialog.show({
+
+              message: 'Are you sure to delete this Contact ?',
+              title: 'Delete Confirmation',
+              closeByBackdrop: false,
+              closeByKeyboard: false,
+              draggable: true,
+              buttons: [{
+                  label: 'Yes',
+                  cssClass: 'btn-primary',
+                  action: function (e) {
+                      $.post('@Url.Action("DeleteContact", "Contact")', { ContactId: ContactId },
+                          function (data) {
+                              $('#ContactList').find('#ContactID_' + data.ContactId + '').remove();
+                              $("#divLoading").hide();
+                              //FireJGrowl("Proxy is valid", "success");
+                              toastr["success"]("Contact has been deleted successfully", "")
+                              toastr.options = {
+                                  "closeButton": true,
+                                  "debug": false,
+                                  "progressBar": true,
+                                  "positionClass": "toast-top-right",
+                                  "onclick": null,
+                                  "showDuration": "400",
+                                  "hideDuration": "1000",
+                                  "timeOut": "7000",
+                                  "extendedTimeOut": "1000",
+                                  "showEasing": "swing",
+                                  "hideEasing": "linear",
+                                  "showMethod": "fadeIn",
+                                  "hideMethod": "fadeOut"
+                              }
+                              if (!($('#TagList').find('li').hasClass('AvailableTags')))
+                                  $('#TagList').find('#NoTag').removeClass('hidden');
+                              e.close();
+                          }
+                      );
+                  },
+
+              }, {
+                  label: 'No',
+                  cssClass: 'btn-primary',
+                  action: function (dialogItself) {
+                      dialogItself.close();
+                  }
+              }]
+          });
+      }
+
+      var SaveEditedDetails = function (ContactId) {
+          var IsValid = true;
+          var ImageUrl = $('#ContactPopup').find('#ImageUrl').html();
+          if (ImageUrl == null || ImageUrl == undefined || ImageUrl.length == 0) {
+              ImageUrl = $('#ContactPopup').find('#DefaultImage').html();
+          }
+          var FName = $('#ContactPopup').find('#FirstName').val();
+          var MName = $('#ContactPopup').find('#MiddleName').val();
+          var LName = $('#ContactPopup').find('#LastName').val();
+          var EmailAddress = $('#ContactPopup').find('#EmailAddress').val();
+          var PhoneNo = $('#ContactPopup').find('#PhoneNo').val();
+          var Address = $('#ContactPopup').find('#Address').val();
+          var Note = $('#ContactPopup').find('#Note').val();
+          if (FName.length == 0 || MName.length == 0 || LName.length == 0 || Address.length == 0) {
+              IsValid = false;
+          } else if (EmailAddress.length == 0 && PhoneNo.length == 0) {
+              IsValid = false;
+          }
+          var reg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+          if (reg.test(EmailAddress) == false) {
+              IsValid = false;
+          }
+          if (IsValid) {
+              $.ajax({
+                  type: "POST",
+                  url: '@Url.Action("SaveEditedContactDetail", "Contact")',
+                  contentType: "application/json; charset=utf-8",
+                  data: JSON.stringify({ ContactId: ContactId, ImageUrl: ImageUrl, FName: FName, MName: MName, LName: LName, EmailAddress: EmailAddress, PhoneNo: PhoneNo, Address: Address, Note: Note }),
+                  dataType: "json",
+                  success: function (data) {
+                      if (data.success == true) {
+                          if (data.Error == 'Error') {
+                              $("#divLoading").hide();
+                              //FireJGrowl("Proxy is invalid", "error");
+                              toastr["error"]("Please Enter Required Information First..", "error")
+                              toastr.options = {
+                                  "closeButton": true,
+                                  "debug": false,
+                                  "progressBar": true,
+                                  "positionClass": "toast-top-right",
+                                  "onclick": null,
+                                  "showDuration": "400",
+                                  "hideDuration": "1000",
+                                  "timeOut": "7000",
+                                  "extendedTimeOut": "1000",
+                                  "showEasing": "swing",
+                                  "hideEasing": "linear",
+                                  "showMethod": "fadeIn",
+                                  "hideMethod": "fadeOut"
+                              }
+                          } else {
+                              if (data.Data != null) {
+                                  if ($('#Links').find('.active_page').text().toLowerCase() != data.Data.FirstName.charAt(0).toLowerCase()) {
+                                      $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').addClass('hidden');
+                                  }
+                                  else {
+                                      $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').removeClass('hidden');
+                                  }
+                                  $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Conatct_Name').text(data.Data.FirstName + ' ' + data.Data.LastName);
+                                  $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Conatct_Address').html('<i class="fa fa-map-marker"></i> ' + data.Data.Address);
+                                  if (data.Data.EmailAddress != null || data.Data.EmailAddress != undefined)
+                                      $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Conatct_Email').html('<br><i class="fa fa-envelope" title="Email" style="color:#1AB394"></i> ' + data.Data.EmailAddress.substr(0, 18) + '...').removeClass('hidden');
+                                  if (data.Data.Phone != null || data.Data.Phone != undefined)
+                                      $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Conatct_Phone').html('P: ' + data.Data.Phone).removeClass('hidden');
+                                  if (data.Data.Note != null || data.Data.Note != undefined)
+                                      $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Conatct_Note').html('<div class="col-lg-12" id="Conatct_Note"><i style="margin-right:10px;font-size:20px;color:#1AB394" title="Note" class="fa fa-pencil-square"></i>' + data.Data.Note.substr(0, 41) + '...</div>').removeClass('hidden');
+                                  $('#ContactList').find('#ContactID_' + data.Data.ContactId + '').find('#Image_DIV').html(data.Data.Image);
+                                  $('#ContactPopup').modal('hide');
+                                  $("#divLoading").hide();
+                                  //FireJGrowl("Proxy is valid", "success");
+                                  toastr["success"]("Details has been Updated successfully", "")
+                                  toastr.options = {
+                                      "closeButton": true,
+                                      "debug": false,
+                                      "progressBar": true,
+                                      "positionClass": "toast-top-right",
+                                      "onclick": null,
+                                      "showDuration": "400",
+                                      "hideDuration": "1000",
+                                      "timeOut": "7000",
+                                      "extendedTimeOut": "1000",
+                                      "showEasing": "swing",
+                                      "hideEasing": "linear",
+                                      "showMethod": "fadeIn",
+                                      "hideMethod": "fadeOut"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              });
+          } else {
+              $("#divLoading").hide();
+              //FireJGrowl("Proxy is invalid", "error");
+              toastr["error"]("Please Enter Required Information First..", "error")
+              toastr.options = {
+                  "closeButton": true,
+                  "debug": false,
+                  "progressBar": true,
+                  "positionClass": "toast-top-right",
+                  "onclick": null,
+                  "showDuration": "400",
+                  "hideDuration": "1000",
+                  "timeOut": "7000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+              }
+          }
+      }
+
+      //function previous() {
+
+      //    new_page = parseInt($('#current_page').val()) - 1;
+      //    //if there is an item before the current active link run the function
+      //    if ($('.active_page').prev('.page_link').length == true) {
+      //        go_to_page(new_page);
+      //    }
+
+      //}
+
+      //function next() {
+      //    new_page = parseInt($('#current_page').val()) + 1;
+      //    //if there is an item after the current active link run the function
+      //    if ($('.active_page').next('.page_link').length == true) {
+      //        go_to_page(new_page);
+      //    }
+
+      //}
+
+      //function go_to_page(page_num) {
+      //    //get the number of items shown per page
+      //    var show_per_page = parseInt($('#show_per_page').val());
+
+      //    //get the element number where to start the slice from
+      //    start_from = page_num * show_per_page;
+
+      //    //get the element number where to end the slice
+      //    end_on = start_from + show_per_page;
+
+      //    //hide all children elements of content div, get specific items and show them
+      //    $('#ContactList').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
+
+      //    /*get the page link that has longdesc attribute of the current page and add active_page class to it
+      //    and remove that class from previously active page link*/
+      //    $('.page_link[longdesc=' + page_num + ']').addClass('active_page').siblings('.active_page').removeClass('active_page');
+
+      //    //update the current page input field
+      //    $('#current_page').val(page_num);
+      //}
+    
+</script>
+
+

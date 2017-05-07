@@ -1,0 +1,231 @@
+﻿@model PeoplesSource.Models.AdminList
+@using Elmah.ContentSyndication
+@using PeoplesSource.Helpers
+@{
+    ViewBag.Title = "Admin List";
+    Layout = null;
+}
+
+<div id="jqGrid_container" class="jqGrid">
+    <table id="jQGridGroup"></table>
+    <div id="jQGridGroupPager"></div>
+</div>
+<div id="listComment"></div>
+
+<script>
+    function EditAdmin(id) {
+        $("#divLoading").show();
+        NavigateTo('@Url.Action("Edit", "Admin")' + "?id=" + id);
+
+    }
+    function DeleteAdmin(id) {
+        $("#divLoading").show();
+        $("#divLoading").hide();
+        BootstrapDialog.show({
+            message: 'Are you sure to delete this Admin?',
+            title: 'Delete Confirmation',
+            closeByBackdrop: false,
+            closeByKeyboard: false,
+            draggable: true,
+            buttons: [{
+                label: 'Yes',
+                cssClass: 'btn-primary',
+                action: function (e) {
+                    $.post('@Url.Action("Delete", "Admin")', { id: id },
+                        function (data) {
+                            FireJGrowl("Admin deleted successfully");
+                            HandleDelete(data, 'Admin_Delete');
+                            jqGridGroupRefreshs();
+                            e.close();
+                        }
+                    );
+                },
+
+            }, {
+                label: 'No',
+                action: function (dialogItself) {
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+    function jqGridGroupRefreshs() {
+
+        $.ajax({
+            url: '@Url.Action("List", "Admin")',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: {},
+            cache: false,
+            success: function (data) {
+
+                $(".ui-jqgrid-bdiv").css({ height: '430px' });
+
+                jQuery('#jQGridGroup').jqGrid('clearGridData');
+                jQuery('#jQGridGroup').jqGrid('setGridParam', { data: data });
+                jQuery('#jQGridGroup').trigger('reloadGrid');
+
+            },
+            error: function (response) {
+                alert('error');
+            }
+        });
+    }
+
+    $(function () {
+        $(window).bind('resize', function () {
+            var width = $('#jqGrid_container').width();
+            $('#jQGridGroup').setGridWidth(width);
+        });
+
+        $("#jQGridGroup").jqGrid({
+            url: '@Url.Action("List", "Admin")',
+            datatype: "json",
+            colNames: ['First Name', 'Last Name', 'User Name', 'Email', 'Is Active?', 'Actions'],
+            colModel: [
+
+                {
+                    name: 'FirstName',
+                    index: 'FirstName',
+                    width: 35,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.FirstName != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;padding-left:10px !important;' class='paddingright'>" + rowObject.FirstName;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'LastName',
+                    index: 'LastName',
+                    width: 25,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.LastName != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;padding-left:10px !important;' class='paddingright'>" + rowObject.LastName;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'UserName',
+                    index: 'UserName',
+                    width: 25,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.UserName != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;padding-left:10px !important;' class='paddingright'>" + rowObject.UserName;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'Email',
+                    index: 'Email',
+                    width: 25,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.Email != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;padding-left:10px !important;' class='paddingright'>" + rowObject.Email;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'IsActive',
+                    index: 'IsActive',
+                    width: 13,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.IsActive != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;text-align: center;' class='paddingright'>" + rowObject.IsActive;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    search: true,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'AdminId',
+                    index: 'AdminId',
+                    width: 17,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (rowObject.AdminId != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;text-align:center;'>" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='EditAdmin(" + rowObject.AdminId + ");'><i class='fa fa-pencil-square-o fa-lg fa-fw' title='Edit'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='DeleteAdmin(" + rowObject.AdminId + ");'><i class='fa fa-trash-o fa-lg fa-fw ' title='Delete'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                    "</div>";
+                            return x;
+                        }
+                    },
+
+                    sortable: false,
+                    search: false,
+                    editable: false,
+
+                }
+            ],
+            rowNum: 10,
+            mtype: 'GET',
+            pager: '#jQGridGroupPager',
+            loadonce: true,
+            scroll: false,
+            viewrecords: true,
+            height: 430,
+            autowidth: true,
+            shrinkToFit: true,
+            ignorecase: true,
+            //beforeRequest: function() {
+            //    responsive_jqgrid($(".jqGrid"));
+            //},
+            loadComplete: function () {
+                if ($('#jQGridGroup').getGridParam('records') === 0) {
+                    oldGrid = $('#jQGridGroup tbody').html();
+                    $('#jQGridGroup tbody').html("<div style='padding:6px;background:#D8D8D8'>No records found</div>");
+                }
+                else
+                    oldGrid = "";
+                InitUI();
+            }
+
+        });
+
+        //$("#load_jQGridGroup").hide();
+        $("#jQGridGroup").jqGrid('filterToolbar', { defaultSearch: true, stringResult: true, searchOperators: true });
+        $("#jQGridGroup").jqGrid('navGrid', '#jQGridGroupPager', { add: false, del: false, edit: false, position: 'left' }, {}, // default settings for edit
+            {},
+            {},
+            {
+                closeOnEscape: true, multipleSearch: true,
+                closeAfterSearch: true,
+                odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }],
+                groupOps: [{ op: "AND", text: "all" }, { op: "OR", text: "any" }],
+
+            },
+            {});
+    });
+
+</script>

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+@model PeoplesSource.Models.Mail
+<html>
+<head>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <link href="~/Content/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <title>SendMessage</title>
+    <style>
+         .form-group textarea {
+            width: 300px;
+            height: 85px;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Send", "Ebay", FormMethod.Post, new { id = "SendMail" }))
+    {        
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(true)
+                    <div id="templateValidaSummary"></div>
+                    <div class="row">
+                        <br />
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.HiddenFor(m=>m.ItemId)
+                                @Html.HiddenFor(m => m.RecepientId)
+                                @Html.HiddenFor(m => m.SellerId)
+                                @Html.LabelFor(model => model.MailSubject)
+                                @Html.EditorFor(model => model.MailSubject, new { htmlAttributes = new { @class = "form-control", @style = "width:300px" } })
+                                @Html.ValidationMessageFor(model => model.MailSubject)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MailBody)
+                                @Html.TextAreaFor(model => model.MailBody, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MailBody)
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="button" style="float: left" value="Save" id="saveTemplate" onclick="save();" class="canBtn" />
+                                    <input type="button" style="float: left" value="Cancel" class="canBtn" />
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+</html>

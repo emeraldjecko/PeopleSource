@@ -1,0 +1,302 @@
+﻿@charset "UTF-8";
+
+@font-face {
+  font-family: "my-icon";
+  src:url("/Content/fonts/my-icon.eot");
+  src:url("/Content/fonts/my-icon.eot?#iefix") format("embedded-opentype"),
+    url("/Content/fonts/my-icon.woff") format("woff"),
+    url("/Content/fonts/my-icon.ttf") format("truetype"),
+    url("/Content/fonts/my-icon.svg#my-icon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "my-icon" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="custom-icon-"]:before,
+[class*=" custom-icon-"]:before {
+  font-family: "my-icon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-icon-fontawesome-webfont:before {
+  content: "h";
+}
+.custom-icon-info:before {
+  content: "i";
+}
+.custom-icon-fontawesome-webfont-1:before {
+  content: "s";
+}
+.custom-icon-fontawesome-webfont-2:before {
+  content: "t";
+}
+.custom-icon-fontawesome-webfont-3:before {
+  content: "b";
+}
+.custom-icon-social-twitter:before {
+  content: "w";
+}
+.custom-icon-fontawesome-webfont-4:before {
+  content: "f";
+}
+.custom-icon-fontawesome-webfont-5:before {
+  content: "l";
+}
+.custom-icon-user:before {
+  content: "d";
+}
+.custom-icon-settings:before {
+  content: "e";
+}
+.custom-icon-help:before {
+  content: "g";
+}
+.custom-icon-shopping-bag:before {
+  content: "j";
+}
+.custom-icon-fontawesome-webfont-6:before {
+  content: "c";
+}
+.custom-icon-marker:before {
+  content: "a";
+}
+.custom-icon-telephone:before {
+  content: "k";
+}
+.custom-icon-linkedin:before {
+  content: "m";
+}
+.custom-icon-social-skype:before {
+  content: "n";
+}
+.custom-icon-mail:before {
+  content: "o";
+}
+.custom-icon-fontawesome-webfont-7:before {
+  content: "p";
+}
+.custom-icon-van:before {
+  content: "q";
+}
+.custom-icon-cube:before {
+  content: "r";
+}
+.custom-icon-info-circled:before {
+  content: "u";
+}
+.custom-icon-3d-cube:before {
+  content: "v";
+}
+.custom-icon-3d-cube:before {
+  content: "v";
+}
+.custom-icon-fontawesome-webfont-8:before {
+  content: "x";
+}
+.custom-icon-fontawesome-webfont-9:before {
+  content: "y";
+}
+.custom-icon-fontawesome-webfont-10:before {
+  content: "z";
+}
+.custom-icon-fontawesome-webfont-11:before {
+  content: "A";
+}
+.custom-icon-check:before {
+  content: "B";
+}
+.custom-icon-app-store:before {
+  content: "C";
+}
+.custom-icon-calculator:before {
+  content: "D";
+}
+.custom-icon-zoom-in:before {
+  content: "E";
+}
+.custom-icon-search:before {
+  content: "F";
+}
+.custom-icon-elusive-icons:before {
+  content: "G";
+}
+.custom-icon-elusive-icons-1:before {
+  content: "H";
+}
+.custom-icon-elusive-icons-2:before {
+  content: "I";
+}
+.custom-icon-elusive-icons-3:before {
+  content: "J";
+}
+.custom-icon-elusive-icons-4:before {
+  content: "K";
+}
+.custom-icon-elusive-icons-5:before {
+  content: "L";
+}
+.custom-icon-elusive-icons-6:before {
+  content: "M";
+}
+.custom-icon-elusive-icons-7:before {
+  content: "N";
+}
+.custom-icon-elusive-icons-8:before {
+  content: "O";
+}
+.custom-icon-elusive-icons-9:before {
+  content: "P";
+}
+.custom-icon-elusive-icons-10:before {
+  content: "Q";
+}
+.custom-icon-elusive-icons-11:before {
+  content: "R";
+}
+.custom-icon-pound:before {
+  content: "S";
+}
+.custom-icon-arrow-right:before {
+  content: "T";
+}
+.custom-icon-arrow-left:before {
+  content: "U";
+}
+.custom-icon-arrow-1-down:before {
+  content: "V";
+}
+.custom-icon-arrow-1-left:before {
+  content: "W";
+}
+.custom-icon-arrow-1-right:before {
+  content: "X";
+}
+.custom-icon-arrow-1-up:before {
+  content: "Y";
+}
+.custom-icon-chevron-right:before {
+  content: "Z";
+}
+.custom-icon-chevron-up:before {
+  content: "0";
+}
+.custom-icon-chevron-down:before {
+  content: "1";
+}
+.custom-icon-chevron-left:before {
+  content: "2";
+}
+.custom-icon-arrow-left-1:before {
+  content: "3";
+}
+.custom-icon-arrow-right-1:before {
+  content: "4";
+}
+.custom-icon-arrow-down:before {
+  content: "5";
+}
+.custom-icon-arrow-up:before {
+  content: "6";
+}
+.custom-icon-out:before {
+  content: "7";
+}
+.custom-icon-shopping-cart:before {
+  content: "8";
+}
+.custom-icon-fontawesome-webfont-12:before {
+  content: "9";
+}
+.custom-icon-delete-trash-1:before {
+  content: "!";
+}
+.custom-icon-trash:before {
+  content: "\"";
+}
+.custom-icon-x:before {
+  content: "#";
+}
+.custom-icon-x-circle:before {
+  content: "$";
+}
+.custom-icon-cancel-squared:before {
+  content: "%";
+}
+.custom-icon-bubble-comment-streamline-talk:before {
+  content: "&";
+}
+.custom-icon-comment:before {
+  content: "'";
+}
+.custom-icon-chat:before {
+  content: "(";
+}
+.custom-icon-fontawesome-webfont-13:before {
+  content: ")";
+}
+.custom-icon-calendar:before {
+  content: "+";
+}
+.custom-icon-calendar-alt-fill:before {
+  content: "*";
+}
+.custom-icon-eye-view-1:before {
+  content: ",";
+}
+.custom-icon-male-user-1:before {
+  content: "-";
+}
+.custom-icon-elusive-icons-12:before {
+  content: ".";
+}
+.custom-icon-elusive-icons-13:before {
+  content: "/";
+}
+.custom-icon-key:before {
+  content: ":";
+}
+.custom-icon-key-stroke:before {
+  content: ";";
+}
+.custom-icon-elusive-icons-14:before {
+  content: "<";
+}
+.custom-icon-download:before {
+  content: "=";
+}
+.custom-icon-elusive-icons-15:before {
+  content: ">";
+}
+
+.icon-large {
+    background-image: url("/Content/Images/glyphicons.png");
+    background-position: 24px 24px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    line-height: 28px;
+    vertical-align: text-bottom;
+    width: 16px;
+}
+
+.icon-large.icon-print{ background-position: 0 -494px;  } 

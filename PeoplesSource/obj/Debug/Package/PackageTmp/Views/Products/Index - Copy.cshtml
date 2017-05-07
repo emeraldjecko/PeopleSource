@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "Products Publisher";
+}
+<style type="text/css">
+    .container.ng-scope {
+        width: auto;
+    }
+</style>
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Products Publisher</h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+            <div class="container" ng-controller="ProductController as vm">
+                @*class="container"*@
+                <form class="form-horizontal">
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Real SKU</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="sku" placeholder="Enter Sku" ng-model="vm.key" required>
+                            </div>
+                            <button ng-disabled="!vm.key" ng-click="vm.getProducts()" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
+
+
+                            <label class="control-label col-md-2" for="sku">Base Price</label>
+                            <div class="col-md-2">
+                                <input type="number" step="any" class="form-control" id="basePrice" ng-change="vm.updatePrices(vm.basePrice)" placeholder="Enter Base Price"
+                                       ng-model="vm.basePrice" />
+
+                            </div>
+                            <button ng-disabled="!vm.haveProducts ||!vm.basePrice" class="btn btn-success pull-right col-md-2" ng-click="vm.updateProducts()"><i class="fa fa-cloud-upload"></i> Publish Products </button>
+                        </div>
+                     </div>
+
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1   " for="sku">Shipping Cost</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" ng-model="vm.ShippingCost" ng-change="vm.profitPrices(vm.ShippingCost)" required />
+                            </div>
+
+                            
+                        </div>
+                         </div>
+
+                    <div ng-show="vm.isLoding">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!vm.isLoding">
+                        <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width:3%;text-align:center">
+                                        <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateSelection()">
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        Real SKU
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        Product Name
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        SKU
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:8%;">
+                                        Seller Id
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:7%;text-align:center">
+                                        Price Default  
+                                         <span style="display:inline-block;" ng-click="vm.sortByAsc('priceDefault')"><i ng-class="vm.isPDSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('priceDefault')"><i ng-class="vm.isPDSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        Cost  
+                                         <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        New profit Price   
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('firstProfitPrice')"><i ng-class="vm.isNPPSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('firstProfitPrice')"><i ng-class="vm.isNPPSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:8%;text-align:center">
+                                        Increment   <span style="display:inline-block;" ng-click="vm.sortByAsc('increment')"><i ng-class="vm.isISortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        KZ   <span style="display:inline-block;" ng-click="vm.sortByAsc('kz')"><i ng-class="vm.isKZSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('kz')"><i ng-class="vm.isKZSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        OHT   <span style="display:inline-block;" ng-click="vm.sortByAsc('oht')"><i ng-class="vm.isOHTSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('oht')"><i ng-class="vm.isOHTSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:8%;text-align:center">
+                                        New Price  
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('updatedPrice')"><i ng-class="vm.isUPSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('updatedPrice')"><i ng-class="vm.isUPSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        Second Profit price   
+                                        <span style="display:inline-block;" ng-click="vm.sortByAsc('secondProfitPrice')"><i ng-class="vm.isSPPSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                        <span style="display:inline-block;" ng-click="vm.sortByDesc('secondProfitPrice')"><i ng-class="vm.isSPPSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-striped" ng-repeat="item in vm.products">
+                                    <td class="text-center">
+                                        <input type="checkbox" ng-model="item.selected" />
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.realSKU}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.name}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sku}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sellerId}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.priceDefault}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.cost}}
+                                    </td>
+                                    <td>{{ item.firstProfitPrice| number:2}}</td>
+                                    <td class="text-center">
+                                        {{item.increment}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.kz | number:2}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.oht | number:2}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.updatedPrice | number:2}}
+                                    </td>
+                                    <td>{{item.secondProfitPrice | number:2}}</td>
+                                    @*<td >
+                                            <input type="checkbox" ng-model="item.selected" />
+                                        </td>*@
+                                </tr>
+                            </tbody>
+
+
+
+                            @*<tbody>
+                                        <tr class="row-striped" ng-repeat="item in vm.products">
+                                            <td>
+                                                <input type="checkbox" ng-model="item.selected" />
+                                            </td>
+                                            <td>
+                                                <div style="width:250px">
+                                                    {{item.realSKU}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="width:250px">
+                                                    {{item.name}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{item.sku}}
+                                            </td>
+                                            <td>
+                                                {{item.sellerId}}
+                                            </td>
+                                            <td>
+                                                {{item.priceDefault}}
+                                            </td>
+                                            <td>
+                                                {{item.increment}}
+                                            </td>
+                                            <td>
+                                                {{item.kz | number:2}}
+                                            </td>
+                                            <td>
+                                                {{item.oht | number:2}}
+                                            </td>
+                                            <td>
+                                                {{item.updatedPrice | number:2}}
+                                            </td>
+                                            <td>
+                                     <input type="checkbox" ng-model="item.selected" />
+                                </td>
+                                        </tr>
+
+                                    </tbody>*@
+                        </table>
+
+                    </div>
+                    <div class="col-md-12">
+                        <button ng-disabled="!vm.haveProducts ||!vm.basePrice" class="btn btn-success pull-right" ng-click="vm.updateProducts()"><i class="fa fa-cloud-upload"></i> Publish Products </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductController.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductService.js"></script>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/css/LoadSpinner.css" rel="stylesheet" />

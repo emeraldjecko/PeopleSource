@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+@model PeoplesSource.Models.Mail
+<html>
+<head>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    
+    <title>SendMessage</title>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#TemplateId").change(function () {
+
+                var selectedItem = $(this).val();                
+                var txtMailBody = $("#MailBody");
+
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: '@(Url.Action("GetMessageByTemplate"))',
+                    data: { "tempId": selectedItem },
+                    success: function (data) {
+                        var str = data;                      
+                        txtMailBody.val(str);
+                    },
+                    error: function () {
+                        alert('Failed to retrieve data.');
+                    }
+                });
+            });
+
+            $(".modal-dialog").css("width", "35%");
+        });
+
+    </script>
+    <style>
+        .form-group textarea {
+            width: 300px;
+            height: 85px;
+        }
+        .custome-md5 {
+        width:30%;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Send", "Ebay", FormMethod.Post, new { id = "SendMail" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ValidationSummary(true)
+                    <div id="templateValidaSummary"></div>
+                <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label custome-md5">
+                                @Html.HiddenFor(m => m.ItemId)
+                                        @Html.HiddenFor(m => m.RecepientId)
+                                        @Html.HiddenFor(m => m.SellerId)
+                                        @Html.LabelFor(model => model.MailSubject)
+                              </div>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.MailSubject, new { htmlAttributes = new { @class = "form-control", @style = "width:300px" } })
+                               
+                                </div>
+                                @Html.ValidationMessageFor(model => model.MailSubject)
+                         </div>
+                        <div class="form-group">
+                            <div class="col-md-5 custome-md5 control-label">
+                                @Html.LabelFor(model => model.TemplateId)
+                            </div>
+                            <div class="col-md-7">@Html.DropDownListFor(model => model.TemplateId, new SelectList(Model.TemplateList, "Id", "Description"), "--Template--", new { @class = "form-control", style = "width:300px" })</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 custome-md5 control-label">
+                                @Html.LabelFor(model => model.MailBody)
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextAreaFor(model => model.MailBody, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.MailBody)
+                        </div>
+                </div>
+            </div>
+        </div>
+                    @*<div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="button" style="float: left" value="Save" id="saveTemplate" onclick="save();" class="canBtn" />
+                                    <input type="button" style="float: left" value="Cancel" class="canBtn" />
+                                </div>
+                            </div>
+                        </div>*@
+        
+    }
+
+</body>
+</html>

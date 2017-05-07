@@ -1,0 +1,142 @@
+﻿@using PeoplesSource.Helpers
+@{
+    ViewBag.Title = "Template List";
+    Layout = null;
+    var pageInfo = ViewData.Get<PageInfo>();
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            @*<div class="panel-heading" style="padding: 15px !important">
+                    Seller
+
+                </div>*@
+            <!-- /.panel-heading -->
+
+            <div class="panel-body">
+                <div>
+                    <table class="table table-striped table-bordered table-hover footable" data-filter="#filter">
+                        <thead>
+                            <tr>
+                                <th data-class="expand">Template Name</th>
+                                <th data-hide="phone">TemplateType</th>
+                                <th data-hide="phone">Content</th>
+                                <th style="width: 90px !important">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@if (Model.RequesteeItems.Any())
+                                {
+                                    foreach (var requestee in Model.RequesteeItems)
+                                    {*@
+                            <tr>
+                                <td>
+                                    Peoplesource template
+                                </td>
+                                <td>
+                                    Premium
+                                </td>
+                                <td>
+                                    Css,Html5,Images,jsghjghjfdfh
+                                </td>
+                                <td>
+                                    <a href="#" title="Edit" id="EditUser"><i class="fa fa-edit fa-fw"></i></a>
+                                    <a href="#" title="Delete" id="DeleteSeller"><i class="fa fa-trash-o fa-fw"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    BusinessWorld template
+                                </td>
+                                <td>
+                                    Premium
+                                </td>
+                                <td>
+                                    Css,Html5,uyutrereyhlhlk
+                                </td>
+                                <td>
+                                    <a href="#" title="Edit" id="EditUser"><i class="fa fa-edit fa-fw"></i></a>
+                                    <a href="#" title="Delete" id="DeleteSeller"><i class="fa fa-trash-o fa-fw"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Industry template
+                                </td>
+                                <td>
+                                    Premium
+                                </td>
+                                <td>
+                                    Css,Html5,Images,uyutrerey
+                                </td>
+                                <td>
+                                    <a href="#" title="Edit" id="EditUser"><i class="fa fa-edit fa-fw"></i></a>
+                                    <a href="#" title="Delete" id="DeleteSeller"><i class="fa fa-trash-o fa-fw"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Imagephotoshope template
+                                </td>
+                                <td>
+                                    Free
+                                </td>
+                                <td>
+                                    Css,Html5,Images,uyutrerey
+                                </td>
+                                <td>
+                                    <a href="#" title="Edit" id="EditUser"><i class="fa fa-edit fa-fw"></i></a>
+                                    <a href="#" title="Delete" id="DeleteSeller"><i class="fa fa-trash-o fa-fw"></i></a>
+                                </td>
+
+                            </tr>
+                            @*}
+                                }
+                                else
+                                {
+                                    <tr>
+
+                                        <td colspan="4">
+                                            <label>No Record Found.</label>
+                                        </td>
+
+                                    </tr>
+                                }*@
+                        </tbody>
+                        @*<tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        <div>
+                                            <ul class="pagination">
+                                                <li>
+                                                    @Html.Pager("pager", pageInfo, page => new { onclick = string.Format("SellerSearch({0});", page), href = "#" })
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>*@
+                    </table>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('table').footable();
+    });
+
+
+</script>
+
+
+
+
+

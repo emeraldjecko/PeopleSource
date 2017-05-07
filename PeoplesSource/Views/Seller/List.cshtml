@@ -1,0 +1,359 @@
+﻿@model PeoplesSource.Models.SellerList
+@using Elmah.ContentSyndication
+@using PeoplesSource.Helpers
+@{
+    ViewBag.Title = "Seller List";
+    Layout = null;
+    // var pageInfo = ViewData.Get<pageinfo>();
+}
+
+
+<div id="jqGrid_container" class="jqGrid">
+    <table id="jQGridGroup"></table>
+    <div id="jQGridGroupPager"></div>
+</div>
+
+<div id="listComment"></div>
+<style>
+    input.ui-pg-input {
+        width: auto;
+    }
+
+   
+
+    .ui-jqgrid-view {
+        font-size: 11.5px !important;
+    }
+
+    div#gbox_jQGridGroup {
+        border: 1px solid #aaaaaa !important;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        word-wrap: break-word;
+        padding: 0 !important;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+    }
+
+    .clsquantityunit {
+        padding-left: 5px !important;
+    }
+
+    .paddingright {
+        padding-left: 10px !important;
+    }
+
+    /*.ui-jqgrid-hbox {
+        background-color:#337ab7;
+    }
+  .ui-search-oper
+    .ui-jqgrid-htable th div 
+    {
+         background-color:#337ab7;
+         color:#fff;
+    }*/
+</style>
+
+<script type="text/javascript">
+
+    function GetTemplates(sellId) {
+        BootstrapDialog.show({
+            title: 'Template List',
+            closeByBackdrop: false,
+            closeByKeyboard: false,
+            draggable: true,
+            message: $('<div></div>').load('@Url.Action("GetTemplateList", "Seller")' + "?sellerId=" + sellId)
+            //+ "&tdId=" + tdId
+        });
+    }
+
+    function EditSeller(id) {
+        $("#divLoading").show();
+        NavigateTo('@Url.Action("Edit", "Seller")' + "?id=" + id);
+
+    }
+    function DeleteSeller(id) {
+        $("#divLoading").show();
+        $("#divLoading").hide();
+        BootstrapDialog.show({
+           
+            message: 'Are you sure to delete this Seller?',
+            title: 'Delete Confirmation',
+            closeByBackdrop: false,
+            closeByKeyboard: false,
+            draggable: true,
+            buttons: [{
+                label: 'Yes',
+                cssClass: 'btn-primary',
+                action: function (e) {
+                    $.post('@Url.Action("Delete", "Seller")', { id: id },
+                        function (data) {
+                            FireJGrowl("Seller deleted successfully");
+                            HandleDelete(data, 'Seller_Save');
+                            jqGridGroupRefreshs();
+                            e.close();
+
+                        }
+                    );
+                },
+
+            }, {
+                label: 'No',
+                cssClass: 'btn-primary',
+                action: function (dialogItself) {
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+    $("#divLoading").show();
+    //var mainGridPrefix = "s_";
+    $(function () {
+
+
+        $(window).bind('resize', function () {
+            var width = $('#jqGrid_container').width();
+            $('#jQGridGroup').setGridWidth(width);
+        });
+
+
+        $("#jQGridGroup").jqGrid({
+            url: '@Url.Action("List", "Seller")',
+            datatype: "json",
+            colNames: ['Seller Name', 'Proxy IP', 'Proxy Port', 'Is Active?', 'Actions'],
+            colModel: [
+
+                {
+                    name: 'SellarName',
+                    index: 'SellarName',
+                    width: 32,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+
+                        if (rowObject.SellerId != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.SellarName;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+
+                {
+                    name: 'ProxyIP',
+                    index: 'ProxyIP',
+                    width: 18,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+
+                        if (rowObject.SellerId != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.ProxyIP;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'ProxyPort',
+                    index: 'ProxyPort',
+                    width: 15,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+
+                        if (rowObject.SellerId != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.ProxyPort;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'IsActive',
+                    index: 'IsActive',
+                    width: 13,
+                    stype: 'text',
+                    formatter: function (cellvalue, options, rowObject) {
+
+                        if (rowObject.SellerId != null) {
+                            var x = "<div style='padding-top:12px; padding-bottom:12px;text-align:center;' class='paddingright'>" + rowObject.IsActive;
+                            x = x + "</div>";
+                            return x;
+                        }
+                    },
+                    sortable: true,
+                    editable: false,
+                    search: true,
+                    searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+                },
+                {
+                    name: 'SellerId',
+                    index: 'SellerId',
+                    width: 17,
+                    stype: 'text',
+                    align : 'center',
+                    formatter: function (cellvalue, options, rowObject) {
+
+                        if (rowObject.SellerId != null) {
+                            @*color:#337ab7;   var x = "<div style='padding-left:5px; padding-top:12px; padding-bottom:12px'>" + '@Html.ActionLink("Edit","Edit","Seller",new { id ="Id"},new{ @style="color:#38761d; font-size:13px;" })<img src="/Content/images/active.png" />' + '<a onclick="GetreturnData(' + rowObject.ReturnId + ');"><img src="/Content/images/active.png" /></a>&nbsp;&nbsp;&nbsp;<a onclick="SendMessage(' + rowObject.ReturnId + ');"><img src="/Content/images/arrow.png" /></a>' + '&nbsp;&nbsp;&nbsp;@Html.ActionLink("Return", "SellerReturn", "Seller", new { id = "Id" }, new { @style = "color:#38761d; font-size:13px;" })' + "&nbsp;&nbsp;&nbsp;<button title='Delete Seller' onclick='DeleteSeller(" + rowObject.SellerId + ");'>Delete</button>";*@
+                            var x = "<div style='padding-left:5px; padding-top:12px; padding-bottom:12px'>" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='EditSeller(" + rowObject.SellerId + ");'><i class='fa fa-pencil-square-o fa-lg fa-fw' title='Edit'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='getreturn(" + rowObject.SellerId + ");'><i class=' fa fa-list-alt fa-lg fa-fw ' title='Return List'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onClick='GetTemplates(" + rowObject.SellerId + ")'><i class='fa fa-book fa-lg fa-fw' title='Add Template'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='DeleteSeller(" + rowObject.SellerId + ");'><i class='fa fa-trash-o fa-lg fa-fw ' title='Delete'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='ValidateProxy(" + rowObject.SellerId + ");'><i class='fa fa-check-square-o fa-lg' title='Validate Proxy'></i></a>&nbsp;&nbsp;&nbsp;" +
+                                        "<a style='cursor: pointer;color:#1ab394;' onclick='GetMessages(" + rowObject.SellerId + ");'><i class='fa fa-envelope-o fa-lg' title='Show Messages'></i></a>" +
+                                    "</div>";
+                            return x.replace("Id", rowObject.SellerId);
+                        }
+                    },
+
+                    sortable: false,
+                    search: false,
+                    editable: false,
+
+                }
+            ],
+            rowNum: 10,
+            mtype: 'GET',
+            pager: '#jQGridGroupPager',
+            loadonce: true,
+            scroll: false,
+            viewrecords: true,
+            height: 430,
+            autowidth: true,
+            shrinkToFit: true,
+            ignorecase: true,
+            //beforeRequest: function() {
+            //    responsive_jqgrid($(".jqGrid"));
+            //},
+            loadComplete: function () {
+                if ($('#jQGridGroup').getGridParam('records') === 0) {
+                    oldGrid = $('#jQGridGroup tbody').html();
+                    $('#jQGridGroup tbody').html("<div style='padding:6px;background:#D8D8D8'>No records found</div>");
+                }
+                else
+                    oldGrid = "";
+                InitUI();
+            }
+
+        });
+
+        //$("#load_jQGridGroup").hide();
+        $("#jQGridGroup").jqGrid('filterToolbar', { defaultSearch: true, stringResult: true, searchOperators: true });
+        $("#jQGridGroup").jqGrid('navGrid', '#jQGridGroupPager', { add: false, del: false, edit: false, position: 'left' }, {}, // default settings for edit
+            {},
+            {},
+            {
+                closeOnEscape: true, multipleSearch: true,
+                closeAfterSearch: true,
+                odata: [{ oper: 'eq', text: 'equal' }, { oper: 'ne', text: 'not equal' }, { oper: 'bw', text: 'begins with' }, { oper: 'bn', text: 'does not begin with' }, { oper: 'cn', text: 'contains' }, { oper: 'nc', text: 'does not contain' }],
+                groupOps: [{ op: "AND", text: "all" }, { op: "OR", text: "any" }],
+
+            },
+            {});
+    });
+
+
+    function jqGridGroupRefreshs() {
+
+        $.ajax({
+            url: '@Url.Action("List", "Seller")',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: {},
+            cache: false,
+            success: function (data) {
+
+                $(".ui-jqgrid-bdiv").css({ height: '430px' });
+
+                jQuery('#jQGridGroup').jqGrid('clearGridData');
+                jQuery('#jQGridGroup').jqGrid('setGridParam', { data: data });
+                jQuery('#jQGridGroup').trigger('reloadGrid');
+
+            },
+            error: function (response) {
+                alert('error');
+            }
+        });
+    }
+
+    function getreturn(id) {
+        window.open('@Url.Action("SellerReturn", "Seller")' + "?id=" + id);
+    }
+
+
+    function ValidateProxy(id) {
+        $("#divLoading").show();
+        $.ajax({
+            url: '@Url.Action("ValidateProxy", "Seller")',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: { id: id },
+            cache: false,
+            success: function (data) {
+                if (data.success) {
+                    $("#divLoading").hide();
+                    //FireJGrowl("Proxy is valid", "success");
+                    toastr["success"]("Proxy is valid", "success")
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "400",
+                        "hideDuration": "1000",
+                        "timeOut": "7000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    
+                } else {
+                    $("#divLoading").hide();
+                    //FireJGrowl("Proxy is invalid", "error");
+                    toastr["error"]("Proxy is invalid", "error")
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "400",
+                        "hideDuration": "1000",
+                        "timeOut": "7000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    
+                       
+
+                }
+            },
+            error: function (response) {
+                alert('error');
+            }
+        });
+    }
+
+    function GetMessages(sid) {
+        NavigateTo('@Url.Action("Index", "EbayMessages")' + "?sellerId=" + sid);
+    }
+</script>

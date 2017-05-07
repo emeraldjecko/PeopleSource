@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AddMemberMessageAAQToPartnerRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <RequesterCredentials>    
+    <eBayAuthToken>{{UserToken}}</eBayAuthToken>
+  </RequesterCredentials>
+  <ItemID>{{MailItemId}}</ItemID>
+  <MemberMessage>
+    <Subject>{{MailSubject}}</Subject>
+    <Body>{{MailBody}}</Body>
+    <QuestionType>General</QuestionType>
+    <RecipientID>{{MailRecipientID}}</RecipientID>
+  </MemberMessage>
+</AddMemberMessageAAQToPartnerRequest>

@@ -1,0 +1,97 @@
+﻿@model PeoplesSource.Models.TemplateDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        .form-group textarea {
+            width:  100%;
+            height: 85px; 
+            padding-left:10px;  
+            padding-top:5px;         
+        }
+     
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("EditTemplate", "Seller", FormMethod.Post, new { enctype = "multipart/form-data", id = "EditTemplateData" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedDate)
+        @Html.HiddenFor(model => model.SellerId)
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ValidationSummary(true)
+                    <div id="templateValidaSummary"></div>
+                <br />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            @Html.LabelFor(model => model.TemplateName)
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TemplateName, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        @Html.ValidationMessageFor(model => model.TemplateName, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            @Html.LabelFor(model => model.TemplateContent)
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.TemplateContent, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TemplateContent, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="button" style="float: left" value="Save" id="saveTemplate" onclick="save();" class="canBtn" />
+                            <input type="button" style="float: left" value="Cancel" class="canBtn" />
+                        </div>
+                    </div>
+                </div>
+                *@
+            </div>
+    </div>
+
+    }
+
+</body>
+</html>
+@*<script type="text/javascript">
+
+        function save() {
+            var formData = new FormData($('#EditTemplateData')[0]);
+            $.ajax({
+                url: '@Url.Action("EditTemplate", "Seller")',
+                type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data.success == true) {
+                        alert("Template Updated successfully.");
+                        CloseDialog('#EditTemplateDialog');
+                    }
+                    else {
+                        $("#templateValidaSummary").html(data.errors).css("color", "red");
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+        }
+    </script>*@

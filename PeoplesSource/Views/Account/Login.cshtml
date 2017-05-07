@@ -1,0 +1,102 @@
+﻿@model PeoplesSource.Models.LoginDetail
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<title>@ViewBag.title</title>
+   @Html.Partial("Scripts")
+<style>
+        .validation-summary-errors {
+             color: Red !important;
+             margin-bottom: 3px !important;
+             font-weight:600;
+             display:none;
+        }
+        #Password-error,#Username-error {
+             color: Red !important;
+             margin-bottom: 3px !important;
+             font-weight:600;
+        }
+        .input-validation-error { 
+             background: #FEF1EC;
+             border: 1px solid #CD0A0A;
+         }
+</style>
+<script type="text/javascript">
+    $(function () {
+        //$('#Login_Content').find('.validation-summary-errors').html().html('')
+        //            .addClass('alert alert-error')
+        //           .fadeIn().delay(5000).fadeOut('slow');
+    });
+</script>
+@using (Html.BeginForm())
+{
+<html>
+     <head>
+        <body class="gray-bg">
+             <div class="loginColumns animated fadeInDown">
+                 <div class="row">
+                      <div class="col-md-6">
+                            <h2 class="font-bold">Welcome to <label style="color:#1ab394;">ST+</label></h2>
+
+                            <p>
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum .
+                            </p>
+
+                            <p>
+                                molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                            </p>
+
+                            <p>
+                                Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                            </p>
+
+                            <p>
+                                <small>he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</small>
+                            </p>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="ibox-content" id="Login_Content" style="margin-top:20px;min-height: 250px;">
+                                  @Html.ValidationSummary(true)
+                                            <fieldset>
+                                                        <div class="form-group">
+                                                            <div style="margin-top:10px;margin-bottom:10px;">
+                                                            @Html.ValidationMessageFor(m => m.Username)</div>
+                                                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Username", autofocus = "autofocus", maxlength = 100 })
+                                   
+                                                            @*<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>*@
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div style="margin-top:10px;margin-bottom:10px;">@Html.ValidationMessageFor(m => m.Password)</div>
+                                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", maxlength = 50 })
+                                   
+                                                            @*<input class="form-control" placeholder="Password" name="password" type="password" value="">*@
+                                                        </div>
+                                                        <div class="checkbox" >
+                                                            <label>
+                                                                @Html.CheckBoxFor(m => m.RememberMe)Remember Me
+                                                                @*<input name="remember" type="checkbox" value="Remember Me">Remember Me*@
+                                                            </label>
+                                                        </div>
+                                                        <!-- Change this to a button or input when using this as a form -->
+                                                        <input type="submit" class="btn btn-primary block full-width m-b" value="Login" />
+                                
+                                                         <a href="@Url.Action("ForgotPassword", "Account")">
+                                                            <small>Forgot password?</small>
+                                                        </a>
+                                    </fieldset>
+                     </div>
+                     </div>
+                </div>
+             <hr>
+        <div class="row">
+            <div class="col-md-6">
+                Copyright <label style="color:#1ab394;"> SyncTu &copy;</label> 
+            </div>
+        </div>
+    </div>
+        </body>
+</html>
+}
+
+

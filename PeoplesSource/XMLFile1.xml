@@ -1,0 +1,10 @@
+﻿<GetMemberMessagesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <WarningLevel>High</WarningLevel>
+  <MailMessageType>All</MailMessageType>
+  <MessageStatus>Unanswered</MessageStatus>
+  <ItemID>231471650246</ItemID>
+  <RequesterCredentials>
+    <eBayAuthToken>AgAAAA**AQAAAA**aAAAAA**aL52VQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AGkYChC5iHog+dj6x9nY+seQ**ZuICAA**AAMAAA**tDLOPafSIYVbRh13kVRnH8Xj5NVQ9zQa4Jlo4q5DtzuXAZot6ZU3mcwMGffAHl5Gei83rdFImVegPKTZzyrdG7cKgpkRBbZnwrnrcHyI7CEFqrLVPcqGx2LG2kbzEMQi4kNk78Y22vKNT1edvPFREcNYrG1nsybQ/UQbvGD7wbOa2y87Xy+2dCoDhH8ybsTZ5PdjYb6WOyTNIomwBYHql9+CiaRbSx3s8h9Uv4dh4I+A0O1xKt0upgutStb2xoeiDfcWB/olxuXGNKxeuJZ5ZiTmLoI6NVr4FN3W5ddOBhkJqmaGMzdPP7rWQF52okykVKbhsrsKIEPQWYI+JHpqh+6AyrbIrTaNyqyPWW2Lh7gZbOJ9mA/vOn3eJl/2o/wae8e19AxQ6u6OH3hZh0XCQfdApCCDnk0SshqFABsnLYX2Bs/9TQpNUZM71WjA5ExKd/RWrWLTDTqCsrcNKSnyqX6BYkJp15heWODVVyNXmKzDStwfxTY1y49euRfxIZTeP4ufO735+z2U6MV+g9rwDcHg+WtpOF1d2EIW2IehfcOwrZyH7fug29eUV3n1vCVQp4maqkCBUYz71XqPycfbBrnlqt7Xk1qwwsjMUMfBvBFVb3fbbG2CNTn6sznyhzRS7T5tjiaMuWIMjl/lyVoxdVWB6i/CBEgql8XtvxWsUxIW25QsWVhu03KYkSBUsG+n2bIPeGipad7NvWZjqOpnK78nEVKcFynHVTkWNspRHII9XtQ1qdpO7i5gm4imUxw5</eBayAuthToken>
+  </RequesterCredentials>
+  <WarningLevel>High</WarningLevel>
+</GetMemberMessagesRequest>

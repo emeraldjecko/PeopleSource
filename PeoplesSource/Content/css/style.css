@@ -1,0 +1,50 @@
+﻿.col-search {
+    width: 30%;
+}
+
+@media (max-width: 480px) {
+    .col-search {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .col-search {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1100px) {
+    .col-search {
+        width: 55%;
+    }
+}
+
+.field-validation-error {
+    color: #a94442;
+    margin-left: 2px;
+}
+
+.validation-summary-errors ul {
+    color: #a94442;
+    list-style: none;
+    padding-left: 2px;
+}
+
+#ValidationSummary {
+    color: #a94442;
+}
+
+.validationform {
+    color: #a94442 !important;
+}
+
+.sort-active {
+    color:green;
+    font-size:120% !important;
+}
+
+.sort-inactive {
+    color:grey;
+    font-size:120% !important;
+}

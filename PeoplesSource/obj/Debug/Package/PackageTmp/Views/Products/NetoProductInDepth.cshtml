@@ -1,0 +1,359 @@
+﻿@{
+    ViewBag.Title = "Neto Product In-Depth";
+
+}
+<style type="text/css">
+    .container.ng-scope {
+        width: auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .panel-body {
+        padding: 15px 0;
+    }
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 3px;
+    }
+
+    .disabledlink {
+        cursor: none;
+    }
+
+    .form-control, .single-line {
+        height: 22px;
+        font-size: 12px;
+        padding: 1px 2px;
+    }
+</style>
+
+@*<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Section1">Section 1</a></li>
+        <li><a data-toggle="tab" href="#Section2">Section 2</a></li>
+    </ul>
+
+    <div class="tab-content">*@
+
+
+
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Competing Listings </h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+
+            <div class="container" ng-controller="ProductController as vm" ng-init="vm.getNetoInDepthProducts('@Html.Raw(ViewBag.realSku)','@Html.Raw(ViewBag.date)','Section1')">
+                @*class="container"*@
+                <div class="form-horizontal">
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Date</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control datepicker" id="txtDate" placeholder="Enter Date" ng-model="vm.Date" required>
+                            </div>
+                            <button ng-disabled="!vm.Date" ng-click="vm.getNetoInDepthProducts('@Html.Raw(ViewBag.realSku)',vm.Date,'Section1')" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
+
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <span class="  col-md-11 col-md-offset-1">Ordered By: {{orderByField}}, Reverse Sort: {{reverseSort}}</span><br><br>
+                    </div>
+
+
+                    <div ng-show="vm.isLoding">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!vm.isLoding">
+
+                        <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    @*<th style="width:3%;text-align:center">
+                                            <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateNetoSelection()">
+                                        </th>*@
+                                    <th style="width:4%;text-align:center">
+                                        <a href="#" ng-click="orderByField='position'; reverseSort = !reverseSort">Position</a>
+                                    </th>
+                                    <th style="width:11%;text-align:center">
+                                        <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
+                                    </th>
+                                    <th style="width:9%;text-align:center">
+                                        <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort">Seller Id</a>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='netoSKU'; reverseSort = !reverseSort"> Neto SKU</a>
+                                    </th>
+
+                                    <th style="width:9%;text-align:center">
+                                        <a href="#" ng-click="orderByField='itemNumber'; reverseSort = !reverseSort"> Item Number</a>
+                                    </th>
+                                    <th style="width:23%;text-align:center">
+                                        <a href="#" ng-click="orderByField='title'; reverseSort = !reverseSort">Title</a>
+                                    </th>
+
+                                    @*<th style="width:11%;text-align:center">
+                                            <a href="#" ng-click="orderByField='totalListings'; reverseSort = !reverseSort">  Total Listings</a>
+                                        </th>*@
+
+
+
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='cost'; reverseSort = !reverseSort">Cost</a>
+                                    </th>
+                                    <th style="width:7%;text-align:center">
+                                        <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort">  Price 1</a>
+                                    </th>
+                                    <th style="width:6%;text-align:center">
+                                        <a href="#" ng-click="orderByField='firstProfitPrice'; reverseSort = !reverseSort">  Profit 1</a>
+                                    </th>
+
+                                    <th style="width:8%;text-align:center">
+
+                                        Price 2
+                                    </th>
+                                    <th style="width:6%;text-align:center">
+                                        <a href="#" ng-click="orderByField='profit2'; reverseSort = !reverseSort">  Profit 2</a>
+
+                                    </th>
+                                    <th style="width:3%;text-align:center">
+                                        push
+
+                                    </th>
+                                    <th style="width:4%;text-align:center">
+                                        Revise
+                                    </th>
+                                    @*<th style="width:4%;text-align:center">
+                                            In Depth
+                                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-striped" ng-repeat="item in vm.netoproducts | filter: searchKeyword | orderBy:orderByField:reverseSort">
+                                    @*<td class="text-center">
+                                            <input type="checkbox" ng-model="item.selected" />
+                                        </td>*@
+                                    <td class="text-center">
+                                        {{item.position}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.realSKU}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sellerId}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.netoSKU}}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{item.itemNumber}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.title}}
+                                    </td>
+
+                                    @*<td class="text-center">
+                                            {{item.totalListings}}
+                                        </td>*@
+
+
+                                    <td class="text-center">
+                                        {{item.cost}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.priceDefault}}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ item.firstProfitPrice| number:2}}
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control" id="Price2" ng-model="item.price2" ng-change="vm.updateNetoPrice2( {{item.itemNumber}}, {{item.cost}},item.price2)">
+                                        @*ng-change="vm.updateNetoPrice2( {{item.itemNumber}} , {{item.cost}})"*@
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.profit2 | number:2}}
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" ng-class="!item.price2 ? 'disabledlink' : ''" ng-click="vm.updateNetoProducts(item)">Push</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="https://toast.mylistandsend.com/_cpanel/products/view?id={{item.productID}}" target="_blank">Revise</a>
+                                    </td>
+                                    @*<td>
+                                            <a href="/Products/NetoProductInDepth" target="_blank">in-depth</a>
+                                        </td>*@
+
+                                </tr>
+                            </tbody>
+
+
+
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Top <span id="netproductscount">200</span> Listings</h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+
+            <div class="container" ng-controller="ProductController as vm" ng-init="vm.getNetoInDepthProducts('@Html.Raw(ViewBag.realSku)','@Html.Raw(ViewBag.date)','Section2')">
+                @*class="container"*@
+                <div class="form-horizontal">
+
+                    <div class="row col-md-12">
+                        <span class="  col-md-11 col-md-offset-1">Ordered By: {{orderByField}}, Reverse Sort: {{reverseSort}}</span><br><br>
+                    </div>
+                    <div ng-show="vm.isLoding">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall"></div>
+                            </div>
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!vm.isLoding">
+
+                        <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='position'; reverseSort = !reverseSort">Position</a>
+                                    </th>
+                                    <th style="width:20%;text-align:center">
+                                        <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort">Seller Id</a>
+                                    </th>
+                                    <th style="width:10%;text-align:center">
+                                        <a href="#" ng-click="orderByField='itemNumber'; reverseSort = !reverseSort"> Item Number</a>
+                                    </th>
+                                    <th style="width:30%;text-align:center">
+                                        <a href="#" ng-click="orderByField='title'; reverseSort = !reverseSort">Title</a>
+                                    </th>
+                                    <th style="width:7%;text-align:center">
+                                        <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort">  Price 1</a>
+                                    </th>
+                                    <th style="width:8%;text-align:center">
+                                        <a href="#" ng-click="orderByField='price2'; reverseSort = !reverseSort">  Price 2</a>
+                                    </th>
+                                    <th style="width:6%;text-align:center">
+                                        <a href="#" ng-click="orderByField='shipping'; reverseSort = !reverseSort">  Shipping</a>
+                                    </th>
+                                    <th style="width:4%;text-align:center">
+                                        <a href="#" ng-click="orderByField='sold'; reverseSort = !reverseSort">  Sold</a>
+
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-striped" ng-repeat="item in vm.netoproducts | filter: searchKeyword | orderBy:orderByField:reverseSort">
+                                    <td class="text-center">
+                                        {{item.position}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.realSKU}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sellerId}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.itemNumber}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.title}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.priceDefault}}
+                                    </td>
+
+                                    <td class="text-center">{{ item.price2}}</td>
+
+                                    <td class="text-center">
+                                        {{item.shipping}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{item.sold}}
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+
+
+
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*   </div> *@
+
+<link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Content/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductController.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductService.js"></script>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/css/LoadSpinner.css" rel="stylesheet" />
+<script>
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+</script>

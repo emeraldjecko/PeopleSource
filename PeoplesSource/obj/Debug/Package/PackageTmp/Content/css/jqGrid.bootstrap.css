@@ -1,0 +1,123 @@
+
+.ui-jqgrid {
+    box-sizing: content-box;
+}
+.ui-jqgrid-btable {
+    border-collapse: separate;
+}
+.ui-jqgrid-htable {
+    border-collapse: separate;
+}
+.ui-jqgrid-titlebar {
+    background-color: #f9f9f9;
+    color: #999999;
+    height: 40px;
+    line-height: 15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.ui-jqgrid .ui-jqgrid-title {
+    float: left;
+    margin: 1.1em 1em 0.2em;
+}
+.ui-jqgrid .ui-jqgrid-titlebar {
+    position: relative;
+}
+.ui-widget-header {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    text-transform: uppercase;
+}
+.ui-jqgrid tr.ui-row-ltr td {
+    background-color: inherit;
+    border-color: #dddddd;
+    border-right: 1px solid #dddddd;
+    text-align: left;
+}
+.ui-search-toolbar input[type="text"] {
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    font-size: 12px;
+    height: 28px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #d3d3d3;
+    color: #777777;
+    font-weight: bold;
+    line-height: 15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.ui-widget-content {
+    box-sizing: content-box;
+}
+.ui-icon-triangle-1-n {
+    background-position: 1px -16px;
+}
+.ui-jqgrid tr.ui-search-toolbar th {
+    border-top-color: inherit !important;
+    border-top-style: ridge !important;
+    border-top-width: 0 !important;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background: #dadada none repeat scroll 0 0;
+    border-collapse: separate;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #aaaaaa;
+    color: #212121;
+    font-weight: normal;
+}
+.ui-jqgrid .ui-pg-input {
+    border: 1px solid #cccccc;
+    font-size: inherit;
+    height: 15px;
+    width: 50px;
+}
+.ui-jqgrid .ui-pg-selbox {
+    display: block;
+    font-size: 1em;
+    height: 25px;
+    line-height: 18px;
+    margin: 0;
+    width: auto;
+}
+.ui-jqgrid .ui-pager-control {
+    position: relative;
+}
+.ui-jqgrid .ui-jqgrid-pager {
+    height: 32px;
+    position: relative;
+}
+.ui-pg-table .navtable .ui-corner-all {
+    border-radius: 0;
+}
+.ui-jqgrid .ui-pg-button:hover {
+    border: 0 none;
+    padding: 1px;
+}
+.ui-jqgrid .loading {
+    border-width: 2px !important;
+    display: none;
+    font-size: 11px;
+    font-weight: bold;
+    height: auto;
+    left: 45%;
+    margin: 5px;
+    padding: 6px;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    width: auto;
+    z-index: 101;
+}
+.ui-jqgrid .form-control {
+    display: inline;
+    height: 10px;
+    padding: 10px 12px;
+    width: auto;
+}
+.ui-jqgrid-pager {
+    height: 32px;
+}

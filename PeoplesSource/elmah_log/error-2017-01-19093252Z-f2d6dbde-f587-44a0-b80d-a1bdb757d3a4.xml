@@ -1,0 +1,179 @@
+﻿<error errorId="f2d6dbde-f587-44a0-b80d-a1bdb757d3a4" application="/LM/W3SVC/2/ROOT" host="COMP-PC" type="System.ArgumentException" message="Invalid JSON primitive: 33945,33883,33881,33878,33836,33827,33683,33489,33488,33375,33182,33176,33040,33027,32991,32980,32898,32732,32509,32371,32368,32365,32361,32356,32351,32331,32281,32049,32008,31319,31283,31051,31049,30943,30485,30472,30225,30082,30019,29785,29784,29782,29677,29653,29650,29559,29556,29519,29479,29436,29433,29291,29103,29016,29015,29014,28926,28924,28922,28917,28421,28419,28038,27885,27884,27639,27638,27609,27564,27309,27307,27302,27301,27300,27176,27174,27025,26668,26538,26391,26216,26215,26208,25873,25777,25621,25620,25617,25615,25609,25565,25535,25317,25316,25290,25152,24907,24745,24725,24710,24610,24459,24446,24445,24327,24196,24188,24010,23717,23712,23702,23697,23441,23308,23303,23301,23131,23058,22968,22899,22859,22841,22722,22720,22718,22606,22598,22542,22539,22415,22385,22335,22334,22317,22312,22223,22204,22140,22106,21974,21878,21770,21766,21762,21761,21759,21641,21534,21533,21530,21526,21429,21426,21398,21394,21392,21311,21302,21296,21204,21193,21038,21035,21022,20888,20611,20364,20358,20356,20355,20223,20096,19979,19971,19817,19816,19728,19687,18761,18760,18486,18478,18456,18208,18046,18045,17935,17636,17361,17359,17297,17228,17211,17197,17149,16995,16993,16992,16987,16969,16961,16827,16824,16741,16740,16739,16724,16643,16565,16349,16348,16246,16176,16158,15695,15693,15661,15642,15568,15566,15445,15444,15305,15078,15072,15004,14960,14581,14571,14407,14133,14132,14126,14063,13930,13922,13727,13655,13189,13162,13077,13069,12977,12962,12900,12723,12013,11943,11776,11760,11751,11618,11306,11219,11120,10371,10367,10022,9995,9894,9654,9155,8847,8685,8403,8347,8180,7883,7882,7785,7685,7365,7293,6565,5254,5225,5126,5082,5047,4563,3728,3631,3447,3326,3166,2898,2190,1607,1580,1524,1418,1132,1117,990,901,846,845,782,725,695,676,663,652,651,648,381,99." source="System.Web.Extensions" detail="System.ArgumentException: Invalid JSON primitive: 33945,33883,33881,33878,33836,33827,33683,33489,33488,33375,33182,33176,33040,33027,32991,32980,32898,32732,32509,32371,32368,32365,32361,32356,32351,32331,32281,32049,32008,31319,31283,31051,31049,30943,30485,30472,30225,30082,30019,29785,29784,29782,29677,29653,29650,29559,29556,29519,29479,29436,29433,29291,29103,29016,29015,29014,28926,28924,28922,28917,28421,28419,28038,27885,27884,27639,27638,27609,27564,27309,27307,27302,27301,27300,27176,27174,27025,26668,26538,26391,26216,26215,26208,25873,25777,25621,25620,25617,25615,25609,25565,25535,25317,25316,25290,25152,24907,24745,24725,24710,24610,24459,24446,24445,24327,24196,24188,24010,23717,23712,23702,23697,23441,23308,23303,23301,23131,23058,22968,22899,22859,22841,22722,22720,22718,22606,22598,22542,22539,22415,22385,22335,22334,22317,22312,22223,22204,22140,22106,21974,21878,21770,21766,21762,21761,21759,21641,21534,21533,21530,21526,21429,21426,21398,21394,21392,21311,21302,21296,21204,21193,21038,21035,21022,20888,20611,20364,20358,20356,20355,20223,20096,19979,19971,19817,19816,19728,19687,18761,18760,18486,18478,18456,18208,18046,18045,17935,17636,17361,17359,17297,17228,17211,17197,17149,16995,16993,16992,16987,16969,16961,16827,16824,16741,16740,16739,16724,16643,16565,16349,16348,16246,16176,16158,15695,15693,15661,15642,15568,15566,15445,15444,15305,15078,15072,15004,14960,14581,14571,14407,14133,14132,14126,14063,13930,13922,13727,13655,13189,13162,13077,13069,12977,12962,12900,12723,12013,11943,11776,11760,11751,11618,11306,11219,11120,10371,10367,10022,9995,9894,9654,9155,8847,8685,8403,8347,8180,7883,7882,7785,7685,7365,7293,6565,5254,5225,5126,5082,5047,4563,3728,3631,3447,3326,3166,2898,2190,1607,1580,1524,1418,1132,1117,990,901,846,845,782,725,695,676,663,652,651,648,381,99.&#xD;&#xA;   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)&#xD;&#xA;   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)&#xD;&#xA;   at System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject(String input)&#xD;&#xA;   at System.Web.Mvc.JsonValueProviderFactory.GetDeserializedObject(ControllerContext controllerContext)&#xD;&#xA;   at System.Web.Mvc.JsonValueProviderFactory.GetValueProvider(ControllerContext controllerContext)&#xD;&#xA;   at System.Web.Mvc.ValueProviderFactoryCollection.GetValueProvider(ControllerContext controllerContext)&#xD;&#xA;   at System.Web.Mvc.ControllerBase.get_ValueProvider()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass22.&lt;BeginExecuteCore&gt;b__1e()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;.cctor&gt;b__0(IAsyncResult asyncResult, Action action)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin1" time="2017-01-19T09:32:52.2318222Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:1783&#xD;&#xA;HTTP_CONTENT_TYPE:application/json;charset=UTF-8&#xD;&#xA;HTTP_ACCEPT:application/json, text/plain, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=sq2nm1vfnjosy0kl4usvug0a; .ASPXAUTH=F92DF58F477FB820896335C77DE4EFBEEA903AB2EA6EB8D67D2F0836A19937FB15CEC9A0122BA0CBA0087E4E84F9B8D5C9F7127477FD5B795C51B77EAEAA20AFA6135E872D583CAC83F655FC8401FC5FB28329FD&#xD;&#xA;HTTP_HOST:localhost:5341&#xD;&#xA;HTTP_REFERER:http://localhost:5341/Orders&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:5341&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 1783&#xD;&#xA;Content-Type: application/json;charset=UTF-8&#xD;&#xA;Accept: application/json, text/plain, */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: ASP.NET_SessionId=sq2nm1vfnjosy0kl4usvug0a; .ASPXAUTH=F92DF58F477FB820896335C77DE4EFBEEA903AB2EA6EB8D67D2F0836A19937FB15CEC9A0122BA0CBA0087E4E84F9B8D5C9F7127477FD5B795C51B77EAEAA20AFA6135E872D583CAC83F655FC8401FC5FB28329FD&#xD;&#xA;Host: localhost:5341&#xD;&#xA;Referer: http://localhost:5341/Orders&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;Origin: http://localhost:5341&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin1" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin1" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin1" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="1783" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/json;charset=UTF-8" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Orders/GetReturnTracking" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\Orders\GetReturnTracking" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="ordersId=" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="58124" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Orders/GetReturnTracking" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5341" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Orders/GetReturnTracking" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="1783" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/json;charset=UTF-8" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/plain, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=sq2nm1vfnjosy0kl4usvug0a; .ASPXAUTH=F92DF58F477FB820896335C77DE4EFBEEA903AB2EA6EB8D67D2F0836A19937FB15CEC9A0122BA0CBA0087E4E84F9B8D5C9F7127477FD5B795C51B77EAEAA20AFA6135E872D583CAC83F655FC8401FC5FB28329FD" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5341" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5341/Orders" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:5341" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="ordersId">
+      <value string="" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="sq2nm1vfnjosy0kl4usvug0a" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="F92DF58F477FB820896335C77DE4EFBEEA903AB2EA6EB8D67D2F0836A19937FB15CEC9A0122BA0CBA0087E4E84F9B8D5C9F7127477FD5B795C51B77EAEAA20AFA6135E872D583CAC83F655FC8401FC5FB28329FD" />
+    </item>
+  </cookies>
+</error>

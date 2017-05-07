@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PeoplesSource.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:PeoplesSource.Domain.Country">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Country.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PeoplesSource.Domain.Country"/> class.
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Country.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:PeoplesSource.Domain.Country.CountryName">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:PeoplesSource.Domain.DomainRegistry">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.DomainRegistry.GetNHibernateConfig``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.IPageList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.PageCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.TotalItemCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.PageIndex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.PageNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.PageSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.HasPreviousPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.HasNextPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.IsFirstPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.IPageList.IsLastPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PeoplesSource.Domain.PagedList`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagedList`1.Total">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagedList`1.Items">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PeoplesSource.Domain.PageList`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:PeoplesSource.Domain.PageList`1.#ctor(PeoplesSource.Domain.PagerParams)">
+            <summary>
+            
+            </summary>
+            <param name="pagerParams"></param>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.PageCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.TotalItemCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.PageIndex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.PageNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.PageSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.HasPreviousPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.HasNextPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.IsFirstPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PageList`1.IsLastPage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.PageList`1.Initialize(PeoplesSource.Domain.PagerParams)">
+            <summary>
+            
+            </summary>
+            <param name="pagerParams"></param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:PeoplesSource.Domain.PagerParams">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.PagerParams._pageSize">
+            <summary>
+            Page size
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.PagerParams._totalRecords">
+            <summary>
+            Total record count
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.PagerParams._pageIndex">
+            <summary>
+            Page index
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagerParams.PageSize">
+            <summary>
+            Gets the size of the page.
+            </summary>
+            <value>The size of the page.</value>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagerParams.PageIndex">
+            <summary>
+            Gets or sets the index of the page.
+            </summary>
+            <value>The index of the page.</value>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagerParams.TotalRecords">
+            <summary>
+            Gets or sets the total records.
+            </summary>
+            <value>The total records.</value>
+        </member>
+        <member name="M:PeoplesSource.Domain.PagerParams.#ctor(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="pageSize"></param>
+             <param name="pageIndex"></param>
+             <param name="totalRecords"></param>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagerParams.Default">
+            <summary>
+            Gets the default pager parameters.
+            </summary>
+            <value>The default pager parameters.</value>
+        </member>
+        <member name="P:PeoplesSource.Domain.PagerParams.NoPaging">
+            <summary>
+            Gets the no paging parameters.
+            </summary>
+            <value>The no paging parameters.</value>
+        </member>
+        <member name="T:PeoplesSource.Domain.RoleEnum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.RoleEnum.Administrator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PeoplesSource.Domain.Repository">
+            <summary>
+            Class Repository.
+            </summary>
+        </member>
+        <member name="T:PeoplesSource.Domain.Seller">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.Sellerid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.SellarName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.DevID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.AppID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.CertID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.UserToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.CompanyID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.ProxyIP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.ProxyPort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.SiteID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.ProxyUserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.ProxyPassword">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.CreatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.CreatedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.UpdatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.UpdatedDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.IsActive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.Seller.IsCredentialsRequired">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PeoplesSource.Domain.EntityObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.EntityObject.Id">
+            <summary>
+            Unique identifier for all instances of the most derived type.
+            A >0 value indicates an Entity that is stored.
+            A 0 value indicates an Entity that is not stored.
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.EntityObject.op_Equality(PeoplesSource.Domain.EntityObject,PeoplesSource.Domain.EntityObject)">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.EntityObject.op_Inequality(PeoplesSource.Domain.EntityObject,PeoplesSource.Domain.EntityObject)">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.ValueObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.ValueObject.GetHashCode">
+            <summary>
+            A ValueObject's state is comprised of all public properties. GetHashCode returns a representation
+            that is a concatenation of all of these members.
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.ValueObject.op_Equality(PeoplesSource.Domain.ValueObject,PeoplesSource.Domain.ValueObject)">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.ValueObject.op_Inequality(PeoplesSource.Domain.ValueObject,PeoplesSource.Domain.ValueObject)">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.SessionManager">
+            <summary>
+            Class SessionManager.
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.SessionManager.Factory">
+            <summary>
+            Gets or sets the factory.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="M:PeoplesSource.Domain.SessionManager.GetFactory``1">
+            <summary>
+            Gets the factory.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>ISessionFactory.</returns>
+        </member>
+        <member name="P:PeoplesSource.Domain.SessionManager.CurrentSession">
+            <summary>
+            Gets the current session.
+            </summary>
+            <value>The current session.</value>
+        </member>
+        <member name="M:PeoplesSource.Domain.SessionManager.CloseSession">
+            <summary>
+            Closes the session.
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.SessionManager.CommitSession(NHibernate.ISession)">
+            <summary>
+            Commits the session.
+            </summary>
+            <param name="session">The session.</param>
+        </member>
+        <member name="T:PeoplesSource.Domain.Repositories.GenericRepository`1">
+            <summary>
+            Class GenericRepository.
+            </summary>
+            <typeparam name="TEntity">The type of the t entity.</typeparam>
+        </member>
+        <member name="F:PeoplesSource.Domain.Repositories.GenericRepository`1._session">
+            <summary>
+            The _session
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.GenericRepository`1.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.GenericRepository`1.GetAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="filter">The filter.</param>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.GenericRepository`1.With(System.Int32)">
+            <summary>
+            Withes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>`0.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.GenericRepository`1.Persist(`0)">
+            <summary>
+            Persists the specified item to persist.
+            </summary>
+            <param name="itemToPersist">The item to persist.</param>
+            <returns>`0.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The expectation here is that the item persisted (whether new or updated) should now have a valid Id property for the caller to then use. ^MK
+            or
+            I'm not sure why we can't SaveOrUpdate if the item is in the session so I'm throwing to highlight this case. ^MK
+            </exception>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.GenericRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified item to delete.
+            </summary>
+            <param name="itemToDelete">The item to delete.</param>
+        </member>
+        <member name="T:PeoplesSource.Domain.Repositories.IRepository`1">
+            <summary>
+            Interface IRepository
+            </summary>
+            <typeparam name="TEntity">The type of the t entity.</typeparam>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IRepository`1.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IRepository`1.GetAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="filter">The filter.</param>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IRepository`1.With(System.Int32)">
+            <summary>
+            Withes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>`0.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IRepository`1.Persist(`0)">
+            <summary>
+            Persists the specified item to persist.
+            </summary>
+            <param name="itemToPersist">The item to persist.</param>
+            <returns>`0.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified item to delete.
+            </summary>
+            <param name="itemToDelete">The item to delete.</param>
+        </member>
+        <member name="T:PeoplesSource.Domain.Repositories.IBulkRepository`1">
+            <summary>
+            Interface IBulkRepository
+            </summary>
+            <typeparam name="TEntity">The type of the t entity.</typeparam>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IBulkRepository`1.GetAll(System.Int32)">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="limit">The limit.</param>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IBulkRepository`1.GetAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32)">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="limit">The limit.</param>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IBulkRepository`1.Persist(System.Collections.Generic.IList{`0})">
+            <summary>
+            Persists the specified items to persist.
+            </summary>
+            <param name="itemsToPersist">The items to persist.</param>
+            <returns>IList{`0}.</returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Repositories.IBulkRepository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            Deletes the specified items to delete.
+            </summary>
+            <param name="itemsToDelete">The items to delete.</param>
+        </member>
+        <member name="T:PeoplesSource.Domain.Services.IReferenceService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.IReferenceService.GetCountry">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.IReferenceService.GetCountry(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="countryId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.Services.ISellerServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ISellerServices.GetSellerDetail(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ISellerServices.SaveSellerDetail(PeoplesSource.Domain.Seller)">
+            <summary>
+            
+            </summary>
+            <param name="sellerDetail"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ISellerServices.GetSeller(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ITemplateService.SaveTemplates(PeoplesSource.Domain.Template)">
+            <summary>
+            
+            </summary>
+            <param name="sellerDetail"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ITemplateService.GetTemplates">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.Services.ReferenceService">
+            <summary>
+            Class ReferenceService.
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.Services.ReferenceService._countryRepository">
+            <summary>
+            The _country repository
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ReferenceService.#ctor(PeoplesSource.Common.IRepository{PeoplesSource.Domain.Country})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PeoplesSource.Domain.Services.ReferenceService"/> class.
+            </summary>
+            <param name="countryRepository">The country repository.</param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ReferenceService.GetCountry">
+            <summary>
+            Gets the countries.
+            </summary>
+            <returns> country </returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.ReferenceService.GetCountry(System.Int32)">
+            <summary>
+            Gets the country.
+            </summary>
+            <param name="countryId">The Country identifier.</param>
+            <returns>country.</returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.Services.SellerServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PeoplesSource.Domain.Services.SellerServices._SellerDetailRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.SellerServices.#ctor(PeoplesSource.Common.IRepository{PeoplesSource.Domain.Seller})">
+            <summary>
+            
+            </summary>
+            <param name="sellerDetailRepository"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.SellerServices.GetSellerDetail(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.SellerServices.SaveSellerDetail(PeoplesSource.Domain.Seller)">
+            <summary>
+            
+            </summary>
+            <param name="sellerDetail"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.SellerServices.GetSeller(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.TemplateService.#ctor(PeoplesSource.Common.IRepository{PeoplesSource.Domain.Template})">
+            <summary>
+            
+            </summary>
+            <param name="templateServiceRepository"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.TemplateService.SaveTemplates(PeoplesSource.Domain.Template)">
+            <summary>
+            
+            </summary>
+            <param name="template"></param>
+        </member>
+        <member name="M:PeoplesSource.Domain.Services.TemplateService.GetTemplates">
+            <summary>
+            
+            </summary>
+            <param name="sellerId"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PeoplesSource.Domain.User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PeoplesSource.Domain.User.UserId">
+            <summary>
+            Gets or sets the userId.
+            </summary>
+            <value>The userId.</value>
+        </member>
+        <member name="P:PeoplesSource.Domain.User.UserName">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>The username.</value>
+        </member>
+    </members>
+</doc>

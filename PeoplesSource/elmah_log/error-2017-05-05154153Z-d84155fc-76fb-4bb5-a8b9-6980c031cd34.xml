@@ -1,0 +1,185 @@
+﻿<error errorId="d84155fc-76fb-4bb5-a8b9-6980c031cd34" application="/LM/W3SVC/24/ROOT" host="LENOVO-PC" type="System.InvalidOperationException" message="The IControllerFactory 'PeoplesSource.CustomControllerFactory' did not return a controller for the name 'd677c6db9e06491992c75c1a2773695e'." source="System.Web.Mvc" detail="System.InvalidOperationException: The IControllerFactory 'PeoplesSource.CustomControllerFactory' did not return a controller for the name 'd677c6db9e06491992c75c1a2773695e'.&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="devvy" time="2017-05-05T15:41:53.6352032Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded; charset=UTF-8&#xD;&#xA;HTTP_ACCEPT:text/plain, */*; q=0.01&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=0x0mbdztinj3mj0rb1r2vyse; .ASPXAUTH=37B34B45C04B2D140CBFDB0778B6BB45265275A8F1B9F79963126D40EF9802BA626812CA5B03252BDBB6F884E7CDBFD8DF6B6F9ED3FB69EFFC13429EA987384BE20C7DFCB0FED57B669DF1A745B21A4F8DFB1B11; devvy=&#xD;&#xA;HTTP_HOST:localhost:5341&#xD;&#xA;HTTP_REFERER:http://localhost:5341/Products&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#xD;&#xA;Accept: text/plain, */*; q=0.01&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: ASP.NET_SessionId=0x0mbdztinj3mj0rb1r2vyse; .ASPXAUTH=37B34B45C04B2D140CBFDB0778B6BB45265275A8F1B9F79963126D40EF9802BA626812CA5B03252BDBB6F884E7CDBFD8DF6B6F9ED3FB69EFFC13429EA987384BE20C7DFCB0FED57B669DF1A745B21A4F8DFB1B11; devvy=&#xD;&#xA;Host: localhost:5341&#xD;&#xA;Referer: http://localhost:5341/Products&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/24/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="devvy" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="devvy" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="devvy" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded; charset=UTF-8" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="24" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/24" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/d677c6db9e06491992c75c1a2773695e/arterySignalR/ping" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource\d677c6db9e06491992c75c1a2773695e\arterySignalR\ping" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="requestUrl=http%3A%2F%2Flocalhost%3A5341%2FProducts&amp;browserName=Chrome&amp;_=1493998913382" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="59081" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/d677c6db9e06491992c75c1a2773695e/arterySignalR/ping" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5341" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/d677c6db9e06491992c75c1a2773695e/arterySignalR/ping" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded; charset=UTF-8" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/plain, */*; q=0.01" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=0x0mbdztinj3mj0rb1r2vyse; .ASPXAUTH=37B34B45C04B2D140CBFDB0778B6BB45265275A8F1B9F79963126D40EF9802BA626812CA5B03252BDBB6F884E7CDBFD8DF6B6F9ED3FB69EFFC13429EA987384BE20C7DFCB0FED57B669DF1A745B21A4F8DFB1B11; devvy=" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5341" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5341/Products" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="requestUrl">
+      <value string="http://localhost:5341/Products" />
+    </item>
+    <item name="browserName">
+      <value string="Chrome" />
+    </item>
+    <item name="_">
+      <value string="1493998913382" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="0x0mbdztinj3mj0rb1r2vyse" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="37B34B45C04B2D140CBFDB0778B6BB45265275A8F1B9F79963126D40EF9802BA626812CA5B03252BDBB6F884E7CDBFD8DF6B6F9ED3FB69EFFC13429EA987384BE20C7DFCB0FED57B669DF1A745B21A4F8DFB1B11" />
+    </item>
+    <item name="devvy">
+      <value string="" />
+    </item>
+  </cookies>
+</error>

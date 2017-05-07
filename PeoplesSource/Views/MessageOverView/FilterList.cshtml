@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Filter List";
+    Layout = null;
+    // var pageInfo = ViewData.Get<PageInfo>();
+}
+
+<div id="FilterjqGrid_container" class="jqGrid">
+    <table id="FilterjQGridGroup"></table>
+    <div id="FilterjQGridGroupPager"></div>
+</div>
+
+<div id="FilterlistComment"></div>
+<style>
+    input.ui-pg-input {
+        width: auto;
+    }
+   
+    .ui-jqgrid-view {
+        font-size: 11.5px !important;
+    }
+
+    div#gbox_jQGridGroup {
+        border: 1px solid #aaaaaa !important;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+     }
+
+    .clsquantityunit {
+        padding-left: 5px !important;
+    }
+
+    .paddingright {
+        padding-left: 10px !important;
+    }
+    .textCenter {
+    text-align:center;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+    $("#divLoading").show();
+    //var mainGridPrefix = "s_";
+
+    $(window).bind('resize', function () {
+        var width = $('#FilterjqGrid_container').width();
+        $('#FilterjQGridGroup').setGridWidth(width);
+    });
+
+
+    $("#FilterjQGridGroup").jqGrid({
+        url: '@Url.Action("GetFilterList","Filter")',
+        datatype: "json",
+        //colNames: ['Sender', 'Receiver', 'MessageType', 'Subject', 'Read', 'Attachment', 'Notes', 'Received', 'Actions'],
+        colNames: ['FilterID', 'From', 'To', 'Subject', 'HasWord', 'HasNote','HasTagName','FromDate','ToDate','Action'],
+        hideColumns: ["FilterID"],
+        colModel: [
+           {
+               name: 'MessageID',
+               index: 'MessageID',
+               hidden: true,
+           },
+            {
+                name: 'From',
+                index: 'From',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_From != null || rowObject.Filter_From != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_From;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'To',
+                index: 'To',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_To != null || rowObject.Filter_To != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_To;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'Subject',
+                index: 'Subject',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_Subject != null || rowObject.Filter_Subject != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_Subject;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            }, {
+                name: 'HasWord',
+                index: 'HasWord',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_HasWord != null || rowObject.Filter_HasWord != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_HasWord;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'HasNote',
+                index: 'HasNote',
+                width: 10,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_HasNote != null) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_HasNote;
+                        x = x + "</div>";
+                        return x;
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'HasTagName',
+                index: 'HasTagName',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_TagName != null || rowObject.Filter_TagName != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_TagName;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'FromDate',
+                index: 'FromDate',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_FromDate != null || rowObject.Filter_FromDate != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_FromDate;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'ToDate',
+                index: 'ToDate',
+                width: 15,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (rowObject.Filter_ToDate != null || rowObject.Filter_ToDate != undefined) {
+                        var x = "<div style='padding-top:12px; padding-bottom:12px' class='paddingright'>" + rowObject.Filter_ToDate;
+                        x = x + "</div>";
+                        return x;
+                    } else {
+                        return "";
+                    }
+                },
+                sortable: true,
+                editable: false,
+                searchoptions: { sopt: ['cn', 'eq', 'ne', 'bw'] }
+            },
+            {
+                name: 'Action',
+                index: 'Action',
+                width: 10,
+                stype: 'text',
+                formatter: function (cellvalue, options, rowObject) {
+                    var x = "<div style='padding-top:12px; padding-bottom:12px;text-align:center;'>" +
+                            "<a style='cursor: pointer;color:#1ab394;' class='pull-right' onclick='DeleteFilter(" + rowObject.FilterID + "," + options.rowId + ");'><i class='fa fa-trash fa-lg fa-fw' title='Delete Details'></i></a><a style='cursor: pointer;color:#1ab394;' onclick='ShowFilterDetails(" + rowObject.FilterID + ");'><i class='fa fa-pencil-square-o fa-lg fa-fw' title='View Actions'></i></a>" +
+                        "</div>";
+
+                    return x;
+                },
+                sortable: false,
+                search: false,
+                editable: false,
+
+            }
+        ],
+       // multiselect: true,
+        rowNum: 10,
+        rowList: [10, 50, 100, 150, 200, 1000000],
+        mtype: 'GET',
+        pager: '#FilterjQGridGroupPager',
+       // loadonce: true,
+        scroll: false,
+        viewrecords: true,
+       // async: true,
+        height: 350,
+       // autowidth: true,
+        width: 1125,
+        shrinkToFit: true,
+        ignorecase: true,
+        loadComplete: function () {
+            var width = $('#FilterjqGrid_container').width();
+            $('#FilterjQGridGroup').setGridWidth(width);
+        //    $("#FilterjQGridGroup").jqGrid('setGridWidth', $(FilterjqGrid_container).width(), true);
+            $("#FilterjQGridGroupPager").find("select option[value=1000000]").text('All');
+            if ($('#FilterjQGridGroup').getGridParam('records') === 0) {
+                oldGrid = $('#FilterjQGridGroup tbody').html();
+                $('#FilterjQGridGroup tbody').html("<div style='padding:6px;background:#D8D8D8'>No records found</div>");
+
+            }
+            else
+                oldGrid = "";
+            InitUI();
+        }
+
+    });
+
+    jQuery.fn.getSelectedRows = function () {
+        var rows = [];
+        var self = this;
+        var selRows = this.jqGrid('getGridParam', 'selarrrow');
+        selRows.forEach(function (item) {
+            var rowId = item;
+            var rowData = self.jqGrid("getRowData", rowId);
+            rows.push(rowData);
+        });
+
+        return rows;
+    }
+</script>
+
+
+
+
+
