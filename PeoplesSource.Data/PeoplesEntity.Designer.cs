@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\PeoplesEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\emeraldjecko\NEW PROJECT\CODES\PeopleSource\PeoplesSource.Data\PeoplesEntity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

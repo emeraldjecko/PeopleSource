@@ -17,6 +17,7 @@ namespace PeoplesSource.Data.Models
         public virtual DbSet<NetoProduct> NetoProducts { get; set; }
         public virtual DbSet<BestMatchPosition> BestMatchPositions { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<vw_ReorderProducts> ReorderProducts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,6 +40,8 @@ namespace PeoplesSource.Data.Models
             modelBuilder.Entity<SellerInfo>()
                 .Property(e => e.OHT)
                 .HasPrecision(18, 5);
+
+            modelBuilder.Entity<vw_ReorderProducts>().HasKey(x => x.SKU);
         }
     }
 }

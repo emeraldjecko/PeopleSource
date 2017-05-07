@@ -19,10 +19,10 @@ namespace PeoplesSource.Data
         public Nullable<System.DateTime> Date_product_was_last_stocked { get; set; }
         public string Quantity_on_Hand { get; set; }
         public int Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date { get; set; }
-        public Nullable<int> Total_Number_of_Units_Sold_in_Past_30_days { get; set; }
-        public Nullable<decimal> Daily_Units_Sold_Rate_for_Past_30_Days { get; set; }
+        public Nullable<int> TotalNumberOfUnitsSoldInPast30Days { get; set; }
+        public Nullable<decimal> DailyUnitsSoldRateForPast30Days { get; set; }
         public string Product_Title { get; set; }
-        public int Total_Number_of_Days_from_last_stock_to_last_sale_date { get; set; }
-        public Nullable<decimal> Daily_Units_Sold_Rate_from_Last_Restock_to_Last_Sale_Date { get; set; }
+        public int TotalNumberOfDaysFromLastStockToLastSaleDate { get; set; }
+        public Nullable<decimal> DailyUnitsSoldRateFromLastRestockToLastSaleDate { get; set; }
     }
 }

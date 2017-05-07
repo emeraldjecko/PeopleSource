@@ -488,18 +488,18 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
         <EntityType Name="vw_ReorderProducts">
           <Key>
             <PropertyRef Name="Total Number of Units Sold between Last Stock and Last sale date" />
-            <PropertyRef Name="Total Number of Days from last stock to last sale date" />
+            <PropertyRef Name="TotalNumberOfDaysFromLastStockToLastSaleDate" />
           </Key>
           <Property Name="SKU" Type="nvarchar" MaxLength="500" />
           <Property Name="Date Last Sale" Type="date" />
           <Property Name="Date product was last stocked" Type="date" />
           <Property Name="Quantity on Hand" Type="nvarchar" MaxLength="500" />
           <Property Name="Total Number of Units Sold between Last Stock and Last sale date" Type="int" Nullable="false" />
-          <Property Name="Total Number of Units Sold in Past 30 days" Type="int" />
-          <Property Name="Daily Units Sold Rate for Past 30 Days" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="int" />
+          <Property Name="DailyUnitsSoldRateForPast30Days" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Product Title" Type="nvarchar" MaxLength="500" />
-          <Property Name="Total Number of Days from last stock to last sale date" Type="int" Nullable="false" />
-          <Property Name="Daily Units Sold Rate from Last Restock to Last Sale Date" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfDaysFromLastStockToLastSaleDate" Type="int" Nullable="false" />
+          <Property Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK__aspnet_Me__Appli__00200768">
           <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
@@ -1402,11 +1402,11 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
     [vw_ReorderProducts].[Date product was last stocked] AS [Date product was last stocked], 
     [vw_ReorderProducts].[Quantity on Hand] AS [Quantity on Hand], 
     [vw_ReorderProducts].[Total Number of Units Sold between Last Stock and Last sale date] AS [Total Number of Units Sold between Last Stock and Last sale date], 
-    [vw_ReorderProducts].[Total Number of Units Sold in Past 30 days] AS [Total Number of Units Sold in Past 30 days], 
-    [vw_ReorderProducts].[Daily Units Sold Rate for Past 30 Days] AS [Daily Units Sold Rate for Past 30 Days], 
+    [vw_ReorderProducts].[TotalNumberOfUnitsSoldInPast30Days] AS [TotalNumberOfUnitsSoldInPast30Days], 
+    [vw_ReorderProducts].[DailyUnitsSoldRateForPast30Days] AS [DailyUnitsSoldRateForPast30Days], 
     [vw_ReorderProducts].[Product Title] AS [Product Title], 
-    [vw_ReorderProducts].[Total Number of Days from last stock to last sale date] AS [Total Number of Days from last stock to last sale date], 
-    [vw_ReorderProducts].[Daily Units Sold Rate from Last Restock to Last Sale Date] AS [Daily Units Sold Rate from Last Restock to Last Sale Date]
+    [vw_ReorderProducts].[TotalNumberOfDaysFromLastStockToLastSaleDate] AS [TotalNumberOfDaysFromLastStockToLastSaleDate], 
+    [vw_ReorderProducts].[DailyUnitsSoldRateFromLastRestockToLastSaleDate] AS [DailyUnitsSoldRateFromLastRestockToLastSaleDate]
     FROM [dbo].[vw_ReorderProducts] AS [vw_ReorderProducts]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__aspnet_Me__Appli__00200768" Association="Self.FK__aspnet_Me__Appli__00200768">
@@ -3128,18 +3128,18 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
         <EntityType Name="vw_ReorderProducts">
           <Key>
             <PropertyRef Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" />
-            <PropertyRef Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" />
+            <PropertyRef Name="TotalNumberOfDaysFromLastStockToLastSaleDate" />
           </Key>
           <Property Name="SKU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Date_Last_Sale" Type="DateTime" Precision="0" />
           <Property Name="Date_product_was_last_stocked" Type="DateTime" Precision="0" />
           <Property Name="Quantity_on_Hand" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" Type="Int32" Nullable="false" />
-          <Property Name="Total_Number_of_Units_Sold_in_Past_30_days" Type="Int32" />
-          <Property Name="Daily_Units_Sold_Rate_for_Past_30_Days" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="Int32" />
+          <Property Name="DailyUnitsSoldRateForPast30Days" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Product_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" Type="Int32" Nullable="false" />
-          <Property Name="Daily_Units_Sold_Rate_from_Last_Restock_to_Last_Sale_Date" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfDaysFromLastStockToLastSaleDate" Type="Int32" Nullable="false" />
+          <Property Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3733,11 +3733,11 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
           <EntitySetMapping Name="vw_ReorderProducts">
             <EntityTypeMapping TypeName="PeopleSourceModel.vw_ReorderProducts">
               <MappingFragment StoreEntitySet="vw_ReorderProducts">
-                <ScalarProperty Name="Daily_Units_Sold_Rate_from_Last_Restock_to_Last_Sale_Date" ColumnName="Daily Units Sold Rate from Last Restock to Last Sale Date" />
-                <ScalarProperty Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" ColumnName="Total Number of Days from last stock to last sale date" />
+                <ScalarProperty Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" ColumnName="DailyUnitsSoldRateFromLastRestockToLastSaleDate" />
+                <ScalarProperty Name="TotalNumberOfDaysFromLastStockToLastSaleDate" ColumnName="TotalNumberOfDaysFromLastStockToLastSaleDate" />
                 <ScalarProperty Name="Product_Title" ColumnName="Product Title" />
-                <ScalarProperty Name="Daily_Units_Sold_Rate_for_Past_30_Days" ColumnName="Daily Units Sold Rate for Past 30 Days" />
-                <ScalarProperty Name="Total_Number_of_Units_Sold_in_Past_30_days" ColumnName="Total Number of Units Sold in Past 30 days" />
+                <ScalarProperty Name="DailyUnitsSoldRateForPast30Days" ColumnName="DailyUnitsSoldRateForPast30Days" />
+                <ScalarProperty Name="TotalNumberOfUnitsSoldInPast30Days" ColumnName="TotalNumberOfUnitsSoldInPast30Days" />
                 <ScalarProperty Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" ColumnName="Total Number of Units Sold between Last Stock and Last sale date" />
                 <ScalarProperty Name="Quantity_on_Hand" ColumnName="Quantity on Hand" />
                 <ScalarProperty Name="Date_product_was_last_stocked" ColumnName="Date product was last stocked" />
