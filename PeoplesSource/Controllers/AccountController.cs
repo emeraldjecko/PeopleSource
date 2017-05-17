@@ -7,8 +7,11 @@ using PeoplesSource.Common;
 using PeoplesSource.Domain.Services;
 using PeoplesSource.Extensions;
 using PeoplesSource.Models;
+using PeoplesSource.Helpers;
 using System.Web.Configuration;
 using System.Net.Mail;
+using System.Net;
+using Microsoft.SqlServer.Dts.Runtime;
 
 namespace PeoplesSource.Controllers
 {
@@ -100,8 +103,41 @@ namespace PeoplesSource.Controllers
                         Expires = DateTime.Now.AddHours(FormsAuthentication.Timeout.TotalHours)
                     };
                     Response.Cookies.Add(userNameCookie);
-                    if (!string.IsNullOrEmpty(returnurl))
+
+                    using (var client = new WebClient())
                     {
+                        client.DownloadFile(ConfigurationHelper.GetTeapplixProductURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "products.csv");
+                        client.DownloadFile(ConfigurationHelper.GetTeapplixQuantityURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "quantity_report.csv");
+                        client.DownloadFile(ConfigurationHelper.GetTeapplixOrderURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "order_report.csv");
+                    }
+
+                    //Execute Packages
+                    string packageLocation = "";
+                    Package ssisPackage;
+                    Application app;
+                    DTSExecResult result;
+
+                    //Run products
+                    app = new Application();
+                    packageLocation = ConfigurationHelper.GetSSISProductPath();
+                    ssisPackage = app.LoadPackage(packageLocation, null);
+                    result = ssisPackage.Execute();
+
+                    //Run quantity
+                    app = new Application();
+                    packageLocation = ConfigurationHelper.GetSSISQuantityPath();
+                    ssisPackage = app.LoadPackage(packageLocation, null);
+                    result = ssisPackage.Execute();
+
+                    //Run order
+                    app = new Application();
+                    packageLocation = ConfigurationHelper.GetSSISOrderPath();
+                    ssisPackage = app.LoadPackage(packageLocation, null);
+                    result = ssisPackage.Execute();
+                    
+
+                    if (!string.IsNullOrEmpty(returnurl))
+                    {                        
                         return Redirect(returnurl);
                     }
                     if (Roles.IsUserInRole(model.Username, "Administrator"))
