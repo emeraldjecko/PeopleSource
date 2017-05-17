@@ -104,36 +104,41 @@ namespace PeoplesSource.Controllers
                     };
                     Response.Cookies.Add(userNameCookie);
 
-                    using (var client = new WebClient())
+                    //Check if user has logged in today
+
+                    if (user.LastLoginDate.ToShortDateString() != DateTime.Now.ToShortDateString()) //first login today
                     {
-                        client.DownloadFile(ConfigurationHelper.GetTeapplixProductURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "products.csv");
-                        client.DownloadFile(ConfigurationHelper.GetTeapplixQuantityURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "quantity_report.csv");
-                        client.DownloadFile(ConfigurationHelper.GetTeapplixOrderURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "order_report.csv");
+                        using (var client = new WebClient())
+                        {
+                            client.DownloadFile(ConfigurationHelper.GetTeapplixProductURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "products.csv");
+                            client.DownloadFile(ConfigurationHelper.GetTeapplixQuantityURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "quantity_report.csv");
+                            client.DownloadFile(ConfigurationHelper.GetTeapplixOrderURL(), ConfigurationHelper.GetTeapplixDownloadFolderPath() + "order_report.csv");
+                        }
+
+                        //Execute Packages
+                        string packageLocation = "";
+                        Package ssisPackage;
+                        Application app;
+                        DTSExecResult result;
+
+                        //Run ssis products
+                        app = new Application();
+                        packageLocation = ConfigurationHelper.GetSSISProductPath();
+                        ssisPackage = app.LoadPackage(packageLocation, null);
+                        result = ssisPackage.Execute();
+
+                        //Run ssis quantity
+                        app = new Application();
+                        packageLocation = ConfigurationHelper.GetSSISQuantityPath();
+                        ssisPackage = app.LoadPackage(packageLocation, null);
+                        result = ssisPackage.Execute();
+
+                        //Run ssis order
+                        app = new Application();
+                        packageLocation = ConfigurationHelper.GetSSISOrderPath();
+                        ssisPackage = app.LoadPackage(packageLocation, null);
+                        result = ssisPackage.Execute();
                     }
-
-                    //Execute Packages
-                    string packageLocation = "";
-                    Package ssisPackage;
-                    Application app;
-                    DTSExecResult result;
-
-                    //Run products
-                    app = new Application();
-                    packageLocation = ConfigurationHelper.GetSSISProductPath();
-                    ssisPackage = app.LoadPackage(packageLocation, null);
-                    result = ssisPackage.Execute();
-
-                    //Run quantity
-                    app = new Application();
-                    packageLocation = ConfigurationHelper.GetSSISQuantityPath();
-                    ssisPackage = app.LoadPackage(packageLocation, null);
-                    result = ssisPackage.Execute();
-
-                    //Run order
-                    app = new Application();
-                    packageLocation = ConfigurationHelper.GetSSISOrderPath();
-                    ssisPackage = app.LoadPackage(packageLocation, null);
-                    result = ssisPackage.Execute();
                     
 
                     if (!string.IsNullOrEmpty(returnurl))
