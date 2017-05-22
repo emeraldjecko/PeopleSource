@@ -90,6 +90,14 @@ namespace PeoplesSource.Controllers
             //var country = _referenceService.GetCountry();
              if (ModelState.IsValid)
             {
+                DateTime lastLoginDate = new DateTime();
+                try
+                {
+                    MembershipUser userLast = Membership.GetUser(model.Username);
+                    lastLoginDate = userLast.LastLoginDate;
+                }
+                catch { }
+
                 if (MembershipManager.ValidateUser(model.Username, model.Password))
                 {
                     MembershipUser user = Membership.GetUser(model.Username);
@@ -106,7 +114,7 @@ namespace PeoplesSource.Controllers
 
                     //Check if user has logged in today
 
-                    if (user.LastLoginDate.ToShortDateString() != DateTime.Now.ToShortDateString()) //first login today
+                    if (lastLoginDate.ToShortDateString() != DateTime.Now.ToShortDateString()) //first login today
                     {
                         using (var client = new WebClient())
                         {
@@ -121,28 +129,54 @@ namespace PeoplesSource.Controllers
                         Application app;
                         DTSExecResult result;
 
-                        //Run ssis products
-                        app = new Application();
-                        packageLocation = ConfigurationHelper.GetSSISProductPath();
-                        ssisPackage = app.LoadPackage(packageLocation, null);
-                        result = ssisPackage.Execute();
+                        try
+                        {
+                            //Run ssis products
+                            app = new Application();
+                            packageLocation = ConfigurationHelper.GetSSISProductPath();
+                            ssisPackage = app.LoadPackage(packageLocation, null);
+                            result = ssisPackage.Execute();
 
-                        //Run ssis quantity
-                        app = new Application();
-                        packageLocation = ConfigurationHelper.GetSSISQuantityPath();
-                        ssisPackage = app.LoadPackage(packageLocation, null);
-                        result = ssisPackage.Execute();
+                            //Run ssis quantity
+                            app = new Application();
+                            packageLocation = ConfigurationHelper.GetSSISQuantityPath();
+                            ssisPackage = app.LoadPackage(packageLocation, null);
+                            result = ssisPackage.Execute();
 
-                        //Run ssis order
-                        app = new Application();
-                        packageLocation = ConfigurationHelper.GetSSISOrderPath();
-                        ssisPackage = app.LoadPackage(packageLocation, null);
-                        result = ssisPackage.Execute();
+
+                            //Run ssis order
+                            app = new Application();
+                            packageLocation = ConfigurationHelper.GetSSISOrderPath();
+                            ssisPackage = app.LoadPackage(packageLocation, null);
+                            result = ssisPackage.Execute();
+
+                            if (result == DTSExecResult.Failure)
+                            {
+                                string err = "";
+                                foreach (Microsoft.SqlServer.Dts.Runtime.DtsError local_DtsError in ssisPackage.Errors)
+                                {
+                                    string error = local_DtsError.Description.ToString();
+                                    err = err + error;
+                                }
+
+                                ViewBag.Message = err;
+                            }
+                            if (result == DTSExecResult.Success)
+                            {
+                                string message = "Package Executed Successfully....";
+                                ViewBag.Message = message;
+                            }
+                            
+                        }
+                        catch(Exception ex)
+                        {
+                            ViewBag.Message = ex.Message;
+                        }
+
                     }
-                    
 
                     if (!string.IsNullOrEmpty(returnurl))
-                    {                        
+                    {
                         return Redirect(returnurl);
                     }
                     if (Roles.IsUserInRole(model.Username, "Administrator"))
