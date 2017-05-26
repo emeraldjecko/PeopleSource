@@ -1,7 +1,8 @@
 ﻿@model PeoplesSource.Models.LoginDetail
 @{
     ViewBag.Title = "Login";
-    Layout = null;
+    Layout = null;   
+                           
 }
 <title>@ViewBag.title</title>
    @Html.Partial("Scripts")
@@ -34,6 +35,14 @@
 <html>
      <head>
         <body class="gray-bg">
+             @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message");
+                        };
+                </script>
+            }
              <div class="loginColumns animated fadeInDown">
                  <div class="row">
                       <div class="col-md-6">

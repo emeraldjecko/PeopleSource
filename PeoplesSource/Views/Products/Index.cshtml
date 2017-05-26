@@ -142,10 +142,10 @@
                                         <a href="#" ng-click="orderByField='secondProfitPrice'; reverseSort = !reverseSort">Profit 2 </a>
 
                                     </th>
-                                    <th style="width:5%;text-align:center">
+                                    @*<th style="width:5%;text-align:center">
                                         <a href="#" ng-click="orderByField='diff'; reverseSort = !reverseSort">Diff</a>
 
-                                    </th>
+                                    </th>*@
                                     @*<th style="width:5%;text-align:center">
                                             <a href="#" ng-click="orderByField='kz'; reverseSort = !reverseSort">KZ</a>
                                            h>
@@ -164,6 +164,9 @@
                                     </th>
                                     <th style="width:5%;text-align:center">
                                         <a href="#" ng-click="orderByField='totalRestoct'; reverseSort = !reverseSort" title="Total Number of Units Sold between Last ReStock and Last sale date">TURS</a>
+                                    </th>
+                                    <th style="width:5%;text-align:center">
+                                        <a href="#" ng-click="orderByField='stockDate'; reverseSort = !reverseSort">Stock Date</a>
                                     </th>
                                 </tr>
                             </thead>
@@ -204,9 +207,9 @@
                                     </td>
                                     <td class="text-center">{{ item.firstProfitPrice| number:2}}</td>
                                     <td class="text-center">{{item.secondProfitPrice | number:2}}</td>
-                                    <td class="text-center">
+                                    @*<td class="text-center">
                                         {{item.diff | number:2}}
-                                    </td>
+                                    </td>*@
                                     @*<td class="text-center">
                                             {{item.kz | number:2}}
                                         </td>
@@ -215,18 +218,20 @@
                                         </td>*@
 
                                     <td class="text-center">
-                                        {{item.daily30}}
+                                        {{item.daily30 | number:2}}
                                     </td>
                                     <td class="text-center">
                                         {{item.total30}}
                                     </td>
                                     <td class="text-center">
-                                        {{item.dailyRestock}}
+                                        {{item.dailyRestock | number:2}}
                                     </td>
                                     <td class="text-center">
                                         {{item.totalRestock}}
                                     </td>
-
+                                    <td class="text-center">
+                                        {{item.stockDate | date:'MM/dd/yy'}}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
