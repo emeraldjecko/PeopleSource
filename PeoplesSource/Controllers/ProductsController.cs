@@ -76,7 +76,8 @@ namespace PeoplesSource.Controllers
                              daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
                              total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
-                             totalRestock = r.TotalNumberOfDaysFromLastStockToLastSaleDate != null ? r.TotalNumberOfDaysFromLastStockToLastSaleDate : 0
+                             totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                             stockDate = r.StockDate
 
                          }).ToList();
 
