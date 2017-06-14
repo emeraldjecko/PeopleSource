@@ -50,7 +50,7 @@
 
                     <div class="row col-md-12">
                         <div class="form-group">
-                            <label class="control-label col-md-1   " for="sku">Shipping Cost</label>
+                            <label class="control-label col-md-1" for="sku">Shipping Cost</label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" ng-model="vm.ShippingCost" ng-change="vm.profitPrices(vm.ShippingCost)" required />
                             </div>
@@ -85,13 +85,13 @@
                                     <th style="width:3%;text-align:center">
                                         <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateSelection()">
                                     </th>
-                                    <th style="width:10%;text-align:center">
+                                    <th style="width: 10%;text-align: center">
                                         <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
                                         @*Real SKU
                                             <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
                                             <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                     </th>
-                                    <th style="width:10%;text-align:center">
+                                    <th style="width: 20%;text-align: center">
                                         <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a>
                                         @*Product Name
                                             <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
@@ -175,10 +175,10 @@
                                     <td class="text-center">
                                         <input type="checkbox" ng-model="item.selected" />
                                     </td>
-                                    <td class="text-left">
+                                    <td>
                                         {{item.realSKU}}
                                     </td>
-                                    <td class="text-left">
+                                    <td>
                                         {{item.name}}
                                     </td>
                                     <td class="text-left">
