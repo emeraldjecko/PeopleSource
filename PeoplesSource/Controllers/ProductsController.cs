@@ -52,15 +52,15 @@ namespace PeoplesSource.Controllers
 
             }
             ProductEntities entities = new ProductEntities();
-            
+
             var items = (from p in entities.Products
                          from r in entities.ReorderProducts
                          .Where(rp => p.RealSKU == rp.SKU)
                          .DefaultIfEmpty()
                          join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && ( p.Name.Contains(PName) || PName == null)
+                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null)
                          orderby p.SellerId
-                         select new 
+                         select new
                          {
                              Name = p.Name,
                              SKU = p.SKU,
@@ -72,7 +72,7 @@ namespace PeoplesSource.Controllers
                              PriceDefault = p.PriceDefault,
                              RealSKU = p.RealSKU,
                              Cost = p.Cost,
-                             eBayItemID=p.eBayItemID,
+                             eBayItemID = p.eBayItemID,
                              daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
                              total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
@@ -80,6 +80,8 @@ namespace PeoplesSource.Controllers
                              stockDate = r.StockDate
 
                          }).ToList();
+
+          
 
             return new JsonCamelCaseResult(new { products = items, status = "Success", discription = "" }, JsonRequestBehavior.AllowGet);
         }
