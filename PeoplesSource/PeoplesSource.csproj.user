@@ -10,8 +10,9 @@
     <WebStackScaffolding_ViewDialogWidth>601</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>PeoplesSource.Data.Models.ProductEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>HealthTekPublish</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>PeopleSource</NameOfLastUsedPublishProfile>
     <UseIISExpress>true</UseIISExpress>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
