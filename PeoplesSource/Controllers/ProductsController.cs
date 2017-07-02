@@ -41,11 +41,26 @@ namespace PeoplesSource.Controllers
             return View();
         }
         [HttpGet]
-        [Route("GetProducts/{realSKU:string,PName:string}")]
-        public ActionResult GetProducts(string realSKU=null,string PName=null)
+        [Route("GetProducts/{realSKU:string,pSellerId:string,PName:string}")]
+        public ActionResult GetProducts(string realSKU, string pSellerId, string PName, string profit1Operand, string profit1Value1, string profit1Value2, string ShippingCost)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
+            pSellerId = pSellerId.Trim('\"');
+            profit1Operand = profit1Operand.Trim('\"');
+            profit1Value1 = profit1Value1.Trim('\"');
+            profit1Value2 = profit1Value2.Trim('\"');
+            ShippingCost = ShippingCost.Trim('\"');
+
+            double shippingCostValue = 0;
+            double.TryParse(ShippingCost, out shippingCostValue); 
+
+            double profit1Value1Double = 0;
+            double.TryParse(profit1Value1, out profit1Value1Double);
+
+            double profit1Value2Double = 0;
+            double.TryParse(profit1Value2, out profit1Value2Double); 
+
             if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName))
             {
                 return new JsonCamelCaseResult(new { status = "error", discription = "" }, JsonRequestBehavior.AllowGet);
@@ -58,7 +73,7 @@ namespace PeoplesSource.Controllers
                          .Where(rp => p.RealSKU == rp.SKU)
                          .DefaultIfEmpty()
                          join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null)
+                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
                          orderby p.SellerId
                          select new
                          {
@@ -77,11 +92,42 @@ namespace PeoplesSource.Controllers
                              total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
-                             stockDate = r.StockDate
+                             stockDate = r.StockDate,
+                             firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
 
                          }).ToList();
 
-          
+
+            if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1))
+            {
+                if(profit1Operand == "="){
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) == profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == "<=")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == ">=")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == "<")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) < profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == ">")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) > profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == "<>")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) != profit1Value1Double).ToList();
+                }
+                else if (profit1Operand == "between")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double && Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value2Double).ToList();
+                }
+            }
 
             return new JsonCamelCaseResult(new { products = items, status = "Success", discription = "" }, JsonRequestBehavior.AllowGet);
         }
