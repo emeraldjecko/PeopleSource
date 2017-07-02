@@ -26,7 +26,7 @@
                                 <input type="text" class="form-control" id="PName" placeholder="Enter Product Name" ng-model="vm.PName" >
                             </div>
                             
-                            <button ng-disabled="!(vm.key ||vm.PName)" ng-click="vm.getProducts()" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
+                            <button ng-disabled="!(vm.key ||vm.PName || vm.pSellerId)" ng-click="vm.getProducts()" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
 
                         </div>
                         <div class="form-group">
@@ -58,6 +58,41 @@
                     </div>
                     <div class="row col-md-12">
                         <span class="col-md-11 col-md-offset-1">Ordered By: {{orderByField=='increment'?'Add':orderByField=='secondProfitPrice'?'Profit 2':orderByField=='firstProfitPrice'?'Profit 1':orderByField=='priceDefault'?'Price 1':orderByField=='updatedPrice'?'Price 2':orderByField }}, Reverse Sort: {{reverseSort}}</span><br><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SellerId">Seller Id</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" placeholder="Enter Seller Id" ng-model="vm.pSellerId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SellerId">Profit 1</label>
+                        <div class="col-md-2">
+                            <select id="ddlProfit1" class="form-control" ng-model="vm.profit1Operand">
+                                <option selected="selected" value="=">=</option>
+                                <option value="<="><=</option>
+                                <option value=">=">>=</option>
+                                <option value="<"><</option>
+                                <option value=">">></option>
+                                <option value="<>"><></option>
+                                <option value="between">between</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="profit1TextBox1" placeholder="Enter Value 1" ng-model="vm.profit1Value1">
+                        </div>
+                        <div id="divProfitValue2">
+                            <div class="col-md-1">
+                                <label class="control-label col-md-1">and</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="profit1TextBox2" placeholder="Enter Value 2" ng-model="vm.profit1Value2">
+                            </div>                                                       
+                        </div>
+                        <div class="col-md-1">
+                            <a href="#" onclick="ClearProfit1Filter();" title="Clear Profit1 Filter"><i class="fa fa-remove" style="font-size: 24px;color:red"></i></a>
+                        </div> 
                     </div>
                     <div ng-show="vm.isLoding">
                         <div class="windows8">
@@ -256,5 +291,24 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#sku").focus();
+        $("#divProfitValue2").hide();
+
+        $("#ddlProfit1").change(function () {
+            var _operand = $(this).val();
+            if (_operand == "between") {
+                $("#divProfitValue2").show();
+            }
+            else {
+                $("#divProfitValue2").hide();
+            }
+        });
     });
+
+    function ClearProfit1Filter()
+    {
+        $("#ddlProfit1").val("");
+        $("#divProfitValue2").hide();
+        $("#profit1TextBox1").val("");
+        $("#profit1TextBox2").val("");
+    }
 </script>
