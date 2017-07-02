@@ -18,6 +18,10 @@
         vm.Netoproducts = [];
         vm.key = '';
         vm.PName = '';
+        vm.pSellerId = '';
+        vm.profit1Operand = '';
+        vm.profit1Value1 = '';
+        vm.profit1Value2 = '';
         vm.Date = '';
         vm.ShippingCost = '2.75';
         vm.updatePrices = updatePrices;
@@ -41,16 +45,15 @@
         $scope.reverseSort = false;
       
         function getProducts() {
-       
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.pSellerId, vm.profit1Operand, vm.profit1Value1, vm.profit1Value2, vm.ShippingCost).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;
 
 
                     if (vm.products.length === 0) {
-                        alert("No products found for " + vm.key + ' ' + vm.PName);
+                        alert("No products found for " + vm.key + ' ' + vm.PName + ' ' + vm.pSellerId);
                         vm.isLoding = false;
                         return;
                     }
@@ -103,7 +106,7 @@
                     vm.products = orderBy(vm.products, vm.orderByField, vm.reverseSort);
                 }
                 else {
-                    alert("please check Real SKU!");
+                    alert("please check Real SKU " + vm.pSellerId + "hey!"); 
                 }
 
             }, function (error) {
