@@ -67,67 +67,298 @@ namespace PeoplesSource.Controllers
 
             }
             ProductEntities entities = new ProductEntities();
+            var items = new List<ProductModel>();
 
-            var items = (from p in entities.Products
-                         from r in entities.ReorderProducts
-                         .Where(rp => p.RealSKU == rp.SKU)
-                         .DefaultIfEmpty()
-                         join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
-                         orderby p.SellerId
-                         select new
-                         {
-                             Name = p.Name,
-                             SKU = p.SKU,
-                             SellerId = p.SellerId,
-                             Increment = s.Increment,
-                             IsPercentage = s.IsPercentage,
-                             KZ = s.KZ,
-                             OHT = s.OHT,
-                             PriceDefault = p.PriceDefault,
-                             RealSKU = p.RealSKU,
-                             Cost = p.Cost,
-                             eBayItemID = p.eBayItemID,
-                             daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
-                             total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
-                             dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
-                             totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
-                             stockDate = r.StockDate,
-                             firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
-
-                         }).ToList();
-
-
-            if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1))
+            if (string.IsNullOrEmpty(profit1Value1))
             {
-                if(profit1Operand == "="){
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) == profit1Value1Double).ToList();
+                items = (from p in entities.Products
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate
+
+                             }).ToList();
+            }
+
+            else if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1))
+            {
+                if (profit1Operand == "=")
+                {
+                    items = (from p in entities.Products
+                                 let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+                                 
+                                 join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                                 join s in entities.SellerInfoes on p.SellerId equals s.Name
+                                 where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                                   && Math.Round(firstProfit.Value, 2) == profit1Value1Double
+                                 orderby p.SellerId
+                                 select new ProductModel
+                                 {
+                                     Name = p.Name,
+                                     SKU = p.SKU,
+                                     SellerId = p.SellerId,
+                                     Increment = s.Increment,
+                                     IsPercentage = s.IsPercentage,
+                                     KZ = s.KZ,
+                                     OHT = s.OHT,
+                                     PriceDefault = p.PriceDefault,
+                                     RealSKU = p.RealSKU,
+                                     Cost = p.Cost,
+                                     eBayItemID = p.eBayItemID,
+                                     daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                     total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                     dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                     totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                     stockDate = r.StockDate,
+                                     firstProfitPrice = firstProfit
+
+                                 }).ToList();
+
                 }
                 else if (profit1Operand == "<=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value1Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && Math.Round(firstProfit.Value, 2) <= profit1Value1Double
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
                 else if (profit1Operand == ">=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && Math.Round(firstProfit.Value, 2) >= profit1Value1Double
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
                 else if (profit1Operand == "<")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) < profit1Value1Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && Math.Round(firstProfit.Value, 2) < profit1Value1Double
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
                 else if (profit1Operand == ">")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) > profit1Value1Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && Math.Round(firstProfit.Value, 2) >= profit1Value1Double
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
                 else if (profit1Operand == "<>")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) != profit1Value1Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && Math.Round(firstProfit.Value, 2) != profit1Value1Double
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
                 else if (profit1Operand == "between")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double && Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value2Double).ToList();
+                    items = (from p in entities.Products
+                             let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+
+                             join r in entities.ReorderProducts on p.RealSKU equals r.SKU
+                             join s in entities.SellerInfoes on p.SellerId equals s.Name
+                             where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(pSellerId) || pSellerId == null)
+                               && (Math.Round(firstProfit.Value, 2) >= profit1Value1Double  && Math.Round(firstProfit.Value, 2) <= profit1Value2Double)
+                             orderby p.SellerId
+                             select new ProductModel
+                             {
+                                 Name = p.Name,
+                                 SKU = p.SKU,
+                                 SellerId = p.SellerId,
+                                 Increment = s.Increment,
+                                 IsPercentage = s.IsPercentage,
+                                 KZ = s.KZ,
+                                 OHT = s.OHT,
+                                 PriceDefault = p.PriceDefault,
+                                 RealSKU = p.RealSKU,
+                                 Cost = p.Cost,
+                                 eBayItemID = p.eBayItemID,
+                                 daily30 = r.DailyUnitsSoldRateForPast30Days != null ? r.DailyUnitsSoldRateForPast30Days : 0,
+                                 total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
+                                 dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
+                                 totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
+                                 stockDate = r.StockDate,
+                                 firstProfitPrice = firstProfit
+
+                             }).ToList();
                 }
             }
+
+
+            //if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1))
+            //{
+            //    if (profit1Operand == "=")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) == profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == "<=")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == ">=")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == "<")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) < profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == ">")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) > profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == "<>")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) != profit1Value1Double).ToList();
+            //    }
+            //    else if (profit1Operand == "between")
+            //    {
+            //        items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= profit1Value1Double && Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= profit1Value2Double).ToList();
+            //    }
+            //}
 
             return new JsonCamelCaseResult(new { products = items, status = "Success", discription = "" }, JsonRequestBehavior.AllowGet);
         }
