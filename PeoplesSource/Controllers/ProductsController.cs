@@ -42,7 +42,7 @@ namespace PeoplesSource.Controllers
         }
         [HttpGet]
         [Route("GetProducts/{realSKU:string,pSellerId:string,PName:string}")]
-        public ActionResult GetProducts(string realSKU, string pSellerId, string PName, string profit1Operand, string profit1Value1, string profit1Value2, string ShippingCost)
+        public ActionResult GetProducts(string realSKU, string pSellerId, string PName, string profit1Operand, string profit1Value1, string profit1Value2, string srp30Operand, string srp30Value1, string srp30Value2, string ShippingCost)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
@@ -98,9 +98,9 @@ namespace PeoplesSource.Controllers
                              }).ToList();
             }
 
-            else if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1))
+            else if (!string.IsNullOrEmpty(profit1Operand) && !string.IsNullOrEmpty(profit1Value1) || !string.IsNullOrEmpty(srp30Operand) && !string.IsNullOrEmpty(srp30Value1))
             {
-                if (profit1Operand == "=")
+                if (profit1Operand == "=" || srp30Operand == "=")
                 {
                     items = (from p in entities.Products
                                  let firstProfit = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
