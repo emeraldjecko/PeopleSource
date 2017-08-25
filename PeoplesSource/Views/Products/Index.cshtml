@@ -60,40 +60,68 @@
                         <span class="col-md-11 col-md-offset-1">Ordered By: {{orderByField=='increment'?'Add':orderByField=='secondProfitPrice'?'Profit 2':orderByField=='firstProfitPrice'?'Profit 1':orderByField=='priceDefault'?'Price 1':orderByField=='updatedPrice'?'Price 2':orderByField }}, Reverse Sort: {{reverseSort}}</span><br><br>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-1" for="SellerId">Seller Id</label>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Enter Seller Id" ng-model="vm.pSellerId">
-                        </div>
+                @*<div class="form-group">
+                    <label class="control-label col-md-1" for="SellerId">Seller Id</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Enter Seller Id" ng-model="vm.pSellerId">
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-1" for="SellerId">Profit 1</label>
-                        <div class="col-md-2">
-                            <select id="ddlProfit1" class="form-control" ng-model="vm.profit1Operand">
-                                <option selected="selected" value="=">=</option>
-                                <option value="<="><=</option>
-                                <option value=">=">>=</option>
-                                <option value="<"><</option>
-                                <option value=">">></option>
-                                <option value="<>"><></option>
-                                <option value="between">between</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" id="profit1TextBox1" placeholder="Enter Value 1" ng-model="vm.profit1Value1">
-                        </div>
-                        <div id="divProfitValue2">
-                            <div class="col-md-1">
-                                <label class="control-label col-md-1">and</label>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control" id="profit1TextBox2" placeholder="Enter Value 2" ng-model="vm.profit1Value2">
-                            </div>                                                       
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="SellerId">Profit 1</label>
+                    <div class="col-md-2">
+                        <select id="ddlProfit1" class="form-control" ng-model="vm.profit1Operand">
+                            <option selected="selected" value="=">=</option>
+                            <option value="<="><=</option>
+                            <option value=">=">>=</option>
+                            <option value="<"><</option>
+                            <option value=">">></option>
+                            <option value="<>"><></option>
+                            <option value="between">between</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="profit1TextBox1" placeholder="Enter Value 1" ng-model="vm.profit1Value1">
+                    </div>
+                    <div id="divProfitValue2">
                         <div class="col-md-1">
-                            <a href="#" onclick="ClearProfit1Filter();" title="Clear Profit1 Filter"><i class="fa fa-remove" style="font-size: 24px;color:red"></i></a>
-                        </div> 
+                            <label class="control-label col-md-1">and</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="profit1TextBox2" placeholder="Enter Value 2" ng-model="vm.profit1Value2">
+                        </div>                                                       
                     </div>
+                    <div class="col-md-1">
+                        <a href="#" onclick="ClearProfit1Filter();" title="Clear Profit1 Filter"><i class="fa fa-remove" style="font-size: 24px;color:red"></i></a>
+                    </div> 
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="SellerId">SRP30</label>
+                    <div class="col-md-2">
+                        <select id="ddlSRP30" class="form-control" ng-model="vm.srp30Operand">
+                            <option selected="selected" value="=">=</option>
+                            <option value="<="><=</option>
+                            <option value=">=">>=</option>
+                            <option value="<"><</option>
+                            <option value=">">></option>
+                            <option value="<>"><></option>
+                            <option value="between">between</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" id="srp30TextBox1" placeholder="Enter Value 1" ng-model="vm.srp30Value1">
+                    </div>
+                    <div id="divSRP30Value2">
+                        <div class="col-md-1">
+                            <label class="control-label col-md-1">and</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="srp30TextBox2" placeholder="Enter Value 2" ng-model="vm.srp30Value2">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="#" onclick="ClearSRP30Filter();" title="Clear SRP30 Filter"><i class="fa fa-remove" style="font-size: 24px;color:red"></i></a>
+                    </div>
+                </div>*@
                     <div ng-show="vm.isLoding">
                         <div class="windows8">
                             <div class="wBall" id="wBall_1">
@@ -302,6 +330,18 @@
                 $("#divProfitValue2").hide();
             }
         });
+
+        $("#divSRP30Value2").hide();
+
+        $("#ddlSRP30").change(function () {
+            var _operand = $(this).val();
+            if (_operand == "between") {
+                $("#divSRP30Value2").show();
+            }
+            else {
+                $("#divSRP30Value2").hide();
+            }
+        });
     });
 
     function ClearProfit1Filter()
@@ -310,5 +350,11 @@
         $("#divProfitValue2").hide();
         $("#profit1TextBox1").val("");
         $("#profit1TextBox2").val("");
+    }
+    function ClearSRP30Filter() {
+        $("#ddlSRP30").val("");
+        $("#divSRP30Value2").hide();
+        $("#srp30TextBox1").val("");
+        $("#srp30TextBox2").val("");
     }
 </script>
