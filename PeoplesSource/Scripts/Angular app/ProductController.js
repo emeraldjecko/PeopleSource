@@ -22,6 +22,9 @@
         vm.profit1Operand = '';
         vm.profit1Value1 = '';
         vm.profit1Value2 = '';
+        vm.srp30Operand = '';
+        vm.srp30Value1 = '';
+        vm.srp30Value2 = '';
         vm.Date = '';
         vm.ShippingCost = '2.75';
         vm.updatePrices = updatePrices;
@@ -46,7 +49,7 @@
       
         function getProducts() {
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName, vm.pSellerId, vm.profit1Operand, vm.profit1Value1, vm.profit1Value2, vm.ShippingCost).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.pSellerId, vm.profit1Operand, vm.profit1Value1, vm.profit1Value2, vm.srp30Operand, vm.srp30Value1, vm.srp30Value2, vm.ShippingCost).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;

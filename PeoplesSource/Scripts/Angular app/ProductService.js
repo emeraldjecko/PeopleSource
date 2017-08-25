@@ -17,10 +17,11 @@
         };
         var baseUrl = '/';
         
-        function fetchProducts(key, Pname, pSellerId, profit1Operand, profit1Value1, profit1Value2, ShippingCost) {
+        function fetchProducts(key, Pname, pSellerId, profit1Operand, profit1Value1, profit1Value2, srp30Operand, srp30Value1, srp30Value2, ShippingCost) {
             
             //return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B") + '"&SellerId="' + pSellerId + '"')
-            return $http.get('/Products/GetProducts?realSKU="' + key + '"&pSellerId="' + pSellerId + '"&PName="' + Pname.replace("+", "%2B") + '"&profit1Operand="' + profit1Operand + '"&profit1Value1="' + profit1Value1 + '"&profit1Value2="' + profit1Value2 + '"&ShippingCost="' + ShippingCost + '"')
+            return $http.get('/Products/GetProducts?realSKU="' + key + '"&pSellerId="' + pSellerId + '"&PName="' + Pname.replace("+", "%2B") + '"&profit1Operand="' + profit1Operand + '"&profit1Value1="' + profit1Value1 + '"&profit1Value2="' + profit1Value2 +
+                + '"&srp30Operand="' + srp30Operand + '"&srp30Value1="' + srp30Value1 + '"&srp30Value2="' + srp30Value2 + '"&ShippingCost="' + ShippingCost + '"')
             .success(function (data) {
                 return data.data;
             }).error(function (data) {
