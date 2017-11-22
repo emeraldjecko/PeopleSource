@@ -59,7 +59,7 @@ namespace PeoplesSource.Controllers
                          .Where(rp => p.RealSKU == rp.SKU)
                          .DefaultIfEmpty()
                          join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.StartsWith(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null)
+                         where (p.RealSKU.Contains(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null)
                          orderby p.SellerId
                          select new
                          {
