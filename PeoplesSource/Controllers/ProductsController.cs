@@ -41,14 +41,15 @@ namespace PeoplesSource.Controllers
             return View();
         }
         [HttpGet]
-        [Route("GetProducts/{realSKU:string,PName:string}")]
-        public ActionResult GetProducts(string realSKU = null, string PName = null)
+        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string}")]
+        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
-           
+            SellerId = SellerId.Trim('\"');
 
-            if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName))
+
+            if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName) && string.IsNullOrEmpty(SellerId))
             {
                 return new JsonCamelCaseResult(new { status = "error", discription = "" }, JsonRequestBehavior.AllowGet);
 
@@ -59,7 +60,7 @@ namespace PeoplesSource.Controllers
                          .Where(rp => p.RealSKU == rp.SKU)
                          .DefaultIfEmpty()
                          join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.Contains(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null)
+                         where (p.RealSKU.Contains(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(SellerId) || SellerId == null)
                          orderby p.SellerId
                          select new
                          {
