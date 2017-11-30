@@ -17,9 +17,9 @@
         };
         var baseUrl = '/';
         
-        function fetchProducts(key, Pname) {
+        function fetchProducts(key, Pname, SellerId) {
 
-            return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B") + '"')
+            return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B") + '"&SellerId="' + SellerId.replace("+", "%2B") + '"')
             .success(function (data) {
                 return data.data;
             }).error(function (data) {

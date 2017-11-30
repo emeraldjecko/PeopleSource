@@ -17,7 +17,8 @@
         vm.products = [];
         vm.Netoproducts = [];
         vm.key = '';
-        vm.PName = '';        
+        vm.PName = '';
+        vm.SellerId = '';
         vm.Date = '';
         vm.ShippingCost = '2.75';
         vm.updatePrices = updatePrices;
@@ -43,7 +44,7 @@
         function getProducts() {
 
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.SellerId).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;
