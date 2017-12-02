@@ -63,7 +63,22 @@
                     <div class="row col-md-12">
                         <span class="col-md-11 col-md-offset-1">Ordered By: {{orderByField=='increment'?'Add':orderByField=='secondProfitPrice'?'Profit 2':orderByField=='firstProfitPrice'?'Profit 1':orderByField=='priceDefault'?'Price 1':orderByField=='updatedPrice'?'Price 2':orderByField }}, Reverse Sort: {{reverseSort}}</span><br><br>
                     </div>
-
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SellerId">Profit 1</label>
+                        <div class="col-md-2">
+                            <select id="ddlProfit1" class="form-control" ng-model="vm.OperandProfit1">
+                                <option selected="selected" value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value=">=">>=</option>
+                                <option value="<="><=</option>
+                                <option value="<>"><></option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tbProfit1" placeholder="Enter Profit 1" ng-model="vm.ValueProfit1">
+                        </div>                        
+                    </div>
                 @*<div class="form-group">
                     <label class="control-label col-md-1" for="SellerId">Seller Id</label>
                     <div class="col-md-3">
