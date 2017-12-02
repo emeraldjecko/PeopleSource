@@ -17,9 +17,11 @@
         };
         var baseUrl = '/';
         
-        function fetchProducts(key, Pname, SellerId) {
+        function fetchProducts(key, Pname, SellerId, OperandProfit1, ValueProfit1, ShippingCost) {
 
-            return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B") + '"&SellerId="' + SellerId.replace("+", "%2B") + '"')
+            return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B")
+                                + '"&SellerId="' + SellerId.replace("+", "%2B") + '"&OperandProfit1="' + OperandProfit1.replace("+", "%2B")
+                                + '"&ValueProfit1="' + ValueProfit1.replace("+", "%2B") + '"&ShippingCost="' + ShippingCost.replace("+", "%2B") + '"')
             .success(function (data) {
                 return data.data;
             }).error(function (data) {
