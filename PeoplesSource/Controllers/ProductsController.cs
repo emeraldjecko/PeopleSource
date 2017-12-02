@@ -41,12 +41,21 @@ namespace PeoplesSource.Controllers
             return View();
         }
         [HttpGet]
-        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string}")]
-        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null)
+        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string, OperandProfit1:string, ValueProfit1:string, ShippingCost:string}")]
+        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null, string OperandProfit1 = null, string ValueProfit1 = null, string ShippingCost = null)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
             SellerId = SellerId.Trim('\"');
+            OperandProfit1 = OperandProfit1.Trim('\"');
+            ValueProfit1 = ValueProfit1.Trim('\"');
+            ShippingCost = ShippingCost.Trim('\"');
+
+            double shippingCostValue = 0;
+            double.TryParse(ShippingCost, out shippingCostValue);
+
+            double valueProfit1Double = 0;
+            double.TryParse(ValueProfit1, out valueProfit1Double);
 
 
             if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName) && string.IsNullOrEmpty(SellerId))
@@ -79,10 +88,38 @@ namespace PeoplesSource.Controllers
                              total30 = r.TotalNumberOfUnitsSoldInPast30Days != null ? r.TotalNumberOfUnitsSoldInPast30Days : 0,
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
-                             stockDate = r.StockDate
+                             stockDate = r.StockDate,
+                             firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
 
                          }).ToList();
 
+            if (!string.IsNullOrEmpty(OperandProfit1) && !string.IsNullOrEmpty(ValueProfit1))
+            {
+                if (OperandProfit1 == "=")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) == valueProfit1Double).ToList();
+                }
+                else if (OperandProfit1 == "<=")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) <= valueProfit1Double).ToList();
+                }
+                else if (OperandProfit1 == ">=")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) >= valueProfit1Double).ToList();
+                }
+                else if (OperandProfit1 == "<")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) < valueProfit1Double).ToList();
+                }
+                else if (OperandProfit1 == ">")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) > valueProfit1Double).ToList();
+                }
+                else if (OperandProfit1 == "<>")
+                {
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.firstProfitPrice.Value), 2) != valueProfit1Double).ToList();
+                }
+            }
            
             return new JsonCamelCaseResult(new { products = items, status = "Success", discription = "" }, JsonRequestBehavior.AllowGet);
         }
