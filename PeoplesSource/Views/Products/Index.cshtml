@@ -64,7 +64,7 @@
                         <span class="col-md-11 col-md-offset-1">Ordered By: {{orderByField=='increment'?'Add':orderByField=='secondProfitPrice'?'Profit 2':orderByField=='firstProfitPrice'?'Profit 1':orderByField=='priceDefault'?'Price 1':orderByField=='updatedPrice'?'Price 2':orderByField }}, Reverse Sort: {{reverseSort}}</span><br><br>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-1" for="SellerId">Profit 1</label>
+                        <label class="control-label col-md-1" for="Profit1">Profit 1</label>
                         <div class="col-md-2">
                             <select id="ddlProfit1" class="form-control" ng-model="vm.OperandProfit1">
                                 <option selected="selected" value="=">=</option>
@@ -78,6 +78,70 @@
                         <div class="col-md-2">
                             <input type="text" class="form-control" id="tbProfit1" placeholder="Enter Profit 1" ng-model="vm.ValueProfit1">
                         </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SRP30">SRP30</label>
+                        <div class="col-md-2">
+                            <select id="ddlSRP30" class="form-control" ng-model="vm.OperandSRP30">
+                                <option selected="selected" value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value=">=">>=</option>
+                                <option value="<="><=</option>
+                                <option value="<>"><></option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tbSRP30" placeholder="Enter SRP30" ng-model="vm.ValueSRP30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SRP30">TUS30</label>
+                        <div class="col-md-2">
+                            <select id="ddlTUS30" class="form-control" ng-model="vm.OperandTUS30">
+                                <option selected="selected" value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value=">=">>=</option>
+                                <option value="<="><=</option>
+                                <option value="<>"><></option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tbTUS30" placeholder="Enter TUS30" ng-model="vm.ValueTUS30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="SRRS">SRRS</label>
+                        <div class="col-md-2">
+                            <select id="ddlSRRS" class="form-control" ng-model="vm.OperandSRRS">
+                                <option selected="selected" value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value=">=">>=</option>
+                                <option value="<="><=</option>
+                                <option value="<>"><></option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tbSRRS" placeholder="Enter SRRS" ng-model="vm.ValueSRRS">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="TURS">TURS</label>
+                        <div class="col-md-2">
+                            <select id="ddlTURS" class="form-control" ng-model="vm.OperandTURS">
+                                <option selected="selected" value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value=">=">>=</option>
+                                <option value="<="><=</option>
+                                <option value="<>"><></option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tbTURS" placeholder="Enter TURS" ng-model="vm.ValueTURS">
+                        </div>
                     </div>
                 @*<div class="form-group">
                     <label class="control-label col-md-1" for="SellerId">Seller Id</label>
