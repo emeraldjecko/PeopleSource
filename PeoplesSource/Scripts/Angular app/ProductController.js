@@ -21,6 +21,14 @@
         vm.SellerId = '';
         vm.OperandProfit1 = '';
         vm.ValueProfit1 = '';
+        vm.OperandSRP30 = '';
+        vm.ValueSRP30 = '';
+        vm.OperandTUS30 = '';
+        vm.ValueTUS30 = '';
+        vm.OperandSRRS = '';
+        vm.ValueSRRS = '';
+        vm.OperandTURS = '';
+        vm.ValueTURS = '';
         vm.Date = '';
         vm.ShippingCost = '2.75';
         vm.updatePrices = updatePrices;
@@ -46,7 +54,7 @@
         function getProducts() {
 
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost, vm.OperandSRP30, vm.ValueSRP30, vm.OperandTUS30, vm.ValueTUS30, vm.OperandSRRS, vm.ValueSRRS, vm.OperandTURS, vm.ValueTURS).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;
