@@ -48,3 +48,14 @@ D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_So
 D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
 D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
 D:\emeraldjecko\NEW PROJECT\ThieuCompleteCode\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll.config
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\PeoplesSource.Data.pdb
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFramework.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFramework.xml
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csproj.CoreCompileInputs.cache
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb

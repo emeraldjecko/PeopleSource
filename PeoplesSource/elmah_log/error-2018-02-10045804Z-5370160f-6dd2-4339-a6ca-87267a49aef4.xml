@@ -1,0 +1,251 @@
+﻿<error errorId="5370160f-6dd2-4339-a6ca-87267a49aef4" application="/LM/W3SVC/2/ROOT" host="INTPART-ARMANDO" type="System.TypeLoadException" message="Could not load type 'System.Data.Entity.Infrastructure.TableExistenceChecker' from assembly 'EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'." source="EntityFramework.SqlServer" detail="System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.TypeInitializationException: The type initializer for 'System.Data.Entity.SqlServer.SqlProviderServices' threw an exception. ---&gt; System.TypeLoadException: Could not load type 'System.Data.Entity.Infrastructure.TableExistenceChecker' from assembly 'EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices..ctor()&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices..cctor()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.get_Instance()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&#xD;&#xA;   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&#xD;&#xA;   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;&#xA;   at System.Reflection.RuntimePropertyInfo.GetValue(Object obj, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)&#xD;&#xA;   at System.Reflection.RuntimePropertyInfo.GetValue(Object obj, Object[] index)&#xD;&#xA;   at System.Data.Entity.Utilities.MemberInfoExtensions.GetValue(MemberInfo memberInfo)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.ProviderServicesFactory.GetInstance(Type providerType)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.ProviderServicesFactory.GetInstance(String providerTypeName, String providerInvariantName)&#xD;&#xA;   at System.Data.Entity.Internal.AppConfig.&lt;.ctor&gt;b__2(ProviderElement e)&#xD;&#xA;   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()&#xD;&#xA;   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)&#xD;&#xA;   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)&#xD;&#xA;   at System.Data.Entity.Internal.AppConfig.&lt;.ctor&gt;b__1()&#xD;&#xA;   at System.Lazy`1.CreateValue()&#xD;&#xA;   at System.Lazy`1.LazyInitValue()&#xD;&#xA;   at System.Lazy`1.get_Value()&#xD;&#xA;   at System.Data.Entity.Internal.AppConfig.get_DbProviderServices()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.RegisterDbProviderServices()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetServiceFactory(Type type, String name)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.&lt;&gt;c__DisplayClass1.&lt;GetService&gt;b__0(Tuple`2 t)&#xD;&#xA;   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetService(Type type, Object key)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.ResolverChain.&lt;&gt;c__DisplayClass3.&lt;GetService&gt;b__0(IDbDependencyResolver r)&#xD;&#xA;   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()&#xD;&#xA;   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.ResolverChain.GetService(Type type, Object key)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.CompositeResolver`2.GetService(Type type, Object key)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DependencyResolution.DbDependencyResolverExtensions.GetService[T](IDbDependencyResolver resolver)&#xD;&#xA;   at System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)&#xD;&#xA;   at System.Data.Entity.DbContext..ctor(String nameOrConnectionString)&#xD;&#xA;   at PeoplesSource.Data.Models.ProductEntities..ctor() in C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\Models\ProductEntities.cs:line 11&#xD;&#xA;   at PeoplesSource.Controllers.ProductsController.GetProducts(String realSKU, String PName, String SellerId, String OperandProfit1, String ValueProfit1, String ShippingCost, String OperandSRP30, String ValueSRP30, String OperandTUS30, String ValueTUS30, String OperandSRRS, String ValueSRRS, String OperandTURS, String ValueTURS) in C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource\Controllers\ProductsController.cs:line 86&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass15.&lt;InvokeActionMethodWithFilters&gt;b__12()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass15.&lt;&gt;c__DisplayClass17.&lt;InvokeActionMethodWithFilters&gt;b__14()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at PeoplesSource.CustomActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters) in C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource\CustomActionInvoker.cs:line 44&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass22.&lt;BeginExecuteCore&gt;b__1e()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;.cctor&gt;b__0(IAsyncResult asyncResult, Action action)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="devvy" time="2018-02-10T04:58:04.9701201Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:application/json, text/plain, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:VERITY_WIZARD_STEP=Skills; VERITY_LOGOUT=12%2F5%2F2017%201%3A46%3A24%20AM; :::CurrentTimezone:::=Australia/Melbourne; .AspNetCore.Antiforgery.4xhc3m6j818=CfDJ8P2wLSUDPcNAv4b0tPNUXNO-rJt5d2hG7bkRi_LIDsf0NcjtdMT6ao6YsrVYpThXMNSsjdAC0od-XVvBRegokfIVVB40v0whCbW9ims9Gjlw2XWSUx7ODIFSHnl-_ztRdtbSmT4wvEM9UuLnY03A7m8; .AspNetCore.Session=CfDJ8P2wLSUDPcNAv4b0tPNUXNPDw1%2Fbv7RHOtaj6tkVRLpkBaV9bbMnohTInF3rN1r0Qsb9%2B9JcYL4P2zy1rnLOIb9kvX77amzNExuCd0BUf82jYjGzUxBAhsAaJBxXizXXSyYaMoHkvZ%2BMabF6MNfxDoR5CROrdSMLpPYnHliLHTOk; isUnfoldBody=false; isTreeviewSettingCohortMenuExpanded=false; isTreeviewSettingMenuExpanded=true; isTreeviewSettingOrgMenuExpanded=true; ASP.NET_SessionId=pyl4cwtqx5bok1obpkobvgh3; multipleBooking=[{&quot;eventScheduleId&quot;:58,&quot;quantity&quot;:2}]; :::CurrentContactInformation:::={&quot;ContactId&quot;:114,&quot;AnonymousContactId&quot;:444,&quot;CookieKey&quot;:&quot;XKNt2JZK-20180102024449&quot;,&quot;IpAddress&quot;:&quot;::1&quot;,&quot;Email&quot;:&quot;armando.pagkalinawan@interactivepartners.com.au&quot;,&quot;FirstName&quot;:&quot;Armando&quot;,&quot;LastName&quot;:&quot;Pagkalinawan&quot;,&quot;Phone&quot;:&quot;123&quot;,&quot;Address&quot;:&quot;4/18&quot;,&quot;FullName&quot;:&quot;Armando Pagkalinawan&quot;,&quot;PreferredPhoneNumber&quot;:&quot;123&quot;,&quot;MobilePhone&quot;:&quot;123&quot;,&quot;PhoneWork&quot;:&quot;123&quot;,&quot;PhoneHome&quot;:&quot;123&quot;,&quot;AddressLine1&quot;:&quot;4/18&quot;,&quot;AddressLine2&quot;:&quot;4/18&quot;}; test cookie=null; test%20cookie=null; .ASPXAUTH=362A98A49D4FDB9FBB03194DF7806521CF7CA30E84FD544612C3CDBB64EDF6D08F993CF6B496696F67158DF2934E4654F2BB63D61B5F0B4AA403B2DBC070FCA970762F436EAFA8F45AA2773D8A7923F1F46DE4D1; devvy=&#xD;&#xA;HTTP_HOST:localhost:5341&#xD;&#xA;HTTP_REFERER:http://localhost:5341/Products&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: application/json, text/plain, */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: VERITY_WIZARD_STEP=Skills; VERITY_LOGOUT=12%2F5%2F2017%201%3A46%3A24%20AM; :::CurrentTimezone:::=Australia/Melbourne; .AspNetCore.Antiforgery.4xhc3m6j818=CfDJ8P2wLSUDPcNAv4b0tPNUXNO-rJt5d2hG7bkRi_LIDsf0NcjtdMT6ao6YsrVYpThXMNSsjdAC0od-XVvBRegokfIVVB40v0whCbW9ims9Gjlw2XWSUx7ODIFSHnl-_ztRdtbSmT4wvEM9UuLnY03A7m8; .AspNetCore.Session=CfDJ8P2wLSUDPcNAv4b0tPNUXNPDw1%2Fbv7RHOtaj6tkVRLpkBaV9bbMnohTInF3rN1r0Qsb9%2B9JcYL4P2zy1rnLOIb9kvX77amzNExuCd0BUf82jYjGzUxBAhsAaJBxXizXXSyYaMoHkvZ%2BMabF6MNfxDoR5CROrdSMLpPYnHliLHTOk; isUnfoldBody=false; isTreeviewSettingCohortMenuExpanded=false; isTreeviewSettingMenuExpanded=true; isTreeviewSettingOrgMenuExpanded=true; ASP.NET_SessionId=pyl4cwtqx5bok1obpkobvgh3; multipleBooking=[{&quot;eventScheduleId&quot;:58,&quot;quantity&quot;:2}]; :::CurrentContactInformation:::={&quot;ContactId&quot;:114,&quot;AnonymousContactId&quot;:444,&quot;CookieKey&quot;:&quot;XKNt2JZK-20180102024449&quot;,&quot;IpAddress&quot;:&quot;::1&quot;,&quot;Email&quot;:&quot;armando.pagkalinawan@interactivepartners.com.au&quot;,&quot;FirstName&quot;:&quot;Armando&quot;,&quot;LastName&quot;:&quot;Pagkalinawan&quot;,&quot;Phone&quot;:&quot;123&quot;,&quot;Address&quot;:&quot;4/18&quot;,&quot;FullName&quot;:&quot;Armando Pagkalinawan&quot;,&quot;PreferredPhoneNumber&quot;:&quot;123&quot;,&quot;MobilePhone&quot;:&quot;123&quot;,&quot;PhoneWork&quot;:&quot;123&quot;,&quot;PhoneHome&quot;:&quot;123&quot;,&quot;AddressLine1&quot;:&quot;4/18&quot;,&quot;AddressLine2&quot;:&quot;4/18&quot;}; test cookie=null; test%20cookie=null; .ASPXAUTH=362A98A49D4FDB9FBB03194DF7806521CF7CA30E84FD544612C3CDBB64EDF6D08F993CF6B496696F67158DF2934E4654F2BB63D61B5F0B4AA403B2DBC070FCA970762F436EAFA8F45AA2773D8A7923F1F46DE4D1; devvy=&#xD;&#xA;Host: localhost:5341&#xD;&#xA;Referer: http://localhost:5341/Products&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="devvy" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="devvy" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="devvy" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Products/GetProducts" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource\Products\GetProducts" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="realSKU=%22AAA-M1-FA-1X-MOT-000017BLK000%22&amp;PName=%22%22&amp;SellerId=%22%22&amp;OperandProfit1=%22%22&amp;ValueProfit1=%22%22&amp;ShippingCost=%222.75%22&amp;OperandSRP30=%22%22&amp;ValueSRP30=%22%22&amp;OperandTUS30=%22%22&amp;ValueTUS30=%22%22&amp;OperandSRRS=%22%22&amp;ValueSRRS=%22%22&amp;OperandTURS=%22%22&amp;ValueTURS=%22%22" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="52705" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Products/GetProducts" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5341" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Products/GetProducts" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/plain, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="VERITY_WIZARD_STEP=Skills; VERITY_LOGOUT=12%2F5%2F2017%201%3A46%3A24%20AM; :::CurrentTimezone:::=Australia/Melbourne; .AspNetCore.Antiforgery.4xhc3m6j818=CfDJ8P2wLSUDPcNAv4b0tPNUXNO-rJt5d2hG7bkRi_LIDsf0NcjtdMT6ao6YsrVYpThXMNSsjdAC0od-XVvBRegokfIVVB40v0whCbW9ims9Gjlw2XWSUx7ODIFSHnl-_ztRdtbSmT4wvEM9UuLnY03A7m8; .AspNetCore.Session=CfDJ8P2wLSUDPcNAv4b0tPNUXNPDw1%2Fbv7RHOtaj6tkVRLpkBaV9bbMnohTInF3rN1r0Qsb9%2B9JcYL4P2zy1rnLOIb9kvX77amzNExuCd0BUf82jYjGzUxBAhsAaJBxXizXXSyYaMoHkvZ%2BMabF6MNfxDoR5CROrdSMLpPYnHliLHTOk; isUnfoldBody=false; isTreeviewSettingCohortMenuExpanded=false; isTreeviewSettingMenuExpanded=true; isTreeviewSettingOrgMenuExpanded=true; ASP.NET_SessionId=pyl4cwtqx5bok1obpkobvgh3; multipleBooking=[{&quot;eventScheduleId&quot;:58,&quot;quantity&quot;:2}]; :::CurrentContactInformation:::={&quot;ContactId&quot;:114,&quot;AnonymousContactId&quot;:444,&quot;CookieKey&quot;:&quot;XKNt2JZK-20180102024449&quot;,&quot;IpAddress&quot;:&quot;::1&quot;,&quot;Email&quot;:&quot;armando.pagkalinawan@interactivepartners.com.au&quot;,&quot;FirstName&quot;:&quot;Armando&quot;,&quot;LastName&quot;:&quot;Pagkalinawan&quot;,&quot;Phone&quot;:&quot;123&quot;,&quot;Address&quot;:&quot;4/18&quot;,&quot;FullName&quot;:&quot;Armando Pagkalinawan&quot;,&quot;PreferredPhoneNumber&quot;:&quot;123&quot;,&quot;MobilePhone&quot;:&quot;123&quot;,&quot;PhoneWork&quot;:&quot;123&quot;,&quot;PhoneHome&quot;:&quot;123&quot;,&quot;AddressLine1&quot;:&quot;4/18&quot;,&quot;AddressLine2&quot;:&quot;4/18&quot;}; test cookie=null; test%20cookie=null; .ASPXAUTH=362A98A49D4FDB9FBB03194DF7806521CF7CA30E84FD544612C3CDBB64EDF6D08F993CF6B496696F67158DF2934E4654F2BB63D61B5F0B4AA403B2DBC070FCA970762F436EAFA8F45AA2773D8A7923F1F46DE4D1; devvy=" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5341" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5341/Products" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="realSKU">
+      <value string="&quot;AAA-M1-FA-1X-MOT-000017BLK000&quot;" />
+    </item>
+    <item name="PName">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="SellerId">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="OperandProfit1">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ValueProfit1">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ShippingCost">
+      <value string="&quot;2.75&quot;" />
+    </item>
+    <item name="OperandSRP30">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ValueSRP30">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="OperandTUS30">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ValueTUS30">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="OperandSRRS">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ValueSRRS">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="OperandTURS">
+      <value string="&quot;&quot;" />
+    </item>
+    <item name="ValueTURS">
+      <value string="&quot;&quot;" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="VERITY_WIZARD_STEP">
+      <value string="Skills" />
+    </item>
+    <item name="VERITY_LOGOUT">
+      <value string="12%2F5%2F2017%201%3A46%3A24%20AM" />
+    </item>
+    <item name=":::CurrentTimezone:::">
+      <value string="Australia/Melbourne" />
+    </item>
+    <item name=".AspNetCore.Antiforgery.4xhc3m6j818">
+      <value string="CfDJ8P2wLSUDPcNAv4b0tPNUXNO-rJt5d2hG7bkRi_LIDsf0NcjtdMT6ao6YsrVYpThXMNSsjdAC0od-XVvBRegokfIVVB40v0whCbW9ims9Gjlw2XWSUx7ODIFSHnl-_ztRdtbSmT4wvEM9UuLnY03A7m8" />
+    </item>
+    <item name=".AspNetCore.Session">
+      <value string="CfDJ8P2wLSUDPcNAv4b0tPNUXNPDw1%2Fbv7RHOtaj6tkVRLpkBaV9bbMnohTInF3rN1r0Qsb9%2B9JcYL4P2zy1rnLOIb9kvX77amzNExuCd0BUf82jYjGzUxBAhsAaJBxXizXXSyYaMoHkvZ%2BMabF6MNfxDoR5CROrdSMLpPYnHliLHTOk" />
+    </item>
+    <item name="isUnfoldBody">
+      <value string="false" />
+    </item>
+    <item name="isTreeviewSettingCohortMenuExpanded">
+      <value string="false" />
+    </item>
+    <item name="isTreeviewSettingMenuExpanded">
+      <value string="true" />
+    </item>
+    <item name="isTreeviewSettingOrgMenuExpanded">
+      <value string="true" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="pyl4cwtqx5bok1obpkobvgh3" />
+    </item>
+    <item name="multipleBooking">
+      <value string="[{&quot;eventScheduleId&quot;:58,&quot;quantity&quot;:2}]" />
+    </item>
+    <item name=":::CurrentContactInformation:::">
+      <value string="{&quot;ContactId&quot;:114,&quot;AnonymousContactId&quot;:444,&quot;CookieKey&quot;:&quot;XKNt2JZK-20180102024449&quot;,&quot;IpAddress&quot;:&quot;::1&quot;,&quot;Email&quot;:&quot;armando.pagkalinawan@interactivepartners.com.au&quot;,&quot;FirstName&quot;:&quot;Armando&quot;,&quot;LastName&quot;:&quot;Pagkalinawan&quot;,&quot;Phone&quot;:&quot;123&quot;,&quot;Address&quot;:&quot;4/18&quot;,&quot;FullName&quot;:&quot;Armando Pagkalinawan&quot;,&quot;PreferredPhoneNumber&quot;:&quot;123&quot;,&quot;MobilePhone&quot;:&quot;123&quot;,&quot;PhoneWork&quot;:&quot;123&quot;,&quot;PhoneHome&quot;:&quot;123&quot;,&quot;AddressLine1&quot;:&quot;4/18&quot;,&quot;AddressLine2&quot;:&quot;4/18&quot;}" />
+    </item>
+    <item name="test cookie">
+      <value string="null" />
+    </item>
+    <item name="test%20cookie">
+      <value string="null" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="362A98A49D4FDB9FBB03194DF7806521CF7CA30E84FD544612C3CDBB64EDF6D08F993CF6B496696F67158DF2934E4654F2BB63D61B5F0B4AA403B2DBC070FCA970762F436EAFA8F45AA2773D8A7923F1F46DE4D1" />
+    </item>
+    <item name="devvy">
+      <value string="" />
+    </item>
+  </cookies>
+</error>

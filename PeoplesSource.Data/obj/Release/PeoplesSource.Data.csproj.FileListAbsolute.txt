@@ -17,3 +17,14 @@ E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\b
 E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.dll
 E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.pdb
 E:\ThieuCompleteCode\PeoplesSource_SourceCode\PeoplesSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.dll.config
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.pdb
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.xml
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csproj.CoreCompileInputs.cache
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.dll
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.pdb
