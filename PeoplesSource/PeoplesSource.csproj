@@ -26,6 +26,7 @@
     <SccProvider>SubversionScc</SccProvider>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2150,6 +2151,7 @@
     <Content Include="Views\Products\Index - Copy.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\TestView.cshtml" />
+    <Content Include="Views\Products\AutoPrice.cshtml" />
     <None Include="Web References\EWReturn\ReturnManagementService.wsdl" />
     <Content Include="Web References\EWReturn\SetItemAsReceivedResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>

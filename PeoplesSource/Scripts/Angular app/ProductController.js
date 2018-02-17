@@ -48,6 +48,8 @@
         vm.isSortByDesc = false;
         vm.isLoding = false;
         vm.profitPrices = profitPrices;
+        vm.updatePricesThenPublish = updatePricesThenPublish;
+        vm.updateIncrementalPricesThenPublish = updateIncrementalPricesThenPublish;
         $scope.orderByField = 'sellerId';
         $scope.reverseSort = false;
       
@@ -293,6 +295,11 @@
 
 
         }
+
+        function updatePricesThenPublish(bPrice) {
+            vm.updatePrices(bPrice);
+            vm.updateProducts();
+        }
         function updateIncrementalPrices(IPrice)
         {
             var iPrice = parseFloat(IPrice);
@@ -318,6 +325,11 @@
                     item.diff = item.priceDefault - item.updatedPrice;
                 }
             });
+        }
+
+        function updateIncrementalPricesThenPublish(IPrice) {
+            vm.updateIncrementalPrices(IPrice);
+            vm.updateProducts();
         }
         function updateProducts() {
             

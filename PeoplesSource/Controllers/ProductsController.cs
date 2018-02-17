@@ -25,10 +25,16 @@ namespace PeoplesSource.Controllers
             return View();
 
         }
+
+
+        public ActionResult AutoPrice()
+        {
+            return View();
+
+        }
+
         public ActionResult NetoProduct()
         {
-
-
             return View();
         }
         [HttpGet]

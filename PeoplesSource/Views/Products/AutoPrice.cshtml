@@ -1,0 +1,379 @@
+﻿@{
+    ViewBag.Title = "Products Publisher";
+}
+<style type="text/css">
+    .container.ng-scope {
+        width: auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+</style>
+<div class="container-fluid">
+    <div class="panel panel-primary" style="margin-top:40px;">
+        <div class="panel-heading"><h4>Products Publisher</h4></div>
+        <div class="panel-body" style="margin-top:20px;">
+            <div class="container" ng-controller="ProductController as vm">
+                @*class="container"*@
+                <form class="form-horizontal">
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Real SKU</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="sku" placeholder="Enter Sku" ng-model="vm.key" >
+                            </div>
+                            <label class="control-label col-md-2" for="sku">Product Name</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="PName" placeholder="Enter Product Name" ng-model="vm.PName" >
+                            </div>
+                            
+                            <button ng-disabled="!(vm.key ||vm.PName)" ng-click="vm.getProducts()" class="btn btn-primary col-md-2"> <i class="fa fa-cloud-download"></i> Get products </button>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Base </label>
+                            <div class="col-md-2">
+                                <input type="number" step="0.01" class="form-control" id="basePrice" ng-change="vm.updatePricesThenPublish(vm.basePrice)" placeholder="Enter Base"
+                                       ng-model="vm.basePrice" />
+                            </div>
+                            <div class="col-md-1"></div>
+                            <label class="control-label col-md-1" for="sku">Incremental</label>
+                            <div class="col-md-2">
+                                <input type="number" step="0.01" class="form-control" id="Incremental" ng-change="vm.updateIncrementalPricesThenPublish(vm.Incremental)" placeholder="Enter Incremental"
+                                       ng-model="vm.Incremental" />
+
+                            </div>
+                            <div class="col-md-1"></div>
+                            @*<button ng-disabled="!vm.haveProducts ||!(vm.basePrice || vm.Incremental)" class="btn btn-success col-md-2" ng-click="vm.updateProducts()"><i class="fa fa-cloud-upload"></i> Publish Products </button>*@
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="sku">Shipping Cost</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" ng-model="vm.ShippingCost" ng-change="vm.profitPrices(vm.ShippingCost)" required />
+                            </div>
+                            <div class="col-md-1"></div>
+                            <label class="control-label col-md-1" for="sku">Seller Id</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="SellerId" placeholder="Enter SellerId" ng-model="vm.SellerId">
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row col-md-12">
+                        
+                    </div>
+                    <div class="row col-md-12">
+                        <span class="col-md-11 col-md-offset-1">Ordered By: {{orderByField=='increment'?'Add':orderByField=='secondProfitPrice'?'Profit 2':orderByField=='firstProfitPrice'?'Profit 1':orderByField=='priceDefault'?'Price 1':orderByField=='updatedPrice'?'Price 2':orderByField }}, Reverse Sort: {{reverseSort}}</span><br><br>
+                    </div>*@
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="Profit1">Profit 1</label>
+                            <div class="col-md-1">
+                                <select id="ddlProfit1" class="form-control" ng-model="vm.OperandProfit1">
+                                    <option selected="selected" value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                    <option value="<>"><></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="tbProfit1" placeholder="Enter Profit 1" ng-model="vm.ValueProfit1">
+                            </div>
+                            <label class="control-label col-md-1" for="SRP30">SRP30</label>
+                            <div class="col-md-1">
+                                <select id="ddlSRP30" class="form-control" ng-model="vm.OperandSRP30">
+                                    <option selected="selected" value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                    <option value="<>"><></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="tbSRP30" placeholder="Enter SRP30" ng-model="vm.ValueSRP30">
+                            </div>
+                            <label class="control-label col-md-1" for="SRP30">TUS30</label>
+                            <div class="col-md-1">
+                                <select id="ddlTUS30" class="form-control" ng-model="vm.OperandTUS30">
+                                    <option selected="selected" value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                    <option value="<>"><></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="tbTUS30" placeholder="Enter TUS30" ng-model="vm.ValueTUS30">
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="SRRS">SRRS</label>
+                            <div class="col-md-1">
+                                <select id="ddlSRRS" class="form-control" ng-model="vm.OperandSRRS">
+                                    <option selected="selected" value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                    <option value="<>"><></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="tbSRRS" placeholder="Enter SRRS" ng-model="vm.ValueSRRS">
+                            </div>
+                            <label class="control-label col-md-1" for="TURS">TURS</label>
+                            <div class="col-md-1">
+                                <select id="ddlTURS" class="form-control" ng-model="vm.OperandTURS">
+                                    <option selected="selected" value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                    <option value="<>"><></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="tbTURS" placeholder="Enter TURS" ng-model="vm.ValueTURS">
+                            </div>
+                        </div>
+                    </div>
+
+                        <div ng-show="vm.isLoding">
+                            <div class="windows8">
+                                <div class="wBall" id="wBall_1">
+                                    <div class="wInnerBall"></div>
+                                </div>
+                                <div class="wBall" id="wBall_2">
+                                    <div class="wInnerBall"></div>
+                                </div>
+                                <div class="wBall" id="wBall_3">
+                                    <div class="wInnerBall"></div>
+                                </div>
+                                <div class="wBall" id="wBall_4">
+                                    <div class="wInnerBall"></div>
+                                </div>
+                                <div class="wBall" id="wBall_5">
+                                    <div class="wInnerBall"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="!vm.isLoding">
+                            <table class="table borderless" border="0" cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th style="width:3%;text-align:center">
+                                            <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateSelection()">
+                                        </th>
+                                        <th style="width: 10%;text-align: center">
+                                            <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
+                                            @*Real SKU
+                                <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+                                        <th style="width: 20%;text-align: center">
+                                            <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a>
+                                            @*Product Name
+                                <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+                                        <th style="width:10%;text-align:center">
+                                            <a href="#" ng-click="orderByField='sku'; reverseSort = !reverseSort">SKU</a>
+                                            @*SKU
+                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='eBayItemID'; reverseSort = !reverseSort">eBay Item#</a>
+
+                                        </th>
+                                        <th style="width:8%;text-align:center">
+                                            <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort"> Seller Id</a>
+                                            @*Seller Id
+                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='cost'; reverseSort = !reverseSort">Cost</a>
+                                            @*Cost
+                                 <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+
+                                        <th style="width:8%;text-align:center">
+                                            <a href="#" ng-click="orderByField='increment'; reverseSort = !reverseSort">Add</a>
+                                            @*Increment   <span style="display:inline-block;" ng-click="vm.sortByAsc('increment')"><i ng-class="vm.isISortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                                <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+                                        <th style="width:7%;text-align:center">
+                                            <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort"> Price 1</a>
+
+                                        </th>
+                                        <th style="width:8%;text-align:center">
+                                            <a href="#" ng-click="orderByField='updatedPrice'; reverseSort = !reverseSort"> Price 2 </a>
+
+                                        </th>
+                                        <th style="width:10%;text-align:center">
+                                            <a href="#" ng-click="orderByField='firstProfitPrice'; reverseSort = !reverseSort">Profit 1 </a>
+
+                                        </th>
+                                        <th style="width:10%;text-align:center">
+                                            <a href="#" ng-click="orderByField='secondProfitPrice'; reverseSort = !reverseSort">Profit 2 </a>
+
+                                        </th>
+                                        @*<th style="width:5%;text-align:center">
+                                <a href="#" ng-click="orderByField='diff'; reverseSort = !reverseSort">Diff</a>
+
+                            </th>*@
+                                        @*<th style="width:5%;text-align:center">
+                                <a href="#" ng-click="orderByField='kz'; reverseSort = !reverseSort">KZ</a>
+                               h>
+                            <th style="width:5%;text-align:center">
+                                <a href="#" ng-click="orderByField='oht'; reverseSort = !reverseSort"> OHT</a>
+                              </th>*@
+
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='daily30'; reverseSort = !reverseSort" title="Daily Units Sold Rate for Past 30 Days">SRP30</a>
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='total30'; reverseSort = !reverseSort" title="Total Number of Units Sold in Past 30 days">TUS30</a>
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='dailyRestock'; reverseSort = !reverseSort" title="Daily Units Sold Rate from Last Restock to Last Sale Date">SRRS</a>
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='totalRestoct'; reverseSort = !reverseSort" title="Total Number of Units Sold between Last ReStock and Last sale date">TURS</a>
+                                        </th>
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='stockDate'; reverseSort = !reverseSort">Stock Date</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-striped" ng-repeat="item in vm.products | filter: searchKeyword | orderBy:orderByField:reverseSort">
+                                        <td class="text-center">
+                                            <input type="checkbox" ng-model="item.selected" />
+                                        </td>
+                                        <td>
+                                            {{item.realSKU}}
+                                        </td>
+                                        <td>
+                                            {{item.name}}
+                                        </td>
+                                        <td class="text-left">
+                                            {{item.sku}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.eBayItemID }}
+                                        </td>
+                                        <td class="text-left">
+                                            {{item.sellerId}}
+                                        </td>
+
+                                        <td class="text-center">
+                                            {{item.cost}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.increment}}
+                                        </td>
+
+                                        <td class="text-center">
+                                            {{item.priceDefault}}
+                                        </td>
+
+                                        <td class="text-center">
+                                            {{item.updatedPrice | number:2}}
+                                        </td>
+                                        <td class="text-center">{{ item.firstProfitPrice| number:2}}</td>
+                                        <td class="text-center">{{item.secondProfitPrice | number:2}}</td>
+                                        @*<td class="text-center">
+                                {{item.diff | number:2}}
+                            </td>*@
+                                        @*<td class="text-center">
+                                {{item.kz | number:2}}
+                            </td>
+                            <td class="text-center">
+                                {{item.oht | number:2}}
+                            </td>*@
+
+                                        <td class="text-center">
+                                            {{item.daily30 | number:2}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.total30}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.dailyRestock | number:2}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.totalRestock}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.stockDate | date:'MM/dd/yy'}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-12">
+                            @*<button ng-disabled="!vm.haveProducts ||!vm.basePrice" class="btn btn-success pull-right" ng-click="vm.updateProducts()"><i class="fa fa-cloud-upload"></i> Publish Products </button>*@
+                        </div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductController.js"></script>
+<script type="text/javascript" src="~/Scripts/Angular app/ProductService.js"></script>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/css/LoadSpinner.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sku").focus();
+        $("#divProfitValue2").hide();
+
+        $("#ddlProfit1").change(function () {
+            var _operand = $(this).val();
+            if (_operand == "between") {
+                $("#divProfitValue2").show();
+            }
+            else {
+                $("#divProfitValue2").hide();
+            }
+        });
+
+        $("#divSRP30Value2").hide();
+
+        $("#ddlSRP30").change(function () {
+            var _operand = $(this).val();
+            if (_operand == "between") {
+                $("#divSRP30Value2").show();
+            }
+            else {
+                $("#divSRP30Value2").hide();
+            }
+        });
+    });
+
+    function ClearProfit1Filter()
+    {
+        $("#ddlProfit1").val("");
+        $("#divProfitValue2").hide();
+        $("#profit1TextBox1").val("");
+        $("#profit1TextBox2").val("");
+    }
+    function ClearSRP30Filter() {
+        $("#ddlSRP30").val("");
+        $("#divSRP30Value2").hide();
+        $("#srp30TextBox1").val("");
+        $("#srp30TextBox2").val("");
+    }
+</script>
