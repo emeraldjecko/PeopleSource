@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PeopleSourceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PeopleSourceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="adminid" />
@@ -152,6 +152,26 @@
           <Property Name="ExceptionType" Type="nvarchar" MaxLength="256" />
           <Property Name="Details" Type="ntext" />
         </EntityType>
+        <EntityType Name="BestMatchPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RealSKU" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="SellerID" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Position" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="TotalListings" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price2" Type="float" />
+          <Property Name="sold" Type="float" />
+          <Property Name="search_term" Type="nvarchar" MaxLength="255" />
+          <Property Name="url" Type="nvarchar" MaxLength="255" />
+          <Property Name="shipping" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ContactId" />
@@ -289,6 +309,170 @@
           <Property Name="MasterMessageid" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="DeleteDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="NetoProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RealSKU" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="SellerID" Type="nvarchar" MaxLength="255" />
+          <Property Name="NetoSKU" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="Position" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="TotalListings" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Price2" Type="float" />
+          <Property Name="sold" Type="float" />
+          <Property Name="search_term" Type="nvarchar" MaxLength="255" />
+          <Property Name="url" Type="nvarchar" MaxLength="255" />
+          <Property Name="shipping" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_source" Type="nvarchar(max)" />
+          <Property Name="account" Type="nvarchar" MaxLength="255" />
+          <Property Name="txn_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="Datetest" Type="nvarchar(max)" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="payer_email" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_country" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_zip" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_city" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_street" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_street2" Type="nvarchar" MaxLength="255" />
+          <Property Name="tracking" Type="nvarchar" MaxLength="255" />
+          <Property Name="item_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="item_sku" Type="nvarchar" MaxLength="255" />
+          <Property Name="item_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrackerXML" Type="nvarchar(max)" />
+          <Property Name="TrackingClosedStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'PeopleSource.dbo.order_report' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="order_report">
+          <Property Name="order_source" Type="nvarchar" MaxLength="500" />
+          <Property Name="account" Type="nvarchar" MaxLength="500" />
+          <Property Name="txn_id" Type="nvarchar" MaxLength="500" />
+          <Property Name="txn_id2" Type="nvarchar" MaxLength="500" />
+          <Property Name="txn_seq" Type="nvarchar" MaxLength="500" />
+          <Property Name="date" Type="nvarchar" MaxLength="500" />
+          <Property Name="status" Type="nvarchar" MaxLength="500" />
+          <Property Name="payment_type" Type="nvarchar" MaxLength="500" />
+          <Property Name="payment_auth_info" Type="nvarchar" MaxLength="500" />
+          <Property Name="name" Type="nvarchar" MaxLength="500" />
+          <Property Name="payer_email" Type="nvarchar" MaxLength="500" />
+          <Property Name="contact_phone" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_country" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_state" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_zip" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_city" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_street" Type="nvarchar" MaxLength="500" />
+          <Property Name="address_street2" Type="nvarchar" MaxLength="500" />
+          <Property Name="total" Type="nvarchar" MaxLength="500" />
+          <Property Name="shipping" Type="nvarchar" MaxLength="500" />
+          <Property Name="tax" Type="nvarchar" MaxLength="500" />
+          <Property Name="discount" Type="nvarchar" MaxLength="500" />
+          <Property Name="fee" Type="nvarchar" MaxLength="500" />
+          <Property Name="ship_date" Type="nvarchar" MaxLength="500" />
+          <Property Name="carrier" Type="nvarchar" MaxLength="500" />
+          <Property Name="method" Type="nvarchar" MaxLength="500" />
+          <Property Name="weight" Type="nvarchar" MaxLength="500" />
+          <Property Name="tracking" Type="nvarchar" MaxLength="500" />
+          <Property Name="postage" Type="nvarchar" MaxLength="500" />
+          <Property Name="postage_account" Type="nvarchar" MaxLength="500" />
+          <Property Name="num_order_lines" Type="nvarchar" MaxLength="500" />
+          <Property Name="line_number" Type="nvarchar" MaxLength="500" />
+          <Property Name="item_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="item_number" Type="nvarchar" MaxLength="500" />
+          <Property Name="item_sku" Type="nvarchar" MaxLength="500" />
+          <Property Name="location" Type="nvarchar" MaxLength="500" />
+          <Property Name="xref3" Type="nvarchar" MaxLength="500" />
+          <Property Name="quantity" Type="nvarchar" MaxLength="500" />
+          <Property Name="subtotal" Type="nvarchar" MaxLength="500" />
+          <Property Name="item_description" Type="nvarchar" MaxLength="500" />
+          <Property Name="queue_id" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="RealSKU" Type="nvarchar" MaxLength="255" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="255" />
+          <Property Name="SellerId" Type="nvarchar" MaxLength="255" />
+          <Property Name="SKU" Type="varchar" MaxLength="255" />
+          <Property Name="PriceDefault" Type="float" />
+          <Property Name="CostPrice" Type="float" />
+          <Property Name="Active" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="eBayItemID" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'PeopleSource.dbo.quantity_report' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="quantity_report">
+          <Property Name="Teapplix SKU" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column 1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Asin" Type="nvarchar" MaxLength="500" />
+          <Property Name="UPC" Type="nvarchar" MaxLength="500" />
+          <Property Name="Location" Type="nvarchar" MaxLength="500" />
+          <Property Name="Xref3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Unit Cost" Type="nvarchar" MaxLength="500" />
+          <Property Name="Total Cost" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty on Hand" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty to Ship" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty Available" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty Reserve" Type="nvarchar" MaxLength="500" />
+          <Property Name="Item Title" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'PeopleSource.dbo.reorder_products' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="reorder_products">
+          <Property Name="Item Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="Scan Control" Type="nvarchar" MaxLength="500" />
+          <Property Name="Teapplix SKU" Type="nvarchar" MaxLength="500" />
+          <Property Name="Item Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Category" Type="nvarchar" MaxLength="500" />
+          <Property Name="Jet Category Id" Type="nvarchar" MaxLength="500" />
+          <Property Name="Walmart Category Id" Type="nvarchar" MaxLength="500" />
+          <Property Name="Walmart Tax Code" Type="nvarchar" MaxLength="500" />
+          <Property Name="Supplier" Type="nvarchar" MaxLength="500" />
+          <Property Name="Supplier SKU" Type="nvarchar" MaxLength="500" />
+          <Property Name="Asin" Type="nvarchar" MaxLength="500" />
+          <Property Name="UPC" Type="nvarchar" MaxLength="500" />
+          <Property Name="Location" Type="nvarchar" MaxLength="500" />
+          <Property Name="Xref3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image Small" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image Large" Type="nvarchar" MaxLength="500" />
+          <Property Name="Cost" Type="nvarchar" MaxLength="500" />
+          <Property Name="Default Price" Type="nvarchar" MaxLength="500" />
+          <Property Name="Customs Value" Type="nvarchar" MaxLength="500" />
+          <Property Name="Customs Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Localized Customs Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Harmonized Tariff Code" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sales Rep" Type="nvarchar" MaxLength="500" />
+          <Property Name="Commission Rate" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="nvarchar" MaxLength="500" />
+          <Property Name="Dangerous Goods Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="Country of Origin" Type="nvarchar" MaxLength="500" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="500" />
+          <Property Name="Model" Type="nvarchar" MaxLength="500" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="500" />
+          <Property Name="Manufacturer Part Number" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
         <EntityType Name="Seller">
           <Key>
             <PropertyRef Name="Sellerid" />
@@ -314,6 +498,17 @@
           <Property Name="IsProxyRequired" Type="bit" Nullable="false" />
           <Property Name="RuName" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SellerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Increment" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IsPercentage" Type="bit" Nullable="false" />
+          <Property Name="KZ" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="OHT" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="Tags">
           <Key>
@@ -487,16 +682,19 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_aspnet_WebPartState_User' does
 warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_ReorderProducts">
           <Key>
+            <PropertyRef Name="Quantity" />
             <PropertyRef Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" />
+            <PropertyRef Name="TotalNumberOfUnitsSoldInPast30Days" />
+            <PropertyRef Name="DailyUnitsSoldRateForPast30Days" />
             <PropertyRef Name="TotalNumberOfDaysFromLastStockToLastSaleDate" />
           </Key>
           <Property Name="SKU" Type="nvarchar" MaxLength="500" />
           <Property Name="Date Last Sale" Type="date" />
           <Property Name="StockDate" Type="date" />
-          <Property Name="Quantity on Hand" Type="nvarchar" MaxLength="500" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" Type="int" Nullable="false" />
-          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="int" />
-          <Property Name="DailyUnitsSoldRateForPast30Days" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="int" Nullable="false" />
+          <Property Name="DailyUnitsSoldRateForPast30Days" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Product Title" Type="nvarchar" MaxLength="500" />
           <Property Name="TotalNumberOfDaysFromLastStockToLastSaleDate" Type="int" Nullable="false" />
           <Property Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" Type="decimal" Precision="18" Scale="2" />
@@ -1291,6 +1489,7 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
           <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BestMatchPosition" EntityType="Self.BestMatchPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EbayMessages" EntityType="Self.EbayMessages" Schema="dbo" store:Type="Tables" />
@@ -1301,7 +1500,11 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
           <EntitySet Name="MasterMessages" EntityType="Self.MasterMessages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MessageSchedule" EntityType="Self.MessageSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MessageTags" EntityType="Self.MessageTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NetoProduct" EntityType="Self.NetoProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellerInfo" EntityType="Self.SellerInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Templates" EntityType="Self.Templates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
@@ -1400,7 +1603,7 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
     [vw_ReorderProducts].[SKU] AS [SKU], 
     [vw_ReorderProducts].[Date Last Sale] AS [Date Last Sale], 
     [vw_ReorderProducts].[StockDate] AS [StockDate], 
-    [vw_ReorderProducts].[Quantity on Hand] AS [Quantity on Hand], 
+    [vw_ReorderProducts].[Quantity] AS [Quantity], 
     [vw_ReorderProducts].[TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate] AS [TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate], 
     [vw_ReorderProducts].[TotalNumberOfUnitsSoldInPast30Days] AS [TotalNumberOfUnitsSoldInPast30Days], 
     [vw_ReorderProducts].[DailyUnitsSoldRateForPast30Days] AS [DailyUnitsSoldRateForPast30Days], 
@@ -2799,6 +3002,11 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
             <End Role="MasterMessage" EntitySet="MasterMessages" />
             <End Role="MessageTag" EntitySet="MessageTags" />
           </AssociationSet>
+          <EntitySet Name="BestMatchPositions" EntityType="PeopleSourceModel.BestMatchPosition" />
+          <EntitySet Name="NetoProducts" EntityType="PeopleSourceModel.NetoProduct" />
+          <EntitySet Name="Orders" EntityType="PeopleSourceModel.Order" />
+          <EntitySet Name="Products" EntityType="PeopleSourceModel.Product" />
+          <EntitySet Name="SellerInfoes" EntityType="PeopleSourceModel.SellerInfo" />
           <EntitySet Name="vw_ReorderProducts" EntityType="PeopleSourceModel.vw_ReorderProducts" />
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
@@ -3125,18 +3333,118 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BestMatchPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SellerID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="TotalListings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price2" Type="Double" />
+          <Property Name="sold" Type="Double" />
+          <Property Name="search_term" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="shipping" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NetoProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SellerID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NetoSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="TotalListings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Price2" Type="Double" />
+          <Property Name="sold" Type="Double" />
+          <Property Name="search_term" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="shipping" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="txn_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="Datetest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="payer_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_state" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_zip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_street2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tracking" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="item_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="item_sku" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="item_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrackerXML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrackingClosedStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SellerId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SKU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PriceDefault" Type="Double" />
+          <Property Name="CostPrice" Type="Double" />
+          <Property Name="Active" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="eBayItemID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SellerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Increment" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IsPercentage" Type="Boolean" Nullable="false" />
+          <Property Name="KZ" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="OHT" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
         <EntityType Name="vw_ReorderProducts">
           <Key>
+            <PropertyRef Name="Quantity" />
             <PropertyRef Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" />
+            <PropertyRef Name="TotalNumberOfUnitsSoldInPast30Days" />
+            <PropertyRef Name="DailyUnitsSoldRateForPast30Days" />
             <PropertyRef Name="TotalNumberOfDaysFromLastStockToLastSaleDate" />
           </Key>
           <Property Name="SKU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Date_Last_Sale" Type="DateTime" Precision="0" />
           <Property Name="StockDate" Type="DateTime" Precision="0" />
-          <Property Name="Quantity_on_Hand" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" Type="Int32" Nullable="false" />
-          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="Int32" />
-          <Property Name="DailyUnitsSoldRateForPast30Days" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="Int32" Nullable="false" />
+          <Property Name="DailyUnitsSoldRateForPast30Days" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Product_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="TotalNumberOfDaysFromLastStockToLastSaleDate" Type="Int32" Nullable="false" />
           <Property Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" Type="Decimal" Precision="18" Scale="2" />
@@ -3730,6 +4038,108 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BestMatchPositions">
+            <EntityTypeMapping TypeName="PeopleSourceModel.BestMatchPosition">
+              <MappingFragment StoreEntitySet="BestMatchPosition">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="shipping" ColumnName="shipping" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="search_term" ColumnName="search_term" />
+                <ScalarProperty Name="sold" ColumnName="sold" />
+                <ScalarProperty Name="Price2" ColumnName="Price2" />
+                <ScalarProperty Name="TotalListings" ColumnName="TotalListings" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NetoProducts">
+            <EntityTypeMapping TypeName="PeopleSourceModel.NetoProduct">
+              <MappingFragment StoreEntitySet="NetoProduct">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="shipping" ColumnName="shipping" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="search_term" ColumnName="search_term" />
+                <ScalarProperty Name="sold" ColumnName="sold" />
+                <ScalarProperty Name="Price2" ColumnName="Price2" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TotalListings" ColumnName="TotalListings" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="NetoSKU" ColumnName="NetoSKU" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PeopleSourceModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="TrackingClosedStatus" ColumnName="TrackingClosedStatus" />
+                <ScalarProperty Name="TrackerXML" ColumnName="TrackerXML" />
+                <ScalarProperty Name="item_description" ColumnName="item_description" />
+                <ScalarProperty Name="item_sku" ColumnName="item_sku" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="tracking" ColumnName="tracking" />
+                <ScalarProperty Name="address_street2" ColumnName="address_street2" />
+                <ScalarProperty Name="address_street" ColumnName="address_street" />
+                <ScalarProperty Name="address_city" ColumnName="address_city" />
+                <ScalarProperty Name="address_zip" ColumnName="address_zip" />
+                <ScalarProperty Name="address_state" ColumnName="address_state" />
+                <ScalarProperty Name="address_country" ColumnName="address_country" />
+                <ScalarProperty Name="payer_email" ColumnName="payer_email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Datetest" ColumnName="Datetest" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="txn_id" ColumnName="txn_id" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="order_source" ColumnName="order_source" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PeopleSourceModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="eBayItemID" ColumnName="eBayItemID" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="PriceDefault" ColumnName="PriceDefault" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellerInfoes">
+            <EntityTypeMapping TypeName="PeopleSourceModel.SellerInfo">
+              <MappingFragment StoreEntitySet="SellerInfo">
+                <ScalarProperty Name="OHT" ColumnName="OHT" />
+                <ScalarProperty Name="KZ" ColumnName="KZ" />
+                <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+                <ScalarProperty Name="Increment" ColumnName="Increment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_ReorderProducts">
             <EntityTypeMapping TypeName="PeopleSourceModel.vw_ReorderProducts">
               <MappingFragment StoreEntitySet="vw_ReorderProducts">
@@ -3739,7 +4149,7 @@ warning 6002: The table/view 'PeopleSource.dbo.vw_ReorderProducts' does not have
                 <ScalarProperty Name="DailyUnitsSoldRateForPast30Days" ColumnName="DailyUnitsSoldRateForPast30Days" />
                 <ScalarProperty Name="TotalNumberOfUnitsSoldInPast30Days" ColumnName="TotalNumberOfUnitsSoldInPast30Days" />
                 <ScalarProperty Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" ColumnName="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" />
-                <ScalarProperty Name="Quantity_on_Hand" ColumnName="Quantity on Hand" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="StockDate" ColumnName="StockDate" />
                 <ScalarProperty Name="Date_Last_Sale" ColumnName="Date Last Sale" />
                 <ScalarProperty Name="SKU" ColumnName="SKU" />

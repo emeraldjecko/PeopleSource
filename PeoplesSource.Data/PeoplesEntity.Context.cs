@@ -61,6 +61,11 @@ namespace PeoplesSource.Data
         public virtual DbSet<MessageTag> MessageTags { get; set; }
         public virtual DbSet<EbayMessage> EbayMessages { get; set; }
         public virtual DbSet<MasterMessage> MasterMessages { get; set; }
+        public virtual DbSet<BestMatchPosition> BestMatchPositions { get; set; }
+        public virtual DbSet<NetoProduct> NetoProducts { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<SellerInfo> SellerInfoes { get; set; }
         public virtual DbSet<vw_ReorderProducts> vw_ReorderProducts { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)

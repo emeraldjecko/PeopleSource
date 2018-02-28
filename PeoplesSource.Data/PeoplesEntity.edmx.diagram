@@ -77,7 +77,12 @@
         <AssociationConnector Association="PeopleSourceModel.FK_EbayMessages_MasterMessages" />
         <AssociationConnector Association="PeopleSourceModel.FK_MasterMessages_Seller" />
         <AssociationConnector Association="PeopleSourceModel.FK_MessageTags_MasterMessages" />
-        <EntityTypeShape EntityType="PeopleSourceModel.vw_ReorderProducts" Width="1.5" PointX="14.375" PointY="12.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.BestMatchPosition" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.NetoProduct" Width="1.5" PointX="16.375" PointY="5.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Order" Width="1.5" PointX="16.375" PointY="11.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.Product" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.SellerInfo" Width="1.5" PointX="15.375" PointY="17.75" />
+        <EntityTypeShape EntityType="PeopleSourceModel.vw_ReorderProducts" Width="1.5" PointX="17.375" PointY="17.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

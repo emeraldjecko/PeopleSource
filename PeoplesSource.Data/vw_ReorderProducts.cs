@@ -17,10 +17,10 @@ namespace PeoplesSource.Data
         public string SKU { get; set; }
         public Nullable<System.DateTime> Date_Last_Sale { get; set; }
         public Nullable<System.DateTime> StockDate { get; set; }
-        public string Quantity_on_Hand { get; set; }
+        public int Quantity { get; set; }
         public int TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate { get; set; }
-        public Nullable<int> TotalNumberOfUnitsSoldInPast30Days { get; set; }
-        public Nullable<decimal> DailyUnitsSoldRateForPast30Days { get; set; }
+        public int TotalNumberOfUnitsSoldInPast30Days { get; set; }
+        public decimal DailyUnitsSoldRateForPast30Days { get; set; }
         public string Product_Title { get; set; }
         public int TotalNumberOfDaysFromLastStockToLastSaleDate { get; set; }
         public Nullable<decimal> DailyUnitsSoldRateFromLastRestockToLastSaleDate { get; set; }

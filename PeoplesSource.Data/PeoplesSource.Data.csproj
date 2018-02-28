@@ -103,6 +103,9 @@
     <Compile Include="aspnet_WebEvent_Events.cs">
       <DependentUpon>PeoplesEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="BestMatchPosition.cs">
+      <DependentUpon>PeoplesEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contact.cs">
       <DependentUpon>PeoplesEntity.tt</DependentUpon>
     </Compile>
@@ -139,6 +142,12 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductEntities.cs" />
     <Compile Include="Models\SellerInfo.cs" />
+    <Compile Include="NetoProduct.cs">
+      <DependentUpon>PeoplesEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>PeoplesEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PeoplesEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,8 +163,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PeoplesEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>PeoplesEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seller.cs">
+      <DependentUpon>PeoplesEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellerInfo.cs">
       <DependentUpon>PeoplesEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Tag.cs">
