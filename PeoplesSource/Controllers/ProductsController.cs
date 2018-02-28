@@ -115,7 +115,9 @@ namespace PeoplesSource.Controllers
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
                              stockDate = r.StockDate,
+                             qty = r.Quantity,
                              firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+                             
 
                          }).ToList();
 
@@ -151,27 +153,27 @@ namespace PeoplesSource.Controllers
             {
                 if (OperandSRP30 == "=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) == valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) == valueSRP30Double).ToList();
                 }
                 else if (OperandSRP30 == "<=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) <= valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) <= valueSRP30Double).ToList();
                 }
                 else if (OperandSRP30 == ">=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) >= valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) >= valueSRP30Double).ToList();
                 }
                 else if (OperandSRP30 == "<")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) < valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) < valueSRP30Double).ToList();
                 }
                 else if (OperandSRP30 == ">")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) > valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) > valueSRP30Double).ToList();
                 }
                 else if (OperandSRP30 == "<>")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30.Value), 2) != valueSRP30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.daily30), 2) != valueSRP30Double).ToList();
                 }
             }
 
@@ -179,27 +181,27 @@ namespace PeoplesSource.Controllers
             {
                 if (OperandTUS30 == "=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) == valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) == valueTUS30Double).ToList();
                 }
                 else if (OperandTUS30 == "<=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) <= valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) <= valueTUS30Double).ToList();
                 }
                 else if (OperandTUS30 == ">=")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) >= valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) >= valueTUS30Double).ToList();
                 }
                 else if (OperandTUS30 == "<")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) < valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) < valueTUS30Double).ToList();
                 }
                 else if (OperandTUS30 == ">")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) > valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) > valueTUS30Double).ToList();
                 }
                 else if (OperandTUS30 == "<>")
                 {
-                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30.Value), 2) != valueTUS30Double).ToList();
+                    items = items.Where(p => Math.Round(Convert.ToDouble(p.total30), 2) != valueTUS30Double).ToList();
                 }
             }
 
@@ -235,27 +237,27 @@ namespace PeoplesSource.Controllers
             {
                 if (OperandTURS == "=")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) == valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) == valueTURSInt).ToList();
                 }
                 else if (OperandTURS == "<=")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) <= valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) <= valueTURSInt).ToList();
                 }
                 else if (OperandTURS == ">=")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) >= valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) >= valueTURSInt).ToList();
                 }
                 else if (OperandTURS == "<")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) < valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) < valueTURSInt).ToList();
                 }
                 else if (OperandTURS == ">")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) > valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) > valueTURSInt).ToList();
                 }
                 else if (OperandTURS == "<>")
                 {
-                    items = items.Where(p => Convert.ToInt32(p.total30.Value) != valueTURSInt).ToList();
+                    items = items.Where(p => Convert.ToInt32(p.total30) != valueTURSInt).ToList();
                 }
             }
            
