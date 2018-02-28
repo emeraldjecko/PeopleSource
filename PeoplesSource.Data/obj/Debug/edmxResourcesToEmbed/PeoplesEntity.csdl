@@ -1237,6 +1237,11 @@
       <End Role="MasterMessage" EntitySet="MasterMessages" />
       <End Role="MessageTag" EntitySet="MessageTags" />
     </AssociationSet>
+    <EntitySet Name="BestMatchPositions" EntityType="PeopleSourceModel.BestMatchPosition" />
+    <EntitySet Name="NetoProducts" EntityType="PeopleSourceModel.NetoProduct" />
+    <EntitySet Name="Orders" EntityType="PeopleSourceModel.Order" />
+    <EntitySet Name="Products" EntityType="PeopleSourceModel.Product" />
+    <EntitySet Name="SellerInfoes" EntityType="PeopleSourceModel.SellerInfo" />
     <EntitySet Name="vw_ReorderProducts" EntityType="PeopleSourceModel.vw_ReorderProducts" />
   </EntityContainer>
   <ComplexType Name="aspnet_Membership_GetPassword_Result">
@@ -1563,20 +1568,120 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="BestMatchPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SellerID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ItemNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Position" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="TotalListings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Price2" Type="Double" />
+    <Property Name="sold" Type="Double" />
+    <Property Name="search_term" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="shipping" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="NetoProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SellerID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NetoSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ItemNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Cost" Type="Double" />
+    <Property Name="Position" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="TotalListings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Price2" Type="Double" />
+    <Property Name="sold" Type="Double" />
+    <Property Name="search_term" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="shipping" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="account" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="txn_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="Datetest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="payer_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_state" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_zip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address_street2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="tracking" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="item_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="item_sku" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="item_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TrackerXML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrackingClosedStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RealSKU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SellerId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SKU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PriceDefault" Type="Double" />
+    <Property Name="CostPrice" Type="Double" />
+    <Property Name="Active" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="Cost" Type="Double" />
+    <Property Name="eBayItemID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SellerInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Increment" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="IsPercentage" Type="Boolean" Nullable="false" />
+    <Property Name="KZ" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="OHT" Type="Decimal" Precision="18" Scale="5" />
+  </EntityType>
   <EntityType Name="vw_ReorderProducts">
     <Key>
-      <PropertyRef Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" />
-      <PropertyRef Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" />
+      <PropertyRef Name="TotalNumberOfUnitsSoldInPast30Days" />
+      <PropertyRef Name="DailyUnitsSoldRateForPast30Days" />
+      <PropertyRef Name="TotalNumberOfDaysFromLastStockToLastSaleDate" />
     </Key>
     <Property Name="SKU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Date_Last_Sale" Type="DateTime" Precision="0" />
-    <Property Name="Date_product_was_last_stocked" Type="DateTime" Precision="0" />
-    <Property Name="Quantity_on_Hand" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" Type="Int32" Nullable="false" />
-    <Property Name="Total_Number_of_Units_Sold_in_Past_30_days" Type="Int32" />
-    <Property Name="Daily_Units_Sold_Rate_for_Past_30_Days" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StockDate" Type="DateTime" Precision="0" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumberOfUnitsSoldInPast30Days" Type="Int32" Nullable="false" />
+    <Property Name="DailyUnitsSoldRateForPast30Days" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="Product_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" Type="Int32" Nullable="false" />
-    <Property Name="Daily_Units_Sold_Rate_from_Last_Restock_to_Last_Sale_Date" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalNumberOfDaysFromLastStockToLastSaleDate" Type="Int32" Nullable="false" />
+    <Property Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
 </Schema>

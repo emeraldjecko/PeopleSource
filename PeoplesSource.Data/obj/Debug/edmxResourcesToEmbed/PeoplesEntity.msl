@@ -584,17 +584,119 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BestMatchPositions">
+      <EntityTypeMapping TypeName="PeopleSourceModel.BestMatchPosition">
+        <MappingFragment StoreEntitySet="BestMatchPosition">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="search_term" ColumnName="search_term" />
+          <ScalarProperty Name="sold" ColumnName="sold" />
+          <ScalarProperty Name="Price2" ColumnName="Price2" />
+          <ScalarProperty Name="TotalListings" ColumnName="TotalListings" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NetoProducts">
+      <EntityTypeMapping TypeName="PeopleSourceModel.NetoProduct">
+        <MappingFragment StoreEntitySet="NetoProduct">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="search_term" ColumnName="search_term" />
+          <ScalarProperty Name="sold" ColumnName="sold" />
+          <ScalarProperty Name="Price2" ColumnName="Price2" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="TotalListings" ColumnName="TotalListings" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+          <ScalarProperty Name="NetoSKU" ColumnName="NetoSKU" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="PeopleSourceModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TrackingClosedStatus" ColumnName="TrackingClosedStatus" />
+          <ScalarProperty Name="TrackerXML" ColumnName="TrackerXML" />
+          <ScalarProperty Name="item_description" ColumnName="item_description" />
+          <ScalarProperty Name="item_sku" ColumnName="item_sku" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="tracking" ColumnName="tracking" />
+          <ScalarProperty Name="address_street2" ColumnName="address_street2" />
+          <ScalarProperty Name="address_street" ColumnName="address_street" />
+          <ScalarProperty Name="address_city" ColumnName="address_city" />
+          <ScalarProperty Name="address_zip" ColumnName="address_zip" />
+          <ScalarProperty Name="address_state" ColumnName="address_state" />
+          <ScalarProperty Name="address_country" ColumnName="address_country" />
+          <ScalarProperty Name="payer_email" ColumnName="payer_email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Datetest" ColumnName="Datetest" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="txn_id" ColumnName="txn_id" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="order_source" ColumnName="order_source" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="PeopleSourceModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="eBayItemID" ColumnName="eBayItemID" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+          <ScalarProperty Name="PriceDefault" ColumnName="PriceDefault" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="RealSKU" ColumnName="RealSKU" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SellerInfoes">
+      <EntityTypeMapping TypeName="PeopleSourceModel.SellerInfo">
+        <MappingFragment StoreEntitySet="SellerInfo">
+          <ScalarProperty Name="OHT" ColumnName="OHT" />
+          <ScalarProperty Name="KZ" ColumnName="KZ" />
+          <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+          <ScalarProperty Name="Increment" ColumnName="Increment" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vw_ReorderProducts">
       <EntityTypeMapping TypeName="PeopleSourceModel.vw_ReorderProducts">
         <MappingFragment StoreEntitySet="vw_ReorderProducts">
-          <ScalarProperty Name="Daily_Units_Sold_Rate_from_Last_Restock_to_Last_Sale_Date" ColumnName="Daily Units Sold Rate from Last Restock to Last Sale Date" />
-          <ScalarProperty Name="Total_Number_of_Days_from_last_stock_to_last_sale_date" ColumnName="Total Number of Days from last stock to last sale date" />
+          <ScalarProperty Name="DailyUnitsSoldRateFromLastRestockToLastSaleDate" ColumnName="DailyUnitsSoldRateFromLastRestockToLastSaleDate" />
+          <ScalarProperty Name="TotalNumberOfDaysFromLastStockToLastSaleDate" ColumnName="TotalNumberOfDaysFromLastStockToLastSaleDate" />
           <ScalarProperty Name="Product_Title" ColumnName="Product Title" />
-          <ScalarProperty Name="Daily_Units_Sold_Rate_for_Past_30_Days" ColumnName="Daily Units Sold Rate for Past 30 Days" />
-          <ScalarProperty Name="Total_Number_of_Units_Sold_in_Past_30_days" ColumnName="Total Number of Units Sold in Past 30 days" />
-          <ScalarProperty Name="Total_Number_of_Units_Sold_between_Last_Stock_and_Last_sale_date" ColumnName="Total Number of Units Sold between Last Stock and Last sale date" />
-          <ScalarProperty Name="Quantity_on_Hand" ColumnName="Quantity on Hand" />
-          <ScalarProperty Name="Date_product_was_last_stocked" ColumnName="Date product was last stocked" />
+          <ScalarProperty Name="DailyUnitsSoldRateForPast30Days" ColumnName="DailyUnitsSoldRateForPast30Days" />
+          <ScalarProperty Name="TotalNumberOfUnitsSoldInPast30Days" ColumnName="TotalNumberOfUnitsSoldInPast30Days" />
+          <ScalarProperty Name="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" ColumnName="TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="StockDate" ColumnName="StockDate" />
           <ScalarProperty Name="Date_Last_Sale" ColumnName="Date Last Sale" />
           <ScalarProperty Name="SKU" ColumnName="SKU" />
         </MappingFragment>

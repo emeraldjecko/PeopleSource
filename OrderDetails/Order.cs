@@ -1,22 +1,15 @@
-﻿using PeoplesSource.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.Xml;
 using System.IO;
+using System.Linq;
+using System.Net.Mail;
+using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using PeoplesSource.Data;
 using PeoplesSource.Ebay.Models;
-using PeoplesSource.Helpers;
-using PeoplesSource.EWReturn;
-using PeoplesSource.Models;
-using System.Globalization;
-using System.Net.Mail;
 
-namespace OrderDetails
+namespace CallDataBase
 {
     class Order
     {

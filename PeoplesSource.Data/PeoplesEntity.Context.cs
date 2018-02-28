@@ -14,7 +14,8 @@ namespace PeoplesSource.Data
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using PeoplesSource.Data.Models;
+
     public partial class PeopleSourceEntities : DbContext
     {
         public PeopleSourceEntities()
