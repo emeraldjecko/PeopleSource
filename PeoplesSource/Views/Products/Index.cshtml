@@ -208,64 +208,76 @@
                                             <input type="checkbox" ng-model="vm.selectAll" ng-change="vm.updateSelection()">
                                         </th>
                                         <th style="width: 10%;text-align: center">
-                                            <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
+                                            <a href="#" ng-click="orderByField='realSKU'; re5verseSort = !reverseSort">Real SKU</a> <br />
+                                            <input ng-model="search.realSKU" style="width:200px"/>
                                             @*Real SKU
-                                                <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+        <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width: 20%;text-align: center">
-                                            <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a>
+                                            <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a><br />
+                                            <input ng-model="search.name" style="width:200px" />
                                             @*Product Name
-                                                <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+        <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width:10%;text-align:center">
-                                            <a href="#" ng-click="orderByField='sku'; reverseSort = !reverseSort">SKU</a>
+                                            <a href="#" ng-click="orderByField='sku'; reverseSort = !reverseSort">SKU</a><br />
+                                            <input ng-model="search.sku" style="width:80px" />
                                             @*SKU
-                                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+        <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='eBayItemID'; reverseSort = !reverseSort">eBay Item#</a>
+                                            <a href="#" ng-click="orderByField='eBayItemID'; reverseSort = !reverseSort">eBay Item#</a><br />
+                                            <input ng-model="search.eBayItemID" style="width:80px" />
 
                                         </th>
                                         <th style="width:8%;text-align:center">
-                                            <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort"> Seller Id</a>
+                                            <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort"> Seller Id</a><br />
+                                            <input ng-model="search.sellerId" style="width:80px" />
                                             @*Seller Id
-                                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+        <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
 
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='cost'; reverseSort = !reverseSort">Cost</a>
+                                            <a href="#" ng-click="orderByField='cost'; reverseSort = !reverseSort">Cost</a><br />
+                                            <input ng-model="search.cost" style="width:80px" />
                                             @*Cost
-                                                 <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+         <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
 
                                         <th style="width:8%;text-align:center">
-                                            <a href="#" ng-click="orderByField='increment'; reverseSort = !reverseSort">Add</a>
+                                            <a href="#" ng-click="orderByField='increment'; reverseSort = !reverseSort">Add</a><br />
+                                            <input ng-model="search.increment" style="width:80px" />
                                             @*Increment   <span style="display:inline-block;" ng-click="vm.sortByAsc('increment')"><i ng-class="vm.isISortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                                <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+        <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
 
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='qty'; reverseSort = !reverseSort" title="Quantity on hand">Quantity</a>
+                                            <a href="#" ng-click="orderByField='qty'; reverseSort = !reverseSort" title="Quantity on hand">Quantity</a><br />
+                                            <input ng-model="search.qty" style="width:80px" />
                                         </th>
                                         <th style="width:7%;text-align:center">
-                                            <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort"> Price 1</a>
+                                            <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort"> Price 1</a><br />
+                                            <input ng-model="search.priceDefault" style="width:80px" />
 
                                         </th>
                                         <th style="width:8%;text-align:center">
-                                            <a href="#" ng-click="orderByField='updatedPrice'; reverseSort = !reverseSort"> Price 2 </a>
+                                            <a href="#" ng-click="orderByField='updatedPrice'; reverseSort = !reverseSort"> Price 2 </a><br />
+                                            <input ng-model="search.updatedPrice" style="width:80px" />
 
                                         </th>
                                         <th style="width:10%;text-align:center">
-                                            <a href="#" ng-click="orderByField='firstProfitPrice'; reverseSort = !reverseSort">Profit 1 </a>
+                                            <a href="#" ng-click="orderByField='firstProfitPrice'; reverseSort = !reverseSort">Profit 1 </a><br />
+                                            <input ng-model="search.firstProfitPrice" style="width:80px" />
 
                                         </th>
                                         <th style="width:10%;text-align:center">
-                                            <a href="#" ng-click="orderByField='secondProfitPrice'; reverseSort = !reverseSort">Profit 2 </a>
+                                            <a href="#" ng-click="orderByField='secondProfitPrice'; reverseSort = !reverseSort">Profit 2 </a><br />
+                                            <input ng-model="search.secondProfitPrice" style="width:80px" />
 
                                         </th>
                                         @*<th style="width:5%;text-align:center">
@@ -280,24 +292,29 @@
                                               </th>*@
 
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='daily30'; reverseSort = !reverseSort" title="Daily Units Sold Rate for Past 30 Days">SRP30</a>
+                                            <a href="#" ng-click="orderByField='daily30'; reverseSort = !reverseSort" title="Daily Units Sold Rate for Past 30 Days">SRP30</a><br />
+                                            <input ng-model="search.daily30" style="width:80px" />
                                         </th>
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='total30'; reverseSort = !reverseSort" title="Total Number of Units Sold in Past 30 days">TUS30</a>
+                                            <a href="#" ng-click="orderByField='total30'; reverseSort = !reverseSort" title="Total Number of Units Sold in Past 30 days">TUS30</a><br />
+                                            <input ng-model="search.total30" style="width:80px" />
                                         </th>
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='dailyRestock'; reverseSort = !reverseSort" title="Daily Units Sold Rate from Last Restock to Last Sale Date">SRRS</a>
+                                            <a href="#" ng-click="orderByField='dailyRestock'; reverseSort = !reverseSort" title="Daily Units Sold Rate from Last Restock to Last Sale Date">SRRS</a><br />
+                                            <input ng-model="search.dailyRestock" style="width:80px" />
                                         </th>
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='totalRestoct'; reverseSort = !reverseSort" title="Total Number of Units Sold between Last ReStock and Last sale date">TURS</a>
+                                            <a href="#" ng-click="orderByField='totalRestock'; reverseSort = !reverseSort" title="Total Number of Units Sold between Last ReStock and Last sale date">TURS</a><br />
+                                            <input ng-model="search.totalRestock" style="width:80px" />
                                         </th>
                                         <th style="width:5%;text-align:center">
-                                            <a href="#" ng-click="orderByField='stockDate'; reverseSort = !reverseSort">Stock Date</a>
+                                            <a href="#" ng-click="orderByField='stockDate'; reverseSort = !reverseSort">Stock Date</a><br />
+                                            <input ng-model="search.stockDate" style="width:80px" />
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="row-striped" ng-repeat="item in vm.products | filter: searchKeyword | orderBy:orderByField:reverseSort">
+                                    <tr class="row-striped" ng-repeat="item in vm.products | filter: search | orderBy:orderByField:reverseSort">
                                         <td class="text-center">
                                             <input type="checkbox" ng-model="item.selected" />
                                         </td>
