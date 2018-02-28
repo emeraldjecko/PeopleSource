@@ -170,20 +170,20 @@
                                         <th style="width: 10%;text-align: center">
                                             <a href="#" ng-click="orderByField='realSKU'; reverseSort = !reverseSort">Real SKU</a>
                                             @*Real SKU
-                                <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+            <span style="display:inline-block;" ng-click="vm.sortByAsc('realSKU')"><i ng-class="vm.isRSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('realSKU')"><i ng-class="vm.isRSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width: 20%;text-align: center">
                                             <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a>
                                             @*Product Name
-                                <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+            <span style="display:inline-block;" ng-click="vm.sortByAsc('name')"><i ng-class="vm.isPNSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('name')"><i ng-class="vm.isPNSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width:10%;text-align:center">
                                             <a href="#" ng-click="orderByField='sku'; reverseSort = !reverseSort">SKU</a>
                                             @*SKU
-                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+            <span style="display:inline-block;" ng-click="vm.sortByAsc('sku')"><i ng-class="vm.isSKUSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('sku')"><i ng-class="vm.isSKUSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
                                         <th style="width:5%;text-align:center">
                                             <a href="#" ng-click="orderByField='eBayItemID'; reverseSort = !reverseSort">eBay Item#</a>
@@ -192,21 +192,25 @@
                                         <th style="width:8%;text-align:center">
                                             <a href="#" ng-click="orderByField='sellerId'; reverseSort = !reverseSort"> Seller Id</a>
                                             @*Seller Id
-                                <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+            <span style="display:inline-block;" ng-click="vm.sortByAsc('sellerId')"><i ng-class="vm.isSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('sellerId')"><i ng-class="vm.isSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
 
                                         <th style="width:5%;text-align:center">
                                             <a href="#" ng-click="orderByField='cost'; reverseSort = !reverseSort">Cost</a>
                                             @*Cost
-                                 <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+             <span style="display:inline-block;" ng-click="vm.sortByAsc('cost')"><i ng-class="vm.isCSortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('cost')"><i ng-class="vm.isCSortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
                                         </th>
 
                                         <th style="width:8%;text-align:center">
                                             <a href="#" ng-click="orderByField='increment'; reverseSort = !reverseSort">Add</a>
                                             @*Increment   <span style="display:inline-block;" ng-click="vm.sortByAsc('increment')"><i ng-class="vm.isISortByAsc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-up" aria-hidden="true"></i></span>
-                                <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+            <span style="display:inline-block;" ng-click="vm.sortByDesc('increment')"><i ng-class="vm.isISortByDesc ? 'sort-active' : 'sort-inactive'" class="fa fa-arrow-down" aria-hidden="true"></i></span>*@
+                                        </th>
+
+                                        <th style="width:5%;text-align:center">
+                                            <a href="#" ng-click="orderByField='qty'; reverseSort = !reverseSort" title="Quantity on hand">Quantity</a>
                                         </th>
                                         <th style="width:7%;text-align:center">
                                             <a href="#" ng-click="orderByField='priceDefault'; reverseSort = !reverseSort"> Price 1</a>
@@ -225,15 +229,15 @@
 
                                         </th>
                                         @*<th style="width:5%;text-align:center">
-                                <a href="#" ng-click="orderByField='diff'; reverseSort = !reverseSort">Diff</a>
+            <a href="#" ng-click="orderByField='diff'; reverseSort = !reverseSort">Diff</a>
 
-                            </th>*@
+        </th>*@
                                         @*<th style="width:5%;text-align:center">
-                                <a href="#" ng-click="orderByField='kz'; reverseSort = !reverseSort">KZ</a>
-                               h>
-                            <th style="width:5%;text-align:center">
-                                <a href="#" ng-click="orderByField='oht'; reverseSort = !reverseSort"> OHT</a>
-                              </th>*@
+            <a href="#" ng-click="orderByField='kz'; reverseSort = !reverseSort">KZ</a>
+           h>
+        <th style="width:5%;text-align:center">
+            <a href="#" ng-click="orderByField='oht'; reverseSort = !reverseSort"> OHT</a>
+          </th>*@
 
                                         <th style="width:5%;text-align:center">
                                             <a href="#" ng-click="orderByField='daily30'; reverseSort = !reverseSort" title="Daily Units Sold Rate for Past 30 Days">SRP30</a>
@@ -281,6 +285,9 @@
                                         </td>
 
                                         <td class="text-center">
+                                            {{item.qty}}
+                                        </td>
+                                        <td class="text-center">
                                             {{item.priceDefault}}
                                         </td>
 
@@ -290,14 +297,14 @@
                                         <td class="text-center">{{ item.firstProfitPrice| number:2}}</td>
                                         <td class="text-center">{{item.secondProfitPrice | number:2}}</td>
                                         @*<td class="text-center">
-                                {{item.diff | number:2}}
-                            </td>*@
+            {{item.diff | number:2}}
+        </td>*@
                                         @*<td class="text-center">
-                                {{item.kz | number:2}}
-                            </td>
-                            <td class="text-center">
-                                {{item.oht | number:2}}
-                            </td>*@
+            {{item.kz | number:2}}
+        </td>
+        <td class="text-center">
+            {{item.oht | number:2}}
+        </td>*@
 
                                         <td class="text-center">
                                             {{item.daily30 | number:2}}
