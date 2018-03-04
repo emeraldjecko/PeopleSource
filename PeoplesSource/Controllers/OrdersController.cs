@@ -9,10 +9,12 @@ using PeoplesSource.Data.Models;
 using PeoplesSource.Providers;
 using System.Configuration;
 using System.IO;
+using System.Net.Mail;
 using System.Xml.Linq;
 using System.Xml;
 using PeoplesSource.Models;
 using System.Text.RegularExpressions;
+using System.Web.Configuration;
 
 namespace PeoplesSource.Controllers
 {
@@ -65,6 +67,30 @@ namespace PeoplesSource.Controllers
 
                                     t.TrackDetail.Add(SplitStringArray(trackingInfo));
                                 }
+                            }
+
+                            if (!string.IsNullOrWhiteSpace(t.TrackSummary) &&
+                                t.TrackSummary.ToLower().Trim().Contains("your item has been delivered"))
+                            {
+                                string UserEmail = WebConfigurationManager.AppSettings["ClientEmail"];
+                                string Password = WebConfigurationManager.AppSettings["Password"];
+                                MailMessage mail = new MailMessage();
+                                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                                mail.From = new MailAddress(UserEmail);
+                                mail.To.Add("thizeness@gmail.com");
+                                mail.Subject = "SyncTu Order Status Update";
+                                mail.Body = $"Date:{DateTime.Now} <br /> " +
+                                            $"Tracking Number: {o.tracking} <br /> " +
+                                            $"Buyer Email: {o.payer_email} <br /> " +
+                                            $"Seller Id: {o.account}" +
+                                            $"Buyer Name: {o.name}" +
+                                            $"Buyer Address: {o.address_state} {o.address_street2} {o.address_city} {o.address_state} {o.address_country} {o.address_zip}";
+
+                                SmtpServer.Port = 587;
+                                SmtpServer.Credentials = new System.Net.NetworkCredential(UserEmail, Password);
+                                SmtpServer.EnableSsl = true;
+                                SmtpServer.Send(mail);
                             }
                         }
 
