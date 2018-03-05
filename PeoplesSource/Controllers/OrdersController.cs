@@ -75,13 +75,13 @@ namespace PeoplesSource.Controllers
 
                                 try
                                 {
-                                    string UserEmail = WebConfigurationManager.AppSettings["ClientEmail"];
-                                    string Password = WebConfigurationManager.AppSettings["Password"];
+                                    string UserEmail = WebConfigurationManager.AppSettings["SenderOfTrackNotification"];
+                                    string Password = WebConfigurationManager.AppSettings["PasswordSenderOfTrackNotification"];
                                     MailMessage mail = new MailMessage();
                                     SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
                                     mail.From = new MailAddress(UserEmail);
-                                    mail.To.Add("thizeness@gmail.com");
+                                    mail.To.Add("forwaren@gmail.com");
                                     mail.Subject = "SyncTu Order Status Update";
                                     mail.Body = $"Date:{DateTime.Now} <br /> " +
                                                 $"Tracking Number: {o.tracking} <br /> " +
