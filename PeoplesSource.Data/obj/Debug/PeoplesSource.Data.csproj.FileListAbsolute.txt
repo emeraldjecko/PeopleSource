@@ -58,3 +58,4 @@ C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFra
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.dll
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.pdb
+C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Debug\PeoplesSource.Data.csprojResolveAssemblyReference.cache

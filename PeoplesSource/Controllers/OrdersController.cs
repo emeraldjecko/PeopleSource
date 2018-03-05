@@ -86,9 +86,10 @@ namespace PeoplesSource.Controllers
                                     mail.Body = $"Date:{DateTime.Now} <br /> " +
                                                 $"Tracking Number: {o.tracking} <br /> " +
                                                 $"Buyer Email: {o.payer_email} <br /> " +
-                                                $"Seller Id: {o.account}" +
-                                                $"Buyer Name: {o.name}" +
-                                                $"Buyer Address: {o.address_state} {o.address_street2} {o.address_city} {o.address_state} {o.address_country} {o.address_zip}";
+                                                $"Seller Id: {o.account} <br /> " +
+                                                $"Buyer Name: {o.name} <br /> " +
+                                                $"Buyer Address: {o.address_state} {o.address_street2} {o.address_city} {o.address_state} {o.address_country} {o.address_zip} <br /> " +
+                                                $"Status: {o.status} <br /> ";
 
                                     SmtpServer.Port = 587;
                                     SmtpServer.Credentials = new System.Net.NetworkCredential(UserEmail, Password);
