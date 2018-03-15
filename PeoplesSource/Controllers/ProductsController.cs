@@ -115,7 +115,7 @@ namespace PeoplesSource.Controllers
                              dailyRestock = r.DailyUnitsSoldRateFromLastRestockToLastSaleDate != null ? r.DailyUnitsSoldRateFromLastRestockToLastSaleDate : 0,
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
                              stockDate = r.StockDate,
-                             qty = r.Quantity,
+                             qty = r.Quantity != null ? r.Quantity : 0,
                              firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
                              
 
