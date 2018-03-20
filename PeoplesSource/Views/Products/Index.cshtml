@@ -40,8 +40,8 @@
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" id="PName" placeholder="Enter Product Name" ng-model="vm.PName">
                                     </div>
-
-                                    <button ng-disabled="!(vm.key ||vm.PName)" ng-click="vm.getProducts()" class="btn btn-primary col-md-4"> <i class="fa fa-cloud-download"></i> Get products </button>
+                                    @*<button ng-disabled="!(vm.key ||vm.PName)" ng-click="vm.getProducts()" class="btn btn-primary col-md-4"> <i class="fa fa-cloud-download"></i> Get products </button>*@
+                                    <button  ng-click="vm.getProducts()" class="btn btn-primary col-md-4"> <i class="fa fa-cloud-download"></i> Get products </button>
                                 </div>
                             </div>
                         </div>

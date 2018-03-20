@@ -28,3 +28,15 @@ C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\Peoples
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csproj.CoreCompileInputs.cache
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.dll
 C:\Users\jhay-r\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.pdb
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.dll.config
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.dll
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\PeoplesSource.Data.pdb
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.dll
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.xml
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csprojResolveAssemblyReference.cache
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csproj.CoreCompileInputs.cache
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.csproj.CopyComplete
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.dll
+C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Data\obj\Release\PeoplesSource.Data.pdb

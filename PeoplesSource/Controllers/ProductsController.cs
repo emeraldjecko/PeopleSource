@@ -37,6 +37,13 @@ namespace PeoplesSource.Controllers
         {
             return View();
         }
+
+        private int ConvertNullableInt(vw_ReorderProducts tmpR)
+        {
+            
+            return 1;
+        }
+
         [HttpGet]
         [Route("InDepth")]
         public ActionResult NetoProductInDepth(string realSku, DateTime date)
@@ -84,19 +91,21 @@ namespace PeoplesSource.Controllers
             int.TryParse(ValueTURS, out valueTURSInt);
 
 
-            if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName) && string.IsNullOrEmpty(SellerId))
+            if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName) && string.IsNullOrEmpty(SellerId) && string.IsNullOrEmpty(OperandProfit1) && string.IsNullOrEmpty(ValueProfit1) && string.IsNullOrEmpty(OperandSRP30) && string.IsNullOrEmpty(ValueSRP30) && string.IsNullOrEmpty(OperandTUS30) && string.IsNullOrEmpty(ValueTUS30) && string.IsNullOrEmpty(OperandSRRS) && string.IsNullOrEmpty(ValueSRRS) && string.IsNullOrEmpty(OperandTURS) && string.IsNullOrEmpty(ValueTURS))
             {
                 return new JsonCamelCaseResult(new { status = "error", discription = "" }, JsonRequestBehavior.AllowGet);
 
             }
+           
             ProductEntities entities = new ProductEntities();
             var items = (from p in entities.Products
                          from r in entities.ReorderProducts
                          .Where(rp => p.RealSKU == rp.SKU)
                          .DefaultIfEmpty()
                          join s in entities.SellerInfoes on p.SellerId equals s.Name
-                         where (p.RealSKU.Contains(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(SellerId) || SellerId == null)
+                         where (!string.IsNullOrEmpty(p.RealSKU)) && (p.Cost != null) && (p.RealSKU.Contains(realSKU) || realSKU == null) && (p.Name.Contains(PName) || PName == null) && (p.SellerId.Contains(SellerId) || SellerId == null)
                          orderby p.SellerId
+                         
                          select new
                          {
                              Name = p.Name,
@@ -117,7 +126,7 @@ namespace PeoplesSource.Controllers
                              stockDate = r.StockDate,
                              qty = r.Quantity != null ? r.Quantity : 0,
                              firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
-                             
+
 
                          }).ToList();
 
@@ -262,6 +271,8 @@ namespace PeoplesSource.Controllers
             }
            
             return new JsonCamelCaseResult(new { products = items, status = "Success", discription = "" }, JsonRequestBehavior.AllowGet);
+
+
         }
 
         [HttpPost]

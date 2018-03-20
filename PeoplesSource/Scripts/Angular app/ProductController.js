@@ -116,7 +116,8 @@
                     vm.products = orderBy(vm.products, vm.orderByField, vm.reverseSort);
                 }
                 else {
-                    alert("please check Real SKU!");
+                    //alert("please check Real SKU!");
+                    alert("please enter atleast 1 valid field value to search!");
                 }
 
             }, function (error) {
