@@ -105,3 +105,31 @@ C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Domain\obj\Release\Peoples
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.csproj.CopyComplete
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.dll
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\PeoplesSource.Domain.dll.config
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\PeoplesSource.Domain.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\PeoplesSource.Domain.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\FluentNHibernate.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Iesi.Collections.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\NHibernate.Caches.SysCache2.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\NHibernate.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\PeoplesSource.Common.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Stateless.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\StructureMap.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\StructureMap.Net4.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Castle.Core.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\PeoplesSource.Common.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\FluentNHibernate.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\FluentNHibernate.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Iesi.Collections.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\NHibernate.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Stateless.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\StructureMap.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\StructureMap.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\StructureMap.Net4.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\bin\Release\Castle.Core.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.csprojResolveAssemblyReference.cache
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.csproj.CoreCompileInputs.cache
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.csproj.CopyComplete
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Domain\obj\Release\PeoplesSource.Domain.pdb

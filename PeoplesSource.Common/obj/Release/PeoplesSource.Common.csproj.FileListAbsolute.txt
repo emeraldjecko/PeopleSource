@@ -68,3 +68,22 @@ C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Common\obj\Release\Peoples
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.csproj.CopyComplete
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.dll
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\PeoplesSource.Common.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\PeoplesSource.Common.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\Castle.Core.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\Iesi.Collections.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\NHibernate.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\StructureMap.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\StructureMap.Net4.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\Castle.Core.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\Iesi.Collections.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\NHibernate.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\StructureMap.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\StructureMap.xml
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\bin\Release\StructureMap.Net4.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.csprojResolveAssemblyReference.cache
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.csproj.CoreCompileInputs.cache
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.csproj.CopyComplete
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.dll
+D:\People Source\Code\PeopleSource\PeoplesSource.Common\obj\Release\PeoplesSource.Common.pdb

@@ -92,3 +92,28 @@ C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.dll
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.pdb
 C:\Users\Mark\Source\Repos\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.XmlSerializers.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.dll.config
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.XmlSerializers.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\Microsoft.SqlServer.ManagedDTS.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Common.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Data.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Domain.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\FluentNHibernate.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\NHibernate.Caches.SysCache2.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\System.Data.SqlServerCe.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Common.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Data.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Data.dll.config
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Domain.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\PeoplesSource.Domain.dll.config
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\FluentNHibernate.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\bin\FluentNHibernate.xml
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.csproj.App.config
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.csprojResolveAssemblyReference.cache
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.csproj.CoreCompileInputs.cache
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.csproj.CopyComplete
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.dll
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.pdb
+D:\People Source\Code\PeopleSource\PeoplesSource\obj\Release\PeoplesSource.XmlSerializers.dll
