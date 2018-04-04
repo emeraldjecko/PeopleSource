@@ -306,7 +306,8 @@ namespace PeoplesSource.Controllers
             request.ContentType = "appplication/xml";
             request.Headers.Add("NETOAPI_ACTION", "UpdateItem");
             //request.Headers.Add("NETOAPI_KEY", "9dkPGdD44iwyy0xnnkv6dBHs0yZTNpnn");
-            request.Headers.Add("NETOAPI_KEY", "iKtwjsGmZX0x1ULKAXv1BFZbGBrAQK2D");
+            //request.Headers.Add("NETOAPI_KEY", "iKtwjsGmZX0x1ULKAXv1BFZbGBrAQK2D");
+            request.Headers.Add("NETOAPI_KEY", "g0tTIaEWLVLNm8rzAa2b62TUX3c1A9MO");
             request.Headers.Add("NETOAPI_USERNAME", "DevDev02");
             request.ContentLength = bytes.Length;
             request.Method = "POST";
@@ -375,7 +376,8 @@ namespace PeoplesSource.Controllers
             request.ContentType = "appplication/xml";
             request.Headers.Add("NETOAPI_ACTION", "UpdateItem");
             //request.Headers.Add("NETOAPI_KEY", "9dkPGdD44iwyy0xnnkv6dBHs0yZTNpnn");
-            request.Headers.Add("NETOAPI_KEY", "iKtwjsGmZX0x1ULKAXv1BFZbGBrAQK2D");
+            //request.Headers.Add("NETOAPI_KEY", "iKtwjsGmZX0x1ULKAXv1BFZbGBrAQK2D");
+            request.Headers.Add("NETOAPI_KEY", "g0tTIaEWLVLNm8rzAa2b62TUX3c1A9MO");
             request.Headers.Add("NETOAPI_USERNAME", "DevDev02");
             request.ContentLength = bytes.Length;
             request.Method = "POST";
@@ -485,7 +487,7 @@ namespace PeoplesSource.Controllers
             if (section == "Section1")
             {
                 var items = (from p in entities.NetoProducts
-                         where (p.Date == date || date == null) && (p.RealSKU.Contains(realSKU.Substring(0, 29)) || string.IsNullOrEmpty(realSKU))
+                         where (p.Date == date || date == null) && (p.RealSKU.Contains(realSKU.Substring(0, 32)) || string.IsNullOrEmpty(realSKU))
                          orderby p.SellerId
                          select new
                          {
@@ -512,7 +514,7 @@ namespace PeoplesSource.Controllers
             else
             {
               var  items = (from p in entities.BestMatchPositions
-                            where (p.Date == date || date == null) && (p.RealSKU.Contains(realSKU.Substring(0, 29)) || string.IsNullOrEmpty(realSKU))                 
+                            where (p.Date == date || date == null) && (p.RealSKU.Contains(realSKU.Substring(0, 32)) || string.IsNullOrEmpty(realSKU))                 
                          select new
                          {
                              Title = p.Title,
