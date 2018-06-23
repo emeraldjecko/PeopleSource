@@ -284,7 +284,7 @@ namespace PeoplesSource.Controllers
 
             Uri myUri = new Uri(destinationUrl, UriKind.Absolute);
 
-
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(myUri);
 
             XDocument doc = new XDocument();
@@ -354,7 +354,7 @@ namespace PeoplesSource.Controllers
 
             Uri myUri = new Uri(destinationUrl, UriKind.Absolute);
 
-
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(myUri);
 
             XDocument doc = new XDocument();
