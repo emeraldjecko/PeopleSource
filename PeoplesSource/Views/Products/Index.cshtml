@@ -48,15 +48,19 @@
                         <div class="form-group">
                             <div class="col-md-5">
                                 <div class="row">
-                                    <label class="control-label col-md-3" for="sku">Base </label>
+                                    <label class="control-label col-md-1" for="sku">Base </label>
                                     <div class="col-md-3">
                                         <input type="number" step="0.01" class="form-control" id="basePrice" ng-change="vm.updatePrices(vm.basePrice)" placeholder="Base"
                                                ng-model="vm.basePrice" />
                                     </div>
                                     @*<div class="col-md-1"></div>*@
-                                    <label class="control-label col-md-3" for="sku" title="Shipping Cost">Shipping Cost</label>
-                                    <div class="col-md-3">
+                                    <label class="control-label col-md-2" for="sku" title="Shipping Cost">Ship Cost</label>
+                                    <div class="col-md-2">
                                         <input type="text" class="form-control" ng-model="vm.ShippingCost" ng-change="vm.profitPrices(vm.ShippingCost)" required />
+                                    </div>
+                                    <label class="control-label col-md-2" for="sku" title="Selling Fees">Selling Fees</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" ng-model="vm.SellingFees" ng-change="vm.profitPrices(vm.SellingFees)" required />
                                     </div>
                                 </div>
                             </div>
