@@ -29,6 +29,8 @@
         vm.ValueSRRS = '';
         vm.OperandTURS = '';
         vm.ValueTURS = '';
+        vm.Profit1Percent = '0';
+        vm.Profit2Percent = '0';
         vm.Date = '';
         vm.ShippingCost = '2.75';
         vm.updatePrices = updatePrices;
@@ -56,7 +58,7 @@
         function getProducts() {
 
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost, vm.OperandSRP30, vm.ValueSRP30, vm.OperandTUS30, vm.ValueTUS30, vm.OperandSRRS, vm.ValueSRRS, vm.OperandTURS, vm.ValueTURS).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost, vm.OperandSRP30, vm.ValueSRP30, vm.OperandTUS30, vm.ValueTUS30, vm.OperandSRRS, vm.ValueSRRS, vm.OperandTURS, vm.ValueTURS, vm.Profit1Percent, vm.Profit2Percent).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;
@@ -78,7 +80,15 @@
                             item.increment = item.increment + "%";
                         }
 
-                        item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.07166666666) - 0.3 - (item.priceDefault * 0.029);
+                        var profit1percent = parseFloat(vm.Profit1Percent);
+
+                        if (profit1percent > 0) {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                        }
+                        else {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                        }
+                        
                         item.diff = item.priceDefault - item.updatedPrice;
                     }
                     vm.haveProducts = true;
@@ -147,7 +157,16 @@
 
                         var item = vm.netoproducts[i];
                         item.totalListings = parseInt(item.totalListings);
-                        item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.07166666666) - 0.3 - (item.priceDefault * 0.029);
+
+                        var profit1percent = parseFloat(vm.Profit1Percent);
+
+                        if (profit1percent > 0) {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                        }
+                        else {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                        }
+                        
                         item.price2 = '';
                         item.profit2 = '';
                     }
@@ -189,7 +208,16 @@
                         var item = vm.netoproducts[i];
 
                         //item.totalListings = parseInt(item.totalListings);
-                        item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.07166666666) - 0.3 - (item.priceDefault * 0.029);
+
+                        var profit1percent = parseFloat(vm.Profit1Percent);
+
+                        if (profit1percent > 0) {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                        }
+                        else {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                        }
+                        
                         if (section == "Section1") {
                             item.price2 = '';
                             item.profit2 = '';
@@ -233,13 +261,32 @@
 
             for (var i = 0; i < vm.products.length; i++) {
                 var item = vm.products[i];
-                item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.07166666666) - 0.3 - (item.priceDefault * 0.029);
+
+
+                var profit1percent = parseFloat(vm.Profit1Percent);
+                var profit2percent = parseFloat(vm.Profit2Percent);
+
+                if (profit1percent > 0) {
+                    item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                }
+                else {
+                    item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                }
+                
 
                 if (item.updatedPrice == null || isNaN(item.updatedPrice))
                     item.secondProfitPrice = null
-                else
+                else {
+                    if (profit2percent > 0) {
+                        item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.0915) - 0.3 - (item.updatedPrice * 0.029) - (item.PriceDefault * (profit2percent / 100));
+                    }
+                    else {
+                        item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.0915) - 0.3 - (item.updatedPrice * 0.029);
+                    }
+                    
+                }
 
-                    item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.07166666666) - 0.3 - (item.updatedPrice * 0.029);
+                    
 
             }
 
@@ -251,7 +298,7 @@
 
                 if (vm.netoproducts[i].itemNumber == itemnumber) {
 
-                    vm.netoproducts[i].profit2 = parseFloat(price2) - parseFloat(cost) - vm.ShippingCost - (parseFloat(price2) * 0.07166666666) - 0.3 - (parseFloat(price2) * 0.029);
+                    vm.netoproducts[i].profit2 = parseFloat(price2) - parseFloat(cost) - vm.ShippingCost - (parseFloat(price2) * 0.0915) - 0.3 - (parseFloat(price2) * 0.029);
 
                 }
                 else
