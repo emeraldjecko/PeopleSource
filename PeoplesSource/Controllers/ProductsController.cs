@@ -54,8 +54,8 @@ namespace PeoplesSource.Controllers
             return View();
         }
         [HttpGet]
-        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string, OperandProfit1:string, ValueProfit1:string, ShippingCost:string, OperandSRP30:string, ValueSRP30:string, OperandTUS30:string, ValueTUS30:string, OperandSRRS:string, ValueSRRS:string, OperandTURS:string, ValueTURS:string}")]
-        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null, string OperandProfit1 = null, string ValueProfit1 = null, string ShippingCost = null, string OperandSRP30 = null, string ValueSRP30 = null, string OperandTUS30 = null, string ValueTUS30 = null, string OperandSRRS = null, string ValueSRRS = null, string OperandTURS = null, string ValueTURS = null)
+        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string, OperandProfit1:string, ValueProfit1:string, ShippingCost:string, OperandSRP30:string, ValueSRP30:string, OperandTUS30:string, ValueTUS30:string, OperandSRRS:string, ValueSRRS:string, OperandTURS:string, ValueTURS:string, Profit1Percent:string, Profit2Percent:string}")]
+        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null, string OperandProfit1 = null, string ValueProfit1 = null, string ShippingCost = null, string OperandSRP30 = null, string ValueSRP30 = null, string OperandTUS30 = null, string ValueTUS30 = null, string OperandSRRS = null, string ValueSRRS = null, string OperandTURS = null, string ValueTURS = null, string Profit1Percent = null, string Profit2Percent = null)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
@@ -71,6 +71,8 @@ namespace PeoplesSource.Controllers
             ValueSRRS = ValueSRRS.Trim('\"');
             OperandTURS = OperandTURS.Trim('\"');
             ValueTURS = ValueTURS.Trim('\"');
+            Profit1Percent = Profit1Percent.Trim('\"');
+            Profit2Percent = Profit2Percent.Trim('\"');
 
             double shippingCostValue = 0;
             double.TryParse(ShippingCost, out shippingCostValue);
@@ -89,6 +91,9 @@ namespace PeoplesSource.Controllers
 
             int valueTURSInt = 0;
             int.TryParse(ValueTURS, out valueTURSInt);
+
+            float valueProfit1Percent = 0;
+            float.TryParse(Profit1Percent, out valueProfit1Percent);
 
 
             if (string.IsNullOrEmpty(realSKU) && string.IsNullOrEmpty(PName) && string.IsNullOrEmpty(SellerId) && string.IsNullOrEmpty(OperandProfit1) && string.IsNullOrEmpty(ValueProfit1) && string.IsNullOrEmpty(OperandSRP30) && string.IsNullOrEmpty(ValueSRP30) && string.IsNullOrEmpty(OperandTUS30) && string.IsNullOrEmpty(ValueTUS30) && string.IsNullOrEmpty(OperandSRRS) && string.IsNullOrEmpty(ValueSRRS) && string.IsNullOrEmpty(OperandTURS) && string.IsNullOrEmpty(ValueTURS))
@@ -125,7 +130,7 @@ namespace PeoplesSource.Controllers
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
                              stockDate = r.StockDate,
                              qty = r.Quantity != null ? r.Quantity : 0,
-                             firstProfitPrice = p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.07166666666) - 0.3 - (p.PriceDefault * 0.029)
+                             firstProfitPrice = valueProfit1Percent > 0 ? (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.0915) - 0.3 - (p.PriceDefault * 0.029) - (p.PriceDefault * (valueProfit1Percent / 100))) : (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.0915) - 0.3 - (p.PriceDefault * 0.029))
 
 
                          }).ToList();
