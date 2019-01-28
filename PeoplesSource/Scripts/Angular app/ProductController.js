@@ -58,7 +58,7 @@
         function getProducts() {
 
             vm.isLoding = true;
-            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost, vm.OperandSRP30, vm.ValueSRP30, vm.OperandTUS30, vm.ValueTUS30, vm.OperandSRRS, vm.ValueSRRS, vm.OperandTURS, vm.ValueTURS, vm.Profit1Percent, vm.Profit2Percent).then(function (data) {
+            productService.fetchProducts(vm.key, vm.PName, vm.SellerId, vm.OperandProfit1, vm.ValueProfit1, vm.ShippingCost, vm.OperandSRP30, vm.ValueSRP30, vm.OperandTUS30, vm.ValueTUS30, vm.OperandSRRS, vm.ValueSRRS, vm.Profit1Percent, vm.Profit2Percent, vm.OperandTURS, vm.ValueTURS).then(function (data) {
                 var result = data.data;
                 if (result.status === "Success") {
                     vm.products = result.products;
@@ -80,17 +80,21 @@
                             item.increment = item.increment + "%";
                         }
 
-                        var profit1percent = parseFloat(vm.Profit1Percent);
+                        //var profit1percent = parseFloat(vm.Profit1Percent);
+                        alert("profit1percent parseFloat " + vm.Profit1Percent);
 
-                        if (profit1percent > 0) {
-                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                        if (vm.Profit1Percent > 0) {
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.priceDefault * (vm.Profit1Percent / 100));
+                            alert("Get With percent1: " + item.firstProfitPrice);
                         }
                         else {
                             item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                            alert("Get No percent1: " + item.firstProfitPrice);
                         }
                         
                         item.diff = item.priceDefault - item.updatedPrice;
                     }
+
                     vm.haveProducts = true;
                     //vm.isSortByAsc = true;
                     //vm.isSortByDesc = false;
@@ -161,10 +165,12 @@
                         var profit1percent = parseFloat(vm.Profit1Percent);
 
                         if (profit1percent > 0) {
-                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.priceDefault * (profit1percent / 100));
+                            alert("Get With percent 1 Neto: " + item.firstProfitPrice);
                         }
                         else {
                             item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                            alert("Get No percent1 Neto: " + item.firstProfitPrice);
                         }
                         
                         item.price2 = '';
@@ -212,10 +218,12 @@
                         var profit1percent = parseFloat(vm.Profit1Percent);
 
                         if (profit1percent > 0) {
-                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                            item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.priceDefault * (profit1percent / 100));
+                            alert("getNetoInDepthProducts With percent 1 Neto: " + item.firstProfitPrice);
                         }
                         else {
                             item.firstProfitPrice = item.priceDefault - item.cost - parseFloat(vm.ShippingCost) - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                            alert("getNetoInDepthProducts No percent 1 Neto: " + item.firstProfitPrice);
                         }
                         
                         if (section == "Section1") {
@@ -263,25 +271,29 @@
                 var item = vm.products[i];
 
 
-                var profit1percent = parseFloat(vm.Profit1Percent);
-                var profit2percent = parseFloat(vm.Profit2Percent);
+                //var profit1percent = parseFloat(vm.Profit1Percent);
+                //var profit2percent = parseFloat(vm.Profit2Percent);
 
-                if (profit1percent > 0) {
-                    item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.PriceDefault * (profit1percent / 100));
+                if (vm.Profit1Percent > 0) {
+                    item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029) - (item.priceDefault * (vm.Profit1Percent / 100));
+                    alert("With percent1 from ProfitPrices method edit: " + item.firstProfitPrice);
                 }
                 else {
                     item.firstProfitPrice = item.priceDefault - item.cost - vm.ShippingCost - (item.priceDefault * 0.0915) - 0.3 - (item.priceDefault * 0.029);
+                    alert("No percent1 from ProfitPrices method: " + item.firstProfitPrice);
                 }
                 
 
                 if (item.updatedPrice == null || isNaN(item.updatedPrice))
                     item.secondProfitPrice = null
                 else {
-                    if (profit2percent > 0) {
-                        item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.0915) - 0.3 - (item.updatedPrice * 0.029) - (item.PriceDefault * (profit2percent / 100));
+                    if (vm.Profit2Percent > 0) {
+                        item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.0915) - 0.3 - (item.updatedPrice * 0.029) - (item.updatedPrice * (vm.Profit2Percent / 100));
+                        alert("With percent2 from ProfitPrices method: " + item.secondProfitPrice);
                     }
                     else {
                         item.secondProfitPrice = item.updatedPrice - item.cost - vm.ShippingCost - (item.updatedPrice * 0.0915) - 0.3 - (item.updatedPrice * 0.029);
+                        alert("No percent2 from ProfitPrices method: " + item.secondProfitPrice);
                     }
                     
                 }
@@ -298,8 +310,14 @@
 
                 if (vm.netoproducts[i].itemNumber == itemnumber) {
 
-                    vm.netoproducts[i].profit2 = parseFloat(price2) - parseFloat(cost) - vm.ShippingCost - (parseFloat(price2) * 0.0915) - 0.3 - (parseFloat(price2) * 0.029);
-
+                    if (vm.Profit2Percent > 0) {
+                        vm.netoproducts[i].profit2 = parseFloat(price2) - parseFloat(cost) - vm.ShippingCost - (parseFloat(price2) * 0.0915) - 0.3 - (parseFloat(price2) * 0.029) - (price2 * (vm.Profit2Percent / 100));
+                        alert("With percent2 from updateNetoPrice2 method: " + vm.netoproducts[i].profit2);
+                    }
+                    else {
+                        vm.netoproducts[i].profit2 = parseFloat(price2) - parseFloat(cost) - vm.ShippingCost - (parseFloat(price2) * 0.0915) - 0.3 - (parseFloat(price2) * 0.029);
+                        alert("No percent2 from updateNetoPrice2 method: " + vm.netoproducts[i].profit2);
+                    }
                 }
                 else
                     continue;
@@ -336,8 +354,16 @@
                 if (vm.products[i].updatedPrice == null || isNaN(vm.products[i].updatedPrice))
                     vm.products[i].secondProfitPrice = null
                 else
-
-                    vm.products[i].secondProfitPrice = parseFloat(vm.products[i].updatedPrice) - parseFloat(vm.products[i].cost) - vm.ShippingCost - (parseFloat(vm.products[i].updatedPrice) * 0.07166666666) - 0.3 - (parseFloat(vm.products[i].updatedPrice) * 0.029);
+                {
+                    if (vm.Profit2Percent > 0) {
+                        vm.products[i].secondProfitPrice = parseFloat(vm.products[i].updatedPrice) - parseFloat(vm.products[i].cost) - vm.ShippingCost - (parseFloat(vm.products[i].updatedPrice) * 0.0915) - 0.3 - (parseFloat(vm.products[i].updatedPrice) * 0.029) - (vm.products[i].updatedPrice * (vm.Profit2Percent / 100));
+                        alert("With percent2 from updatePrices for Base method: " + vm.products[i].secondProfitPrice);
+                    }
+                    else {
+                        vm.products[i].secondProfitPrice = parseFloat(vm.products[i].updatedPrice) - parseFloat(vm.products[i].cost) - vm.ShippingCost - (parseFloat(vm.products[i].updatedPrice) * 0.0915) - 0.3 - (parseFloat(vm.products[i].updatedPrice) * 0.029);
+                        alert("No percent2 from updatePrices for Base method: " + vm.products[i].secondProfitPrice);
+                    }
+                }
                 vm.products[i].diff = vm.products[i].priceDefault - vm.products[i].updatedPrice;
             }
 
@@ -367,9 +393,19 @@
 
                     if (item == null || isNaN(item.updatedPrice))
                         item.secondProfitPrice = null
-                    else
+                    else {
+                        if (vm.Profit2Percent > 0) {
+                            item.secondProfitPrice = parseFloat(item.updatedPrice) - parseFloat(item.cost) - vm.ShippingCost - (parseFloat(item.updatedPrice) * 0.0915) - 0.3 - (parseFloat(item.updatedPrice) * 0.029) - (parseFloat(item.updatedPrice) * (vm.Profit2Percent / 100));
+                            alert("With percent2 from updateIncrementalPrices method: " + item.secondProfitPrice);
+                        }
+                        else {
+                            item.secondProfitPrice = parseFloat(item.updatedPrice) - parseFloat(item.cost) - vm.ShippingCost - (parseFloat(item.updatedPrice) * 0.0915) - 0.3 - (parseFloat(item.updatedPrice) * 0.029);
+                            alert("No percent2 from updateIncrementalPrices method: " + item.secondProfitPrice);
+                        }
+                        
+                    }
 
-                        item.secondProfitPrice = parseFloat(item.updatedPrice) - parseFloat(item.cost) - vm.ShippingCost - (parseFloat(item.updatedPrice) * 0.07166666666) - 0.3 - (parseFloat(item.updatedPrice) * 0.029);
+                        
                     item.diff = item.priceDefault - item.updatedPrice;
                 }
             });

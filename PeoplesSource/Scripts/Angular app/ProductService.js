@@ -17,7 +17,7 @@
         };
         var baseUrl = '/';
         
-        function fetchProducts(key, Pname, SellerId, OperandProfit1, ValueProfit1, ShippingCost, OperandSRP30, ValueSRP30, OperandTUS30, ValueTUS30, OperandSRRS, ValueSRRS, OperandTURS, ValueTURS, Profit1Percent, Profit2Percent) {
+        function fetchProducts(key, Pname, SellerId, OperandProfit1, ValueProfit1, ShippingCost, OperandSRP30, ValueSRP30, OperandTUS30, ValueTUS30, OperandSRRS, ValueSRRS, Profit1Percent, Profit2Percent, OperandTURS, ValueTURS) {
 
             return $http.get('/Products/GetProducts?realSKU="' + key + '"&PName="' + Pname.replace("+", "%2B")
                                 + '"&SellerId="' + SellerId.replace("+", "%2B") + '"&OperandProfit1="' + OperandProfit1.replace("+", "%2B")
@@ -25,7 +25,8 @@
                                 + '"&OperandSRP30="' + OperandSRP30.replace("+", "%2B") + '"&ValueSRP30="' + ValueSRP30.replace("+", "%2B")
                                 + '"&OperandTUS30="' + OperandTUS30.replace("+", "%2B") + '"&ValueTUS30="' + ValueTUS30.replace("+", "%2B")
                                 + '"&OperandSRRS="' + OperandSRRS.replace("+", "%2B") + '"&ValueSRRS="' + ValueSRRS.replace("+", "%2B")
-                + '"&OperandTURS="' + OperandTURS.replace("+", "%2B") + '"&ValueTURS="' + ValueTURS.replace("+", "%2B") + '"&Profit1Percent="' + Profit1Percent.replace("+", "%2B") + '"&Profit2Percent="' + Profit2Percent.replace("+", "%2B") + '"')
+                                + '"&Profit1Percent="' + Profit1Percent.replace("+", "%2B") + '"&Profit2Percent="' + Profit2Percent.replace("+", "%2B")
+                                + '"&OperandTURS="' + OperandTURS.replace("+", "%2B") + '"&ValueTURS="' + ValueTURS.replace("+", "%2B") + '"')
             .success(function (data) {
                 return data.data;
             }).error(function (data) {
