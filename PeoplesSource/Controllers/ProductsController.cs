@@ -54,8 +54,8 @@ namespace PeoplesSource.Controllers
             return View();
         }
         [HttpGet]
-        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string, OperandProfit1:string, ValueProfit1:string, ShippingCost:string, OperandSRP30:string, ValueSRP30:string, OperandTUS30:string, ValueTUS30:string, OperandSRRS:string, ValueSRRS:string, OperandTURS:string, ValueTURS:string, Profit1Percent:string, Profit2Percent:string}")]
-        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null, string OperandProfit1 = null, string ValueProfit1 = null, string ShippingCost = null, string OperandSRP30 = null, string ValueSRP30 = null, string OperandTUS30 = null, string ValueTUS30 = null, string OperandSRRS = null, string ValueSRRS = null, string OperandTURS = null, string ValueTURS = null, string Profit1Percent = null, string Profit2Percent = null)
+        [Route("GetProducts/{realSKU:string,PName:string,SellerId:string, OperandProfit1:string, ValueProfit1:string, ShippingCost:string, OperandSRP30:string, ValueSRP30:string, OperandTUS30:string, ValueTUS30:string, OperandSRRS:string, ValueSRRS:string, Profit1Percent:string, Profit2Percent:string, OperandTURS:string, ValueTURS:string}")]
+        public ActionResult GetProducts(string realSKU = null, string PName = null, string SellerId = null, string OperandProfit1 = null, string ValueProfit1 = null, string ShippingCost = null, string OperandSRP30 = null, string ValueSRP30 = null, string OperandTUS30 = null, string ValueTUS30 = null, string OperandSRRS = null, string ValueSRRS = null, string Profit1Percent = null, string Profit2Percent = null, string OperandTURS = null, string ValueTURS = null)
         {
             realSKU= realSKU.Trim('\"');
             PName= PName.Trim('\"');
