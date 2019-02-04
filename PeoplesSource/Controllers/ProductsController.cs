@@ -130,7 +130,7 @@ namespace PeoplesSource.Controllers
                              totalRestock = r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate != null ? r.TotalNumberOfUnitsSoldBetweenLastReStockAndLastSaleDate : 0,
                              stockDate = r.StockDate,
                              qty = r.Quantity != null ? r.Quantity : 0,
-                             firstProfitPrice = valueProfit1Percent > 0 ? (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.0915) - 0.3 - (p.PriceDefault * 0.029) - (p.PriceDefault * (valueProfit1Percent / 100))) : (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.0915) - 0.3 - (p.PriceDefault * 0.029))
+                             firstProfitPrice = valueProfit1Percent > 0 ? (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * valueProfit1Percent) - 0.3) : (p.PriceDefault - p.Cost - shippingCostValue - (p.PriceDefault * 0.1605) - 0.3)
 
 
                          }).ToList();
